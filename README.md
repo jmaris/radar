@@ -3,7 +3,7 @@ BdM-Sonar
 Repository hosting the Sonar project for Bufete de Marketing.
 
 ## What is Sonar?
-Sonar is an advanced open source service and server monitoring tool designed to be extremely modular, light (both in installation size and in resources consumed, while still providing a framework for plugins).
+Sonar is an advanced open source service and server monitoring tool designed to be extremely modular and light (both in installation size and in resources consumed, while still providing a framework for plugins).
 
 ### Why? Isn't this similar to XXX, YYY and ZZZ?
 While similar software exists, there is no major software implementation that was built from the ground up to be modular. Most monitoring tools offer an embedded web server that is usually ugly and not designed to be extensively modified. There is also no implementation that supports a standalone mode (no webserver or GUI) and a GUI mode that can be started simultaneously or alternatively.  
