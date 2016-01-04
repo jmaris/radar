@@ -8,7 +8,7 @@ Sonar is an advanced open source service and server monitoring tool designed to 
 ### Why? Isn't this similar to XXX, YYY and ZZZ?
 While similar software exists, there is no major software implementation that was built from the ground up to be modular. Most monitoring tools offer an embedded web server that is usually ugly and not designed to be extensively modified. There is also no implementation that supports a standalone mode (no webserver or GUI) and a GUI mode that can be started simultaneously or alternatively.  
 Sonar's Status Engine (the core logic) is designed to be run as a daemon or periodically, so that it doesn't constantly consume system resources.  
-Sonar's goal is to also be really light on resources, meaning that the actual system load will be the input and output plugins and not the daemon itself, making it that much easier to optimize the infrastructure to suit low power machines.
+Sonar's goal is to also be really light on resources, meaning that the actual system load will be the input and output plugins and not the daemon itself, making it that much easier to optimize the infrastructure to suit low power machines.  
 Non-exahustive list of service and server monitoring software:
 - [htop](http://hisham.hm/htop/ "htop")
 - [Nagios](https://www.nagios.com/solutions/linux-service-monitoring "Nagios")
