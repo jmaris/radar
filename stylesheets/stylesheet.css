@@ -6,9 +6,9 @@ body {
   padding: 0;
   background: #151515 url("../images/noise-background.png") 0 0;
   color: #eaeaea;
-  font-size: 17px;
-/*  line-height: 1.5;
-*/  font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  font-size: 18px;
+  line-height: 1.15;
+  font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
 
 /* General & 'Reset' Stuff */
