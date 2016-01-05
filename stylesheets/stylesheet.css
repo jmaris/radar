@@ -141,10 +141,10 @@ dt {
 }
 
 ul li {
-  list-style: none;
+  list-style-type: katakana;
 }
 
-ul li:before :.navbar {
+/*ul :not(.navbar) li::before {
   content: ">>";
   font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
   font-size: 13px;
@@ -153,6 +153,7 @@ ul li:before :.navbar {
   margin-right: 21px;
   line-height: 16px;
 }
+*/
 
 blockquote {
   color: #aaa;
@@ -271,24 +272,24 @@ a {
 /* CUSTOM */
 
 ul.navbar {
-  list-style-type: none;
   margin: 0px;
   padding: 0px;
   overflow: hidden;
   background-color: #000;
-  font-size: 22px;
+  font-size: 20px;
   font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
 
 ul.navbar > li {
   float: left;
+  list-style-type: none;
 }
 
 ul.navbar > li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 15px 15px;
     text-decoration: none;
 }
 
