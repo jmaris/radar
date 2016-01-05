@@ -222,6 +222,17 @@ hr {
   background: url("../images/blacktocat.png") 0 0 no-repeat;
 }
 
+.btn-tarball .icon {
+  opacity: 0.6;
+  background: url("../images/blackarchive.png") 0 0 no-repeat;
+}
+
+.btn-zipball .icon {
+  opacity: 0.6;
+  background: url("../images/blackarchive.png") 0 0 no-repeat;
+}
+
+
 /* Links
    a, a:hover, a:visited
 */
