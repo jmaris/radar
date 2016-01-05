@@ -6,7 +6,7 @@ body {
   padding: 0;
   background: #151515 url("../images/noise-background.png") 0 0;
   color: #eaeaea;
-  font: 16px;
+  font-size: 17px;
 /*  line-height: 1.5;
 */  font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
@@ -96,7 +96,7 @@ section img {
   max-width: 100%
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
 /*  font-weight: normal;
 */  font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
   color: #b5e853;
@@ -104,6 +104,11 @@ h1, h2, h3, h4, h5, h6 {
 */  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
                0 0 5px rgba(181, 232, 83, 0.1),
                0 0 10px rgba(181, 232, 83, 0.1);
+}
+
+h3, h4, h5, h6 {
+  font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  color: #fff;
 }
 
 #main_content h1 {
