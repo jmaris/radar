@@ -2,32 +2,13 @@ BdM-Sonar
 =========
 Repository hosting the Sonar project for Bufete de Marketing.
 
-<!-- ## What is Sonar?
-Sonar is an advanced open source service and server monitoring tool designed to be extremely modular and light (both in installation size and in resources consumed, while still providing a framework for plug-ins).
-
-### Why? Isn't this similar to XXX, YYY and ZZZ?
-While similar software exists, there is no major software implementation that was built from the ground up to be modular. Most monitoring tools offer an embedded web server that is usually ugly and not designed to be extensively modified. There is also no implementation that supports a standalone mode (no webserver or GUI) and a GUI mode that can be started simultaneously or alternatively.  
-Sonar's Status Engine (the core logic) is designed to be run as a daemon or periodically, so that it doesn't constantly consume system resources.  
-Sonar's goal is to also be really light on resources, meaning that the actual system load will be the input and output plug-ins and not the daemon itself, making it that much easier to optimize the infrastructure to suit low power machines.  
-Non-exahustive list of service and server monitoring software:
-- [htop](http://hisham.hm/htop/ "htop")
-- [Nagios](https://www.nagios.com/solutions/linux-service-monitoring "Nagios")
-- [Zabbix](http://www.zabbix.com/ "Zabbix")
-- [Munin](http://munin-monitoring.org/ "Munin")
-- [Cacti](http://www.cacti.net/ "Cacti")
-- [Icinga](https://www.icinga.org "Icinga")
-- [SmokePing](http://oss.oetiker.ch/smokeping/ "SmokePing")
-
-
-### Why the silly name?
-The idea behind Sonar is to have a central service (Status Engine) that periodically polls whatever the input plug-ins provide (services, servers, IoT devices, or basically almost anything with a network connection), it's designed to do periodic and sequential queries (like a ship's Sonar) to each of the elements provided by input plug-ins, so it works very similar to actual Sonar systems, since it doesn't need a service to be running on the target host, while it can still exahustively scan it. It also sounds cool :smile:.
-
-### Where does the idea come from?
-Sonar is the final-year project for the 2015-2016 course I'm currently studying.
-
 ## Features
-- Sonar will be designed to have a small footprint to be easy to maintain, understand, modify, and extend.
-- The essential part of Sonar is the Status Engine, and Sonar itself won't force any actual dependencies beyond the Status Engine. However, Sonar will connect Input plug-ins with Output plug-ins, but the I/O logic is managed by the plug-ins themselves.
+- Centralization of remote system administration
+- Light footprint
+- Configurable instant alerts
+- Support for multiple user interfaces (or even pure CLI with config files!)
+- Support for running it periodically instead of as a daemon
+- The essential part of Sonar is the Status Engine, and Sonar itself won't force any actual dependencies beyond the Status Engine
 - Modulable design, using plug-ins
   - Input plug-ins (Iplug-ins)
     - They provide elements and entities to the Status Engine. **Elements** are each of the services running on every machine. **Entities** are the way elements are grouped, each entity represents a network host.
@@ -65,4 +46,4 @@ Sonar is the final-year project for the 2015-2016 course I'm currently studying.
     - JSON output
     - Pushover mobile notifications
     - SMS notifications
-    - E-mail notifications -->
+    - E-mail notifications
