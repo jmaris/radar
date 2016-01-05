@@ -2,7 +2,7 @@ BdM-Sonar
 =========
 Repository hosting the Sonar project for Bufete de Marketing.
 
-(For a less technical overview of the project, please visit [the project's GitHub page](https://leoncastillejos.github.io/BdM-Sonar).)
+(For a less technical overview of the project, please visit [the project's webpage](https://leoncastillejos.github.io/BdM-Sonar)).
 
 ## Features
 - Centralization of remote system administration
