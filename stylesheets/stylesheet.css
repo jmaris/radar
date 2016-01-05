@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Chivo);
-@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono);
 
 body {
@@ -8,15 +7,15 @@ body {
   background: #151515 url("../images/bkg.png") 0 0;
   color: #eaeaea;
   font: 16px;
-  line-height: 1.5;
-  font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+/*  line-height: 1.5;
+*/  font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
 
 /* General & 'Reset' Stuff */
 
 .container {
   width: 90%;
-  max-width: 600px;
+  max-width: 850px;
   margin: 0 auto;
 }
 
@@ -48,17 +47,19 @@ header {
 }
 
 header h1 {
-  font-size: 30px;
-  line-height: 1.5;
+  font-size: 35px;
+  line-height: 2.5;
   margin: 0 0 0 -40px;
-  font-weight: bold;
+  font-weight: normal;
   font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
   color: #b5e853;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
-               0 0 5px rgba(181, 232, 83, 0.1),
-               0 0 10px rgba(181, 232, 83, 0.1);
-  letter-spacing: -1px;
-  -webkit-font-smoothing: antialiased;
+  text-shadow: /*0 5px 5px rgba(0, 0, 0, 0.8),*/
+               0 0 80px rgba(181, 232, 83, 1),
+               0 0 50px rgba(181, 232, 83, 1),
+               0 0 30px rgba(181, 232, 83, 0.7),
+               0 0 10px rgba(181, 232, 83, 0.5);
+/*  letter-spacing: -1px;
+*/  -webkit-font-smoothing: antialiased;
 }
 
 header h1:before {
@@ -67,7 +68,7 @@ header h1:before {
 }
 
 header h2 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 300;
   color: #666;
 }
@@ -90,11 +91,11 @@ section img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
-  font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+/*  font-weight: normal;
+*/  font-family: "Ubuntu Mono", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
   color: #b5e853;
-  letter-spacing: -0.03em;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+/*  letter-spacing: -0.03em;
+*/  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
                0 0 5px rgba(181, 232, 83, 0.1),
                0 0 10px rgba(181, 232, 83, 0.1);
 }
@@ -260,3 +261,13 @@ a {
 .cf {
   zoom:1;
 }
+
+ul .navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #151515;
+}
+
+li
