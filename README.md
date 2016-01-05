@@ -19,8 +19,16 @@ Repository hosting the Sonar project for Bufete de Marketing.
     - They define the actions that must be taken when a new event is discovered.
     - O-plug-ins can ask the Status Engine to discriminate by event type, for example, for a mail plug-in, we might only want to receive critical events, in order to avoid flooding the inbox, while a webserver daemon plug-in might want to receive each and every one of the events, so that they can be correctly archived and managed, so that graphs can be generated for the user to display important statistical information.
 
-## Main implementation goals 
-- Sonar will be ran in a separate server, so that it's not prone to company servers' failures.
+## BdM Implementation goals
+Since this is a project developed for Bufete de Marketing, this will be the main software implementation. However, Sonar is flexible enough to be implemented  in different scenarios.
+- Hardware required
+  - DigitalOcean's 5$ (512 MB RAM) VPS (it's very, very affordable, and, if needed, it's possible to leverage DO's infrastructure to get a bigger, faster VPS).
+- Software
+  - The application core (**Status Engine**) will be written in Rust. A fast, safe, concurrent programming language. Rust is ideal for this because the codebase will be small, and the Status Engine should handle very few tasks, among which are message processing, queuing, and not much more. The SE will not save the data, modify the data or operate with it in any meaningful way apart from copying and discarding data.
+  - The **web interface** (developed as an OPlug-in) will be written in Rails, using Ruby. Thanks to the flexibility of Ruby, its Object-Oriented style and the generally big community, it should make development very fast and elegant, while opening up the possibilities for future extensions.
+  - The IPlug-ins can be written in almost any language, even scripting languages such as bash. In the very early stages of development, this will most likely be the case, to be able to quickly start testing the system.
+
+[[[[[TODO]]]]]
 
 ## Milestones
 - Status Engine
