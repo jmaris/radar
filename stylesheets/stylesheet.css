@@ -4,7 +4,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #151515 url("../images/bkg.png") 0 0;
+  background: #151515 url("../images/noise-background.png") 0 0;
   color: #eaeaea;
   font: 16px;
 /*  line-height: 1.5;
@@ -45,7 +45,7 @@ li {
 */
 
 header {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.3);
   width: 100%;
   border-bottom: 3px dotted #b5e853;
 /*  padding: 20px 0;
@@ -76,7 +76,7 @@ header h1:before {
 header h2 {
   font-size: 20px;
   font-weight: 300;
-  color: #666;
+  color: #999;
 }
 
 #downloads .btn {
@@ -297,7 +297,7 @@ ul.navbar > li a {
     min-width: 250px;
 }
 
-ul.navbar > li a:hover:not(.active) {
+ul.navbar > li a:hover {
     background-color: #222;
     text-shadow: 0 0 15px rgba(181, 232, 83, 0.8);
     text-shadow: 0 0 10px rgba(181, 232, 83, 0.7);
