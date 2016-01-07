@@ -35,6 +35,7 @@ Since this is a project developed for Bufete de Marketing, this will be the main
     - ~~Frameworks to use~~
     - ~~Languages to use~~
   - UI design (ongoing)
+  - Implementation network map
 - Software development
   - Status Engine
   - Plug-in framework implementation
