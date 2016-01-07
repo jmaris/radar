@@ -48,6 +48,8 @@ TL;DR: Less is more. Flexibility is essential.
 
 # Progress
 
+Work is divided in four stages, chronologically ordered.
+
 ## Stage 1: Planning
 
 - Initial design
@@ -58,13 +60,15 @@ TL;DR: Less is more. Flexibility is essential.
   - UI design (ongoing)
   - Implementation network map (ongoing)
 
-Stage 2:
-- 
+## Stage 2: Study
+- Viablity study
+- Create a tiny Status Engine to handle I-Module messages
+- Create simple bash I-Module for pinging hosts
 
 ## Stage 3: Coding
 
 - Software development
-  - Status Engine
+  - Finish status Engine
   - Module framework implementation
   - Modules
     - I-Modules
@@ -90,6 +94,12 @@ Stage 2:
       - Pushover mobile notifications
       - SMS notifications
       - E-mail notifications
+
+## Stage 4: Implementation
+
+- Compile software from source in production server
+- Execute software in production server
+- Create installation packages for Debian and Arch (through the AUR)
 
 # BdM Implementation goals
 Since this is a project developed for Bufete de Marketing, this will be the main software implementation. However, Sonar is flexible enough to be implemented  in different scenarios.
