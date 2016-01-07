@@ -1,5 +1,8 @@
 Sonar
 =========
+
+[![Build Status](https://travis-ci.org/leoncastillejos/Sonar.svg?branch=master)](https://travis-ci.org/leoncastillejos/Sonar)
+
 Repository hosting the Sonar project.
 
 (For a less technical overview of the project, please visit [the project's webpage](https://leoncastillejos.github.io/BdM-Sonar)).
