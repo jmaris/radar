@@ -13,9 +13,8 @@ Repository hosting the Sonar project.
 
 - Centralization of remote system administration
 - Modular design
-  - Input modules (I-Modules)
-    - Input Modules feed Sonar with data about the environment. For example, some module may give Sonar the CPU utilization of certain hosts, while some other module may give Sonar information about pings, such as how much time did it take, or when was the last time a host responded to a ping.  
-    There are three kinds of I-Modules:
+  - Input modules (I-Modules) (they feed Sonar with data about the hosts)  
+  There are three kinds of I-Modules:
     - API modules
       - API modules read data from API servers.
       - API modules are two part modules. The first part is the server side, which is a piece of software designed to be run on the host to monitor, and the second part is the API reader, that is run on the machine hosting the Status Engine and acts as an interface.
@@ -37,16 +36,6 @@ Repository hosting the Sonar project.
 - Flexible
 - Scalable
 - Secure
-
-<!-- ### Why Rust?
-See [this](https://cburgdorf.wordpress.com/2014/07/17/rust-will-be-the-language-of-the-future/).
-
-Rust is  low level like C, fast like C++, and features a high level syntax like Ruby or Java. Requires no garbage collector.  
-Rust generates binary applications, as opposed to the interpreted code Ruby uses. This gives it an advantage in speed.  
-The idea is for the Status Engine to be as tiny as possible, so that no modifications to the source are necessary in order to adapt it for a specific scenario.
-
-TL;DR: Rust is a modern, fast, safe and concurrent language.
- -->
 
 ### Software details
 
