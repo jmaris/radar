@@ -83,7 +83,7 @@ Work is divided in four stages, chronologically ordered.
       - HDD usage
     - O-Modules
       - Plaintext logging
-      - Pushover mobile notifications
+      - [Pushover](https://pushover.net/) mobile notifications
       - SMS notifications
       - E-mail notifications
 
