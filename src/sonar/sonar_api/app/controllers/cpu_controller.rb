@@ -1,5 +1,5 @@
 class CpuController < ApplicationController
     def average_load
-        Sys::CPU.load_avg.first
+        render json: Sys::CPU.load_avg.first
     end
 end
