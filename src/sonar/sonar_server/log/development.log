@@ -1,6 +1,0 @@
-
-
-Started GET "/" for ::1 at 2016-01-18 14:17:55 +0100
-Processing by ApplicationController#test as HTML
-  Rendered text template (0.0ms)
-Completed 200 OK in 10ms (Views: 4.0ms | ActiveRecord: 0.0ms)
