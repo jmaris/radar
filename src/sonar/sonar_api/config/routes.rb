@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'application#root'
 
-  get '/cpu', to: "cpu#average_load"
+  get '/cpu', to: "hardware#cpu"
+
+  get '/memory', to: "hardware#memory"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
