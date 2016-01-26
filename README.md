@@ -43,14 +43,14 @@ Repository hosting the Sonar project.
 
 Most of the project will be written in Ruby, with Rails in order to dramatically speed up development, and since it's a web based implementation, it makes sense to use Rails.
 
-#### Why modular?
+<!-- #### Why modular?
 
 I chose a modular design to make the core logic as small as possible. Less code, usually means less bugs.  
 Small codebase means it's also easier to review for potential security threats.  
 It also means the Status Engine can be potentially reimplemented in a different language (maybe to support exotic hardware).  
 It makes sense, in such a scenario, to separate the application's logic from the tests and the output, rather than trying to bake all the functionality into a single package (each company has their own needs, and by removing unnecessary modules, the software package gets easier to maintain, more reliable and secure).  
 TL;DR: Less is more. Flexibility is essential.
-
+ -->
 # Progress
 
 Work is divided in four stages, chronologically ordered.
@@ -67,13 +67,10 @@ Work is divided in four stages, chronologically ordered.
 
 ## Stage 2: Study
 - Viablity study
-- Create a tiny Status Engine to handle I-Module messages
-- Create simple bash I-Module for pinging hosts
 
 ## Stage 3: Coding
 
 - Software development
-  - Finish status Engine
   - Module framework implementation
   - Modules
     - I-Modules
