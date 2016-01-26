@@ -4,8 +4,13 @@
   <strong>Url:</strong>
   <%= @machine.url %>
   <br>
-  <strong>Load:</strong>
-  <%= @hash["load_percentage"] %>
+  <strong>CPU Load:</strong>
+  <%= @hardware_load["cpu_load_percentage"] %>
+  %
+  <br>
+  <strong>RAM Load:</strong>
+  <%= @hardware_load["ram_load_percentage"] %>
+  %
 </p>
 
 <%= link_to 'Edit', edit_machine_path(@machine) %> |

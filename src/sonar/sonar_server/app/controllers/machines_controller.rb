@@ -12,7 +12,7 @@ class MachinesController < ApplicationController
   def show
     # url = 'http://localhost:4963/cpu'
     response = RestClient.get(@machine.url)
-    @hash = JSON.parse(response)
+    @hardware_load = JSON.parse(response)
     # render text: "CPU usage is at #{@hash["load_percentage"]}%"
   end
 
