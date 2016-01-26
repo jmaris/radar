@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def jsontest
     url = 'http://localhost:4963/cpu'
     response = RestClient.get(url)
-    hash = JSON.parse(response)
+    @hash = JSON.parse(response)
     render text: "CPU usage is at #{hash["load_percentage"]}%"
   end
 end
