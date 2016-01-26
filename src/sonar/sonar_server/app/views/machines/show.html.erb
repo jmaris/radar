@@ -4,11 +4,15 @@
   <strong>Url:</strong>
   <%= @machine.url %>
   <br>
-  <strong>CPU Load:</strong>
+  <strong>Current CPU Load: </strong>
   <%= @hardware_load["cpu_load_percentage"] %>
   %
   <br>
-  <strong>RAM Load:</strong>
+  <t> <strong>Previous CPU Load: </strong>
+  <%= Metric.all.map{|metric| metric.cpu} %>
+  %
+  <br>
+  <strong>RAM Load: </strong>
   <%= @hardware_load["ram_load_percentage"] %>
   %
 </p>

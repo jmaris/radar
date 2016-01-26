@@ -13,6 +13,8 @@ class MachinesController < ApplicationController
     # url = 'http://localhost:4963/cpu'
     response = RestClient.get(@machine.url)
     @hardware_load = JSON.parse(response)
+    #@machine.create_metric cpu: @hardware_load["cpu_load_percentage"]
+    Metric.create(machine_id: @machine.id, cpu: @hardware_load["cpu_load_percentage"])
     # render text: "CPU usage is at #{@hash["load_percentage"]}%"
   end
 
