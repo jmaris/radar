@@ -16,10 +16,10 @@ class MachinesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create machine" do
-    assert_difference('Machine.count') do
-      post :create, machine: { url: @machine.url }
-    end
+  # test "should create machine" do
+  #   assert_difference('Machine.count') do
+  #     post :create, machine: { url: @machine.url }
+  #   end
 
     assert_redirected_to machine_path(assigns(:machine))
   end
@@ -34,10 +34,10 @@ class MachinesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update machine" do
-    patch :update, id: @machine, machine: { url: @machine.url }
-    assert_redirected_to machine_path(assigns(:machine))
-  end
+  # test "should update machine" do
+  #   patch :update, id: @machine, machine: { url: @machine.url }
+  #   assert_redirected_to machine_path(assigns(:machine))
+  # end
 
   test "should destroy machine" do
     assert_difference('Machine.count', -1) do

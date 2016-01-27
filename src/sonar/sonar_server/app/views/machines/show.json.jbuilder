@@ -1,1 +1,1 @@
-json.extract! @machine, :id, :url, :created_at, :updated_at
+json.extract! @machine, :id, :protocol, :host, :port, :created_at, :updated_at

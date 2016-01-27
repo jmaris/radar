@@ -2,20 +2,60 @@
 
 <p>
   <strong>Url:</strong>
-  <%= @machine.url %>
+  <%= "#{@machine.protocol}://#{@machine.host}:#{@machine.port}" %>
   <br>
   <strong>Current CPU Load: </strong>
   <%= @hardware_load["cpu_load_percentage"] %>
   %
   <br>
-  <t> <strong>Previous CPU Load: </strong>
-  <%= Metric.all.map{|metric| metric.cpu} %>
-  %
-  <br>
-  <strong>RAM Load: </strong>
-  <%= @hardware_load["ram_load_percentage"] %>
-  %
-</p>
+  <t> <strong>Previous CPU Loads: </strong>
+    <%= @metric_cpu_all %>
+    %
+    <br>
+    <div id="container" style="height: 400px"></div>
 
-<%= link_to 'Edit', edit_machine_path(@machine) %> |
-<%= link_to 'Back', machines_path %>
+    <script>
+
+      $(function () {
+        $('#container').highcharts({
+          yAxis: {
+            title: {
+              text: 'CPU usage'
+            },
+            labels: {
+              formatter: function() {
+                return this.value + ' %';
+              }
+            },
+          },
+          legend: {
+            enabled: false
+          },
+          xAxis: {
+            labels: {
+              enabled: false
+            },
+          },
+          title:{
+            text: 'Last CPU metrics'
+          },
+          plotOptions: {
+            series: {
+              allowPointSelect: true
+            }
+          },
+          series: [{
+            data: <%= @metric_cpu_all %>
+          }]
+        });
+      });
+
+    </script>
+    <br>
+    <strong>RAM Load: </strong>
+    <%= @hardware_load["ram_load_percentage"] %>
+    %
+  </p>
+
+  <%= link_to 'Edit', edit_machine_path(@machine) %> |
+  <%= link_to 'Back', machines_path %>

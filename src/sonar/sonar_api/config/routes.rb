@@ -5,10 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'application#root'
 
-  get '/cpu', to: "hardware#cpu"
-
-  get '/memory', to: "hardware#memory"
-
+  get 'sonar_api_v1' => 'hardware#status'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

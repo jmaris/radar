@@ -15,5 +15,8 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
+// HIGHCHARTS SHIT
+//= require highcharts
+//= require highcharts/highcharts-more
 
 $(function(){ $(document).foundation(); });

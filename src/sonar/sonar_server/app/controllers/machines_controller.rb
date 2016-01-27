@@ -11,10 +11,12 @@ class MachinesController < ApplicationController
   # GET /machines/1.json
   def show
     # url = 'http://localhost:4963/cpu'
-    response = RestClient.get(@machine.url)
+    response = RestClient.get("#{@machine.protocol}://#{@machine.host}:#{@machine.port}/sonar_api_v1") #not very good to hardcore the API version, but works for now.
     @hardware_load = JSON.parse(response)
+    @metric_cpu_all = Metric.all.map{|metric| metric.cpu}
+    @metric_cpu_last_5 = @metric_cpu_all.last(5)
     #@machine.create_metric cpu: @hardware_load["cpu_load_percentage"]
-    Metric.create(machine_id: @machine.id, cpu: @hardware_load["cpu_load_percentage"])
+    Metric.create(machine_id: @machine.id, cpu: @hardware_load["cpu_load_percentage"]) #saves to SQL
     # render text: "CPU usage is at #{@hash["load_percentage"]}%"
   end
 
@@ -75,6 +77,6 @@ class MachinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def machine_params
-      params.require(:machine).permit(:url)
+      params.require(:machine).permit(:protocol, :host, :port)
     end
 end

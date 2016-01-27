@@ -12,9 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.label :protocol %><br>
+    <%= f.text_field :protocol %>
   </div>
+  <div class="field">
+    <%= f.label :host %><br>
+    <%= f.text_field :host %>
+  </div>
+  <div class="field">
+    <%= f.label :port %><br>
+    <%= f.text_field :port %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
