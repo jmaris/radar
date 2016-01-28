@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128115841) do
+ActiveRecord::Schema.define(version: 20160128162038) do
 
-  create_table "cpu_metrics", force: :cascade do |t|
-    t.integer  "metrics_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "cpu_metric_companions", force: :cascade do |t|
+    t.integer  "cpu_metric_id"
+    t.float    "cpu"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "machines", force: :cascade do |t|
@@ -28,15 +29,12 @@ ActiveRecord::Schema.define(version: 20160128115841) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "metrics", force: :cascade do |t|
-    t.integer  "machine_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "ram_metrics", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "ram_metric_companions", force: :cascade do |t|
+    t.integer  "ram_metric_id"
+    t.float    "ram"
+    t.float    "swap"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

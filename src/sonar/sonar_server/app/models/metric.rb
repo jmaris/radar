@@ -1,3 +1,5 @@
 class Metric < ActiveRecord::Base
-    validates_presence_of :machine
+# Attributes: machine_id
+    belongs_to :machine
+    validates :machine, :presence => true #machine_id
 end

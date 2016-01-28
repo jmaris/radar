@@ -1,6 +1,6 @@
 class Machine < ActiveRecord::Base
-    validates_presence_of :protocol, :host, :port
-    validates_numericality_of :port
-    validates_uniqueness_of :host
+    validates :protocol,    presence: true
+    validates :host,        presence: true, uniqueness: true
+    validates :port,        presence: true, numericality: true
     has_many :metrics
 end
