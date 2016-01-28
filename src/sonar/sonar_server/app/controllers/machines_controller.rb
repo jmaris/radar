@@ -11,13 +11,10 @@ class MachinesController < ApplicationController
   # GET /machines/1.json
   def show
     # url = 'http://localhost:4963/cpu'
-    response = RestClient.get("#{@machine.protocol}://#{@machine.host}:#{@machine.port}/sonar_api_v1") #not very good to hardcore the API version, but works for now.
+    response = RestClient.get("#{@machine.protocol}://#{@machine.host}:#{@machine.port}/sonar_api_v1") #not very good to hardcode the API version, but works for now.
     @hardware_load = JSON.parse(response)
-    @metric_cpu_all = Metric.all.map{|metric| metric.cpu}
-    @metric_cpu_last_5 = @metric_cpu_all.last(5)
-    #@machine.create_metric cpu: @hardware_load["cpu_load_percentage"]
-    Metric.create(machine_id: @machine.id, cpu: @hardware_load["cpu_load_percentage"]) #saves to SQL
-    # render text: "CPU usage is at #{@hash["load_percentage"]}%"
+    # @metric_cpu_all = Metric.all.map{|metric| metric.cpu}
+    # @metric_cpu_last_5 = @metric_cpu_all.last(5)
   end
 
   # GET /machines/new

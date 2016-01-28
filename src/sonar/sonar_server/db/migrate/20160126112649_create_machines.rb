@@ -4,6 +4,7 @@ class CreateMachines < ActiveRecord::Migration
       t.string :protocol
       t.string :host
       t.integer :port
+      t.string :hostname
 
       t.timestamps null: false
     end

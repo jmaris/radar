@@ -4,58 +4,62 @@
   <strong>Url:</strong>
   <%= "#{@machine.protocol}://#{@machine.host}:#{@machine.port}" %>
   <br>
-  <strong>Current CPU Load: </strong>
+  <strong>Hostname:</strong>
+  <%= "#{@machine.hostname}" %>
+  <br>
+  <strong>Current CPU load: </strong>
   <%= @hardware_load["cpu_load_percentage"] %>
   %
   <br>
-  <t> <strong>Previous CPU Loads: </strong>
+<!--   <t> <strong>Previous CPU metrics: </strong>
     <%= @metric_cpu_all %>
     %
-    <br>
-    <div id="container" style="height: 400px"></div>
+  -->
+  <br>
+  <div id="container" style="height: 200px"></div>
 
-    <script>
+  <script>
 
-      $(function () {
-        $('#container').highcharts({
-          yAxis: {
-            title: {
-              text: 'CPU usage'
-            },
-            labels: {
-              formatter: function() {
-                return this.value + ' %';
-              }
-            },
+    $(function () {
+      $('#container').highcharts({
+        yAxis: {
+          title: {
+            text: 'CPU usage'
           },
-          legend: {
-            enabled: false
-          },
-          xAxis: {
-            labels: {
-              enabled: false
-            },
-          },
-          title:{
-            text: 'Last CPU metrics'
-          },
-          plotOptions: {
-            series: {
-              allowPointSelect: true
+          labels: {
+            formatter: function() {
+              return this.value + ' %';
             }
           },
-          series: [{
-            data: <%= @metric_cpu_all %>
-          }]
-        });
+        },
+        legend: {
+          enabled: false
+        },
+        xAxis: {
+          labels: {
+            enabled: false
+          },
+        },
+        title:{
+          text: 'Histogram of CPU metrics'
+        },
+        plotOptions: {
+          series: {
+            allowPointSelect: true
+          }
+        },
+        series: [{
+          data: <%= @metric_cpu_all %>
+        }]
       });
+    });
 
-    </script>
-    <br>
-    <strong>RAM Load: </strong>
-    <%= @hardware_load["ram_load_percentage"] %>
-    %
-  </p>
+  </script>
+  <br>
+  <strong>RAM Load: </strong>
+  <%= @hardware_load["ram_load_percentage"] %>
+  %
+</p>
 
-  <%= link_to 'Edit', edit_machine_path(@machine) %> |
-  <%= link_to 'Back', machines_path %>
+<%= link_to 'Edit', edit_machine_path(@machine) %> |
+<%= link_to 'Back', machines_path %>

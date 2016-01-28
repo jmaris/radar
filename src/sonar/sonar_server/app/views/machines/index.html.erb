@@ -8,19 +8,21 @@
       <th>Protocol</th>
       <th>Host</th>
       <th>Port</th>
+      <th>Hostname</th>
     </tr>
   </thead>
 
   <tbody>
     <% @machines.each do |machine| %>
-      <tr>
-        <td><%= machine.protocol %></td>
-        <td><%= machine.host %></td>
-        <td><%= machine.port %></td>
-        <td><%= link_to 'Show', machine %></td>
-        <td><%= link_to 'Edit', edit_machine_path(machine) %></td>
-        <td><%= link_to 'Destroy', machine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= machine.protocol %></td>
+      <td><%= machine.host %></td>
+      <td><%= machine.port %></td>
+      <td><%= machine.hostname %></td>
+      <td><%= link_to 'Show', machine %></td>
+      <td><%= link_to 'Edit', edit_machine_path(machine) %></td>
+      <td><%= link_to 'Destroy', machine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
