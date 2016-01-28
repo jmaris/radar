@@ -13,7 +13,7 @@ To install, copy the sonar-api folder to the server you want to monitor, and the
 
 ## Characteristics
 
-### Features
+<!-- ### Features
 
 - Centralization of remote system administration
 - Modular design
@@ -29,6 +29,7 @@ To install, copy the sonar-api folder to the server you want to monitor, and the
   - Output modules (O-modules)
     - They define the actions that must be taken when a new event is discovered.
     - O-Modules can ask the Status Engine to discriminate by event type, for example, for a mail module, we might only want to receive critical events, in order to avoid flooding the inbox.
+ -->
 
 ### Goals
 - Gather CPU, RAM, and HDD usage
@@ -55,6 +56,7 @@ It also means the Status Engine can be potentially reimplemented in a different 
 It makes sense, in such a scenario, to separate the application's logic from the tests and the output, rather than trying to bake all the functionality into a single package (each company has their own needs, and by removing unnecessary modules, the software package gets easier to maintain, more reliable and secure).  
 TL;DR: Less is more. Flexibility is essential.
  -->
+
 # Progress
 
 Work is divided in four stages, chronologically ordered.
@@ -70,23 +72,11 @@ Work is divided in four stages, chronologically ordered.
   - Implementation network map (ongoing)
 
 ## Stage 2: Study
-- Viablity study
+- ~~Viablity study~~
 
 ## Stage 3: Coding
 
-- Software development
-  - Module framework implementation
-  - Modules
-    - I-Modules
-      - Ping
-      - CPU
-      - RAM
-      - HDD usage
-    - O-Modules
-      - Plaintext logging
-      - [Pushover](https://pushover.net/) mobile notifications
-      - SMS notifications
-      - E-mail notifications
+- Software development (ongoing)
 
 ## Stage 4: Implementation
 
