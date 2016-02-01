@@ -26,7 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 ##HARDWARE STATISTICS GEMS
 gem 'sys-cpu'
-gem 'memory'
+# gem 'memory' #doesn't seem to work?
+gem 'sys-filesystem'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

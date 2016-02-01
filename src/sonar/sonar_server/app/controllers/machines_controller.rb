@@ -1,6 +1,11 @@
 class MachinesController < ApplicationController
   before_action :set_machine, only: [:show, :edit, :update, :destroy]
 
+# def api_call
+#   response = RestClient.get("#{@machine.protocol}://#{@machine.host}:#{@machine.port}/sonar_api_v1") #not very smart to hardcode the API version, but works for now.
+#   hardware_load = JSON.parse(response)
+# end
+
   # GET /machines
   # GET /machines.json
   def index
@@ -10,8 +15,12 @@ class MachinesController < ApplicationController
   # GET /machines/1
   # GET /machines/1.json
   def show
-    response = RestClient.get("#{@machine.protocol}://#{@machine.host}:#{@machine.port}/sonar_api_v1") #not very smart to hardcode the API version, but works for now.
-    @hardware_load = JSON.parse(response)
+    #api_call
+    api = Metric.api_call(@machine.protocol,@machine.host,@machine.port)
+    @cpu_load   = api["load"]["cpu"]
+    @ram_load   = api["load"]["ram"]
+    @swap_load  = api["load"]["swap"]
+    @hostname   = api["sysinfo"]["hostname"]
   end
 
   # GET /machines/new

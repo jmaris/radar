@@ -2,63 +2,27 @@
 
 <p>
   <strong>Url:</strong>
-  <%= "#{@machine.protocol}://#{@machine.host}:#{@machine.port}" %>
+  <%= "#{@machine.protocol}://#{@machine.host}:#{@machine.port}/sonar_api_v1" %>
   <br>
   <strong>Hostname:</strong>
-  <%= "#{@machine.hostname}" %>
+  <%= @hostname %>
   <br>
   <strong>Current CPU load: </strong>
-  <%= @hardware_load["cpu_load_percentage"] %>
+  <%= @cpu_load %>
   %
-  <br>
-<!--   <t> <strong>Previous CPU metrics: </strong>
-    <%= @metric_cpu_all %>
-    %
-  -->
-  <br>
-  <div id="container" style="height: 200px"></div>
-
-  <script>
-
-    $(function () {
-      $('#container').highcharts({
-        yAxis: {
-          title: {
-            text: 'CPU usage'
-          },
-          labels: {
-            formatter: function() {
-              return this.value + ' %';
-            }
-          },
-        },
-        legend: {
-          enabled: false
-        },
-        xAxis: {
-          labels: {
-            enabled: false
-          },
-        },
-        title:{
-          text: 'Histogram of CPU metrics'
-        },
-        plotOptions: {
-          series: {
-            allowPointSelect: true
-          }
-        },
-        series: [{
-          data: <%= @metric_cpu_all %>
-        }]
-      });
-    });
-
-  </script>
   <br>
   <strong>RAM Load: </strong>
-  <%= @hardware_load["ram_load_percentage"] %>
+  <%= @ram_load %>
   %
+  <br>
+  <strong>Swap Load: </strong>
+  <%= @swap_load %>
+  %
+<!--   <br>
+  <br>
+  <strong>@hardware_load: </strong>
+  <%= @hardware_load %>
+-->
 </p>
 
 <%= link_to 'Edit', edit_machine_path(@machine) %> |
