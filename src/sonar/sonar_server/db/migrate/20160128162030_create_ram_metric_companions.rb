@@ -5,6 +5,7 @@ class CreateRamMetricCompanions < ActiveRecord::Migration
       t.integer :ram_metric_id
       t.float :ram
       t.float :swap
+      
       t.timestamps null: false
     end
   end
