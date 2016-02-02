@@ -30,8 +30,8 @@ class HardwareController < ApplicationController # logic goes in this hardware_c
                                         "Architecture": Sys::Uname.machine
                                         },
                                     ram: {
-                                        "Total RAM bytes": 17179869184,
-                                        "Total swap bytes": 17179869184
+                                        "Total RAM bytes": Vmstat.memory.total_bytes
+                                        # "Total swap bytes": 17179869184 # not yet implemented
                                         },
                                     storage: {
                                         "Total storage bytes": (Sys::Filesystem.stat("/").blocks * Sys::Filesystem.stat("/").block_size)
