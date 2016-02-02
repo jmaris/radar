@@ -2,6 +2,8 @@ class CreateMachines < ActiveRecord::Migration
   def change
     create_table :machines do |t|
 
+        #manual parameters
+
         t.string    :protocol # url: #{machine.protocol}://#{machine.host}:#{machine.port}
         t.string    :host
         t.integer   :port
@@ -17,7 +19,6 @@ class CreateMachines < ActiveRecord::Migration
         t.integer   :ram_total_bytes
         # t.integer   :swap_total # not yet implemented
         t.integer   :storage_total_bytes
-
 
       t.timestamps null: false
     end

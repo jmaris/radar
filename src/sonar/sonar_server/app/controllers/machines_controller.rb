@@ -28,6 +28,18 @@ class MachinesController < ApplicationController
   # GET /machines/new
   def new
     @machine = Machine.new
+
+    api_sysinfo = Metric.api_sysinfo(@machine.protocol,@machine.host,@machine.port)
+
+
+    @machine.hostname             = api_sysinfo["hostname"]
+    @machine.os                   = api_sysinfo["os"]["family"]
+    @machine.cpu_model            = api_sysinfo["cpu"]["CPU model"]
+    @machine.cpu_cores            = api_sysinfo["cpu"]["Number of cores"]
+    @machine.cpu_architecture     = api_sysinfo["cpu"]["Architecture"]
+    @machine.ram_total_bytes      = api_sysinfo["ram"]["Total RAM bytes"]
+    @machine.storage_total_bytes  = api_sysinfo["storage"]["Total storage bytes"]
+
   end
 
   # GET /machines/1/edit
@@ -37,7 +49,20 @@ class MachinesController < ApplicationController
   # POST /machines
   # POST /machines.json
   def create
+
+    # api_sysinfo = Metric.api_sysinfo(@machine.protocol,@machine.host,@machine.port)
+
     @machine = Machine.new(machine_params)
+
+    puts "hithere %machine_params"
+
+    # @machine.hostname             = api_sysinfo["hostname"]
+    # @machine.os                   = api_sysinfo["os"]["family"]
+    # @machine.cpu_model            = api_sysinfo["cpu"]["CPU model"]
+    # @machine.cpu_cores            = api_sysinfo["cpu"]["Number of cores"]
+    # @machine.cpu_architecture     = api_sysinfo["cpu"]["Architecture"]
+    # @machine.ram_total_bytes      = api_sysinfo["ram"]["Total RAM bytes"]
+    # @machine.storage_total_bytes  = api_sysinfo["storage"]["Total storage bytes"]
 
     respond_to do |format|
       if @machine.save
@@ -82,6 +107,6 @@ class MachinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def machine_params
-      params.require(:machine).permit(:protocol, :host, :port)
+      params.require(:machine).permit(:protocol, :host, :port, :update_interval)
     end
 end

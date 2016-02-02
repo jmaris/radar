@@ -16,17 +16,27 @@ ActiveRecord::Schema.define(version: 20160128162038) do
   create_table "cpu_metric_companions", force: :cascade do |t|
     t.integer  "cpu_metric_id"
     t.float    "cpu"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.float    "load_average_1min"
+    t.float    "load_average_5min"
+    t.float    "load_average_15min"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "machines", force: :cascade do |t|
     t.string   "protocol"
     t.string   "host"
     t.integer  "port"
+    t.integer  "update_interval"
     t.string   "hostname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "os"
+    t.string   "cpu_model"
+    t.integer  "cpu_cores"
+    t.integer  "cpu_architecture"
+    t.integer  "ram_total_bytes"
+    t.integer  "storage_total_bytes"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "ram_metric_companions", force: :cascade do |t|
