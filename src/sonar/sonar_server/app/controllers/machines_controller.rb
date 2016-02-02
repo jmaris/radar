@@ -15,12 +15,14 @@ class MachinesController < ApplicationController
   # GET /machines/1
   # GET /machines/1.json
   def show
-    #api_call
-    api = Metric.api_call(@machine.protocol,@machine.host,@machine.port)
-    @cpu_load   = api["load"]["cpu"]
-    @ram_load   = api["load"]["ram"]
-    @swap_load  = api["load"]["swap"]
-    @hostname   = api["sysinfo"]["hostname"]
+    #api_live
+    api_live        = Metric.api_live(@machine.protocol,@machine.host,@machine.port)
+    api_sysinfo     = Metric.api_sysinfo(@machine.protocol,@machine.host,@machine.port)
+    @cpu_load       = api_live["cpu_percentage"]
+    @ram_load       = (api_live["ram_bytes"].to_f / api_sysinfo["ram"]["Total RAM bytes"].to_f * 100).round(2)
+    # @swap_load    = api_live["swap"] # swap not yet implemented
+    @storage_bytes  = api_live["storage_bytes"]
+    @hostname       = api_sysinfo["hostname"]
   end
 
   # GET /machines/new

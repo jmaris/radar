@@ -5,16 +5,18 @@ class CreateMachines < ActiveRecord::Migration
         t.string    :protocol # url: #{machine.protocol}://#{machine.host}:#{machine.port}
         t.string    :host
         t.integer   :port
-        t.string    :hostname
         t.integer   :update_interval
 
-        # fixed data
+        # sysinfo
 
+        t.string    :hostname
+        t.string    :os # os.family + os.release from the API
         t.string    :cpu_model
         t.integer   :cpu_cores
-        t.integer   :ram_total
-        t.integer   :swap_total
-        t.integer   :storage_total
+        t.integer   :cpu_architecture
+        t.integer   :ram_total_bytes
+        # t.integer   :swap_total # not yet implemented
+        t.integer   :storage_total_bytes
 
 
       t.timestamps null: false
