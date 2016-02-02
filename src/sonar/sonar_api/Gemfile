@@ -28,6 +28,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sys-cpu'
 # gem 'memory' #doesn't seem to work?
 gem 'sys-filesystem'
+gem 'sys-uname'
+gem 'sys-uptime'
+gem 'vmstat'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
