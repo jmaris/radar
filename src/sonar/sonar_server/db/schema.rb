@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(version: 20160128162038) do
     t.datetime "updated_at",          null: false
   end
 
+  create_table "metrics", force: :cascade do |t|
+    t.integer  "machine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ram_metric_companions", force: :cascade do |t|
     t.integer  "ram_metric_id"
     t.float    "ram"
