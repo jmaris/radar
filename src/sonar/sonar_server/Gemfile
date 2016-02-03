@@ -29,6 +29,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'foundation-rails'
 gem 'rest-client'
 gem 'highcharts-rails'
+# gem 'clockwork', require: false
+gem 'delayed_job_active_record'
 # gem 'whenever', :require => false
 
 # Use Unicorn as the app server

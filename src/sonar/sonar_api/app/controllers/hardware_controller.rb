@@ -21,20 +21,20 @@ class HardwareController < ApplicationController # logic goes in this hardware_c
                             sysinfo: {
                                 "hostname": Socket.gethostname,
                                     os: {
-                                        "Family": Sys::Uname.sysname,
-                                        "Release": Sys::Uname.release
+                                        "family": Sys::Uname.sysname,
+                                        "release": Sys::Uname.release
                                         },
                                     cpu: {
-                                        "CPU model": Sys::CPU.processors.first.model_name,
-                                        "Number of cores": Sys::CPU.processors.count,
-                                        "Architecture": Sys::Uname.machine
+                                        "cpu_model": Sys::CPU.processors.first.model_name,
+                                        "number_of_cores": Sys::CPU.processors.count,
+                                        "architecture": Sys::Uname.machine
                                         },
                                     ram: {
-                                        "Total RAM bytes": Vmstat.memory.total_bytes
+                                        "total_ram_bytes": Vmstat.memory.total_bytes
                                         # "Total swap bytes": 17179869184 # not yet implemented
                                         },
                                     storage: {
-                                        "Total storage bytes": (Sys::Filesystem.stat("/").blocks * Sys::Filesystem.stat("/").block_size)
+                                        "total_storage_bytes": (Sys::Filesystem.stat("/").blocks * Sys::Filesystem.stat("/").block_size)
                                     }
                                 }
                             }
@@ -55,21 +55,23 @@ class HardwareController < ApplicationController # logic goes in this hardware_c
         render json: {
             "hostname": Socket.gethostname,
             os: {
-                "Family": Sys::Uname.sysname,
-                "Release": Sys::Uname.release
-                    },
+                "family": Sys::Uname.sysname,
+                "release": Sys::Uname.release
+            },
             cpu: {
-                "CPU model": Sys::CPU.processors.first.model_name,
-                "Number of cores": Sys::CPU.processors.count,
-                "Architecture": Sys::Uname.machine
-                    },
+                "model": Sys::CPU.processors.first.model_name,
+                "cores": Sys::CPU.processors.count,
+                "architecture": Sys::Uname.machine
+            },
             ram: {
-                "Total RAM bytes": Vmstat.memory.total_bytes
-                # "Total swap bytes": 17179869184 # not yet implemented
-                    },
+                "total_bytes": Vmstat.memory.total_bytes
+            },
+            # swap: {
+            #     "total_bytes": 17179869184 # not yet implemented
+            # },
             storage: {
-                "Total storage bytes": (Sys::Filesystem.stat("/").blocks * Sys::Filesystem.stat("/").block_size)
-                }
+                "total_bytes": (Sys::Filesystem.stat("/").blocks * Sys::Filesystem.stat("/").block_size)
+            }
         }
     end
     

@@ -1,11 +1,6 @@
 class MachinesController < ApplicationController
   before_action :set_machine, only: [:show, :edit, :update, :destroy]
 
-# def api_call
-#   response = RestClient.get("#{@machine.protocol}://#{@machine.host}:#{@machine.port}/sonar_api_v1") #not very smart to hardcode the API version, but works for now.
-#   hardware_load = JSON.parse(response)
-# end
-
   # GET /machines
   # GET /machines.json
   def index
@@ -16,30 +11,19 @@ class MachinesController < ApplicationController
   # GET /machines/1.json
   def show
     #api_live
-    api_live        = Metric.api_live(@machine.protocol,@machine.host,@machine.port)
-    api_sysinfo     = Metric.api_sysinfo(@machine.protocol,@machine.host,@machine.port)
-    @cpu_load       = api_live["cpu_percentage"]
-    @ram_load       = (api_live["ram_bytes"].to_f / api_sysinfo["ram"]["Total RAM bytes"].to_f * 100).round(2)
-    # @swap_load    = api_live["swap"] # swap not yet implemented
-    @storage_bytes  = api_live["storage_bytes"]
-    @hostname       = api_sysinfo["hostname"]
+    api_live        = Metric.api(@machine.protocol,@machine.host,@machine.port,"live")
+    api_sysinfo     = Metric.api(@machine.protocol,@machine.host,@machine.port,"sysinfo")
+    @hostname       = api_sysinfo[:hostname]
+    @cpu_load       = api_live[:cpu_percentage]
+    @ram_load       = (api_live[:ram_bytes].to_f/api_sysinfo[:ram][:total_bytes].to_f*100).round(2)
+    # @swap_load    = api_live[:swap] # swap not yet implemented
+    @storage_bytes  = api_live[:storage_bytes]
+    @uptime         = api_live[:uptime_seconds]
   end
 
   # GET /machines/new
   def new
     @machine = Machine.new
-
-    api_sysinfo = Metric.api_sysinfo(@machine.protocol,@machine.host,@machine.port)
-
-
-    @machine.hostname             = api_sysinfo["hostname"]
-    @machine.os                   = api_sysinfo["os"]["family"]
-    @machine.cpu_model            = api_sysinfo["cpu"]["CPU model"]
-    @machine.cpu_cores            = api_sysinfo["cpu"]["Number of cores"]
-    @machine.cpu_architecture     = api_sysinfo["cpu"]["Architecture"]
-    @machine.ram_total_bytes      = api_sysinfo["ram"]["Total RAM bytes"]
-    @machine.storage_total_bytes  = api_sysinfo["storage"]["Total storage bytes"]
-
   end
 
   # GET /machines/1/edit
@@ -50,22 +34,22 @@ class MachinesController < ApplicationController
   # POST /machines.json
   def create
 
-    # api_sysinfo = Metric.api_sysinfo(@machine.protocol,@machine.host,@machine.port)
-
     @machine = Machine.new(machine_params)
 
-    puts "hithere %machine_params"
+    # api_sysinfo = Metric.api_sysinfo(@machine.protocol,@machine.host,@machine.port)
 
-    # @machine.hostname             = api_sysinfo["hostname"]
-    # @machine.os                   = api_sysinfo["os"]["family"]
-    # @machine.cpu_model            = api_sysinfo["cpu"]["CPU model"]
-    # @machine.cpu_cores            = api_sysinfo["cpu"]["Number of cores"]
-    # @machine.cpu_architecture     = api_sysinfo["cpu"]["Architecture"]
-    # @machine.ram_total_bytes      = api_sysinfo["ram"]["Total RAM bytes"]
-    # @machine.storage_total_bytes  = api_sysinfo["storage"]["Total storage bytes"]
+    # @machine.hostname             = api_sysinfo[:hostname]
+    # @machine.os                   = api_sysinfo[:os][:family]
+    # @machine.cpu_model            = api_sysinfo[:cpu][:model]
+    # @machine.cpu_cores            = api_sysinfo[:cpu][:cores]
+    # @machine.cpu_architecture     = api_sysinfo[:cpu][:architecture]
+    # @machine.ram_total_bytes      = api_sysinfo[:ram][:total_bytes]
+    # @machine.storage_total_bytes  = api_sysinfo[:storage][:total_bytes]
 
     respond_to do |format|
+
       if @machine.save
+
         format.html { redirect_to @machine, notice: 'Machine was successfully created.' }
         format.json { render :show, status: :created, location: @machine }
       else
@@ -109,4 +93,4 @@ class MachinesController < ApplicationController
     def machine_params
       params.require(:machine).permit(:protocol, :host, :port, :update_interval)
     end
-end
+  end
