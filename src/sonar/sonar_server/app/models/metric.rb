@@ -9,6 +9,7 @@ validates :machine, :presence => true #machine_id
     end
 
     def self.save_metrics_dj(machine_id)
+
         machine = Machine.find(machine_id)
         
         api_live = api(machine.protocol,machine.host,machine.port,"live")

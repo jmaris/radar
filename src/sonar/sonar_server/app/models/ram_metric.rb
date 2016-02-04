@@ -5,7 +5,7 @@ class RamMetric < Metric
     delegate :ram, :ram=, to: :lazily_built_companion
     # delegate :ram, :ram=, :swap, :swap=, to: :lazily_built_companion
 
-    # validates :ram, presence: true, numericality: true
+    validates :ram, presence: true, numericality: true
     # validates :swap, presence: true, numericality: true
 
     private

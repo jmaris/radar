@@ -11,14 +11,16 @@ class MachinesController < ApplicationController
   # GET /machines/1.json
   def show
     #api_live
-    api_live        = Metric.api(@machine.protocol,@machine.host,@machine.port,"live")
-    api_sysinfo     = Metric.api(@machine.protocol,@machine.host,@machine.port,"sysinfo")
-    @hostname       = api_sysinfo[:hostname]
-    @cpu_load       = api_live[:cpu_percentage]
-    @ram_load       = (api_live[:ram_bytes].to_f/api_sysinfo[:ram][:total_bytes].to_f*100).round(2)
-    # @swap_load    = api_live[:swap] # swap not yet implemented
-    @storage_bytes  = api_live[:storage_bytes]
-    @uptime         = api_live[:uptime_seconds]
+    api_live            = Metric.api(@machine.protocol,@machine.host,@machine.port,"live")
+    api_sysinfo         = Metric.api(@machine.protocol,@machine.host,@machine.port,"sysinfo")
+    @hostname           = api_sysinfo[:hostname]
+    @cpu_load           = api_live[:cpu_percentage]
+    @ram_load           = (api_live[:ram_bytes].to_f/api_sysinfo[:ram][:total_bytes].to_f*100).round(2)
+    # @swap_load        = api_live[:swap] # swap not yet implemented
+    @storage_bytes      = api_live[:storage_bytes]
+    @uptime             = api_live[:uptime_seconds]
+    # @cpu_load_last10    =
+    # @ram_load_last10    =
   end
 
   # GET /machines/new

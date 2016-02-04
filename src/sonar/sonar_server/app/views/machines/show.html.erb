@@ -14,6 +14,44 @@
   <strong>Current RAM Load: </strong>
   <%= @ram_load %>
   %
+  <br>
+  <div id="cpu_chart" style="width:100%; height:400px;"></div>
+  <script>
+    $(function () {
+      $('#cpu_chart').highcharts({
+        yAxis: {
+          title: {
+            text: 'Last 10 CPU metrics'
+          },
+          labels: {
+            formatter: function() {
+              return this.value + ' %';
+            }
+          },
+        },
+        legend: {
+          enabled: false
+        },
+        xAxis: {
+          labels: {
+            enabled: false
+          },
+        },
+        title:{
+          text: 'Last 10 CPU metrics'
+        },
+        plotOptions: {
+          series: {
+            allowPointSelect: true
+          }
+        },
+        series: [{
+          data: <%= @cpu_load_last10 %>
+        }]
+      });
+    });
+
+  </script>
 </p>
 
 <%= link_to 'Edit', edit_machine_path(@machine) %> |
