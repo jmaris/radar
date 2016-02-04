@@ -6,11 +6,11 @@ class Machine < ActiveRecord::Base
     has_many        :metrics
     # attr_accessible :protocol, :host, :port, :update_interval
 
-    after_create :sysinfo_update
+    after_save :sysinfo_update
 
     private
     def sysinfo_update
-        machine_id = Machine.last.id
+        machine_id = Machine.all.sort_by{ |s| s[:updated_at]}.last.id
 
         machine = Machine.find(machine_id)
         api_sysinfo = Metric.api(machine.protocol,machine.host,machine.port,"sysinfo")
