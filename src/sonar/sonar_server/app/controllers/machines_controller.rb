@@ -36,7 +36,7 @@ class MachinesController < ApplicationController
 
     @machine = Machine.new(machine_params)
 
-    # api_sysinfo = Metric.api_sysinfo(@machine.protocol,@machine.host,@machine.port)
+    # api_sysinfo = Metric.api(@machine.protocol,@machine.host,@machine.port,"sysinfo")
 
     # @machine.hostname             = api_sysinfo[:hostname]
     # @machine.os                   = api_sysinfo[:os][:family]

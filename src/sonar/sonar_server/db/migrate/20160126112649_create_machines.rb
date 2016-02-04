@@ -15,9 +15,9 @@ class CreateMachines < ActiveRecord::Migration
         t.string    :os # os.family + os.release from the API
         t.string    :cpu_model
         t.integer   :cpu_cores
-        t.integer   :cpu_architecture
+        t.string    :cpu_architecture
         t.integer   :ram_total_bytes
-        # t.integer   :swap_total # not yet implemented
+        # t.integer   :swap_total_bytes # not yet implemented
         t.integer   :storage_total_bytes
 
       t.timestamps null: false

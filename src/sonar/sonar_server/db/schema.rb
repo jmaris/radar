@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203160542) do
+ActiveRecord::Schema.define(version: 20160204121244) do
 
   create_table "cpu_metric_companions", force: :cascade do |t|
     t.integer  "cpu_metric_id"
@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(version: 20160203160542) do
     t.string   "os"
     t.string   "cpu_model"
     t.integer  "cpu_cores"
-    t.integer  "cpu_architecture"
-    t.integer  "ram_total_bytes"
-    t.integer  "storage_total_bytes"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.string   "cpu_architecture"
+    t.integer  "ram_total_bytes",     limit: 16
+    t.integer  "storage_total_bytes", limit: 16
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "metrics", force: :cascade do |t|

@@ -5,7 +5,7 @@ validates :machine, :presence => true #machine_id
 
     def self.api(protocol, host, port, path)
         response = RestClient.get("#{protocol}://#{host}:#{port}/sonar_api_v1/#{path}") #not very smart to hardcode the API version, but works for now.
-        JSON.parse(response,symbolize_names: true)
+        JSON.parse(response,symbolize_names: true) rescue {}
     end
 
     def self.save_metrics_dj(machine_id)
