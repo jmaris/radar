@@ -15,14 +15,12 @@ class Machine < ActiveRecord::Base
         machine = Machine.find(machine_id)
         api_sysinfo = Metric.api(machine.protocol,machine.host,machine.port,"sysinfo")
 
-        machine.update(
-            'hostname'              => api_sysinfo[:hostname],
-            'os'                    => api_sysinfo[:os][:family],
-            'cpu_model'             => api_sysinfo[:cpu][:model],
-            'cpu_cores'             => api_sysinfo[:cpu][:cores],
-            'cpu_architecture'      => api_sysinfo[:cpu][:architecture],
-            'ram_total_bytes'       => api_sysinfo[:ram][:total_bytes],
-            'storage_total_bytes'   => api_sysinfo[:storage][:total_bytes]
-            )
+        self.update_column(:hostname, api_sysinfo[:hostname])
+        self.update_column(:os, api_sysinfo[:os][:family])
+        self.update_column(:cpu_model, api_sysinfo[:cpu][:model])
+        self.update_column(:cpu_cores, api_sysinfo[:cpu][:cores])
+        self.update_column(:cpu_architecture, api_sysinfo[:cpu][:architecture])
+        self.update_column(:ram_total_bytes, api_sysinfo[:ram][:total_bytes])
+        self.update_column(:storage_total_bytes, api_sysinfo[:storage][:total_bytes])
     end
 end
