@@ -16,11 +16,8 @@ ActiveRecord::Schema.define(version: 20160203160542) do
   create_table "cpu_metric_companions", force: :cascade do |t|
     t.integer  "cpu_metric_id"
     t.float    "cpu"
-    t.float    "load_average_1min"
-    t.float    "load_average_5min"
-    t.float    "load_average_15min"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|

@@ -12,7 +12,9 @@ validates :machine, :presence => true #machine_id
         machine = Machine.find(machine_id)
         
         api_live = api(machine.protocol,machine.host,machine.port,"live")
-        CpuMetric.create("machine_id" => machine_id, "cpu" => api_live[:cpu_percentage], "load_average_1min" => api_live[:cpu_load_average].first, "load_average_5min" => api_live[:cpu_load_average].second, "load_average_15min" => api_live[:cpu_load_average].third)
+        api_sysinfo = api(machine.protocol,machine.host,machine.port,"sysinfo")
+        CpuMetric.create("machine_id" => machine_id, "cpu" => api_live[:cpu_percentage])
+        RamMetric.create("machine_id" => machine_id, "ram" => (api_live[:ram_bytes].to_f/api_sysinfo[:ram][:total_bytes].to_f*100).round(2))
 
         Metric.delay(run_at: machine.update_interval.minutes.from_now).save_metrics_dj(machine_id)
     end
