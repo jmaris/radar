@@ -11,16 +11,19 @@ class MachinesController < ApplicationController
   # GET /machines/1.json
   def show
     #api_live
-    api_live            = Metric.api(@machine.protocol,@machine.host,@machine.port,"live")
-    api_sysinfo         = Metric.api(@machine.protocol,@machine.host,@machine.port,"sysinfo")
+    api_live            = Machine.api(@machine.protocol,@machine.host,@machine.port,"live")
+    api_sysinfo         = Machine.api(@machine.protocol,@machine.host,@machine.port,"sysinfo")
+    #####################
     @hostname           = api_sysinfo[:hostname]
     @cpu_load           = api_live[:cpu_percentage]
     @ram_load           = (api_live[:ram_bytes].to_f/api_sysinfo[:ram][:total_bytes].to_f*100).round(2)
     # @swap_load        = api_live[:swap] # swap not yet implemented
     @storage_bytes      = api_live[:storage_bytes]
     @uptime             = api_live[:uptime_seconds]
-    # @cpu_load_last10    =
-    # @ram_load_last10    =
+    @update_interval    = @machine.update_interval
+    @cpu_load_last10    = CpuMetric.where(machine_id: @machine.id).last(10).map(&:cpu) # short for CpuMetric.where(machine_id: 3).last(10).map {|cpu_metric| cpu_metric.cpu}
+    @ram_load_last10    = RamMetric.where(machine_id: @machine.id).last(10).map(&:ram)
+    # @swap_load_last10   = 
   end
 
   # GET /machines/new
@@ -37,16 +40,6 @@ class MachinesController < ApplicationController
   def create
 
     @machine = Machine.new(machine_params)
-
-    # api_sysinfo = Metric.api(@machine.protocol,@machine.host,@machine.port,"sysinfo")
-
-    # @machine.hostname             = api_sysinfo[:hostname]
-    # @machine.os                   = api_sysinfo[:os][:family]
-    # @machine.cpu_model            = api_sysinfo[:cpu][:model]
-    # @machine.cpu_cores            = api_sysinfo[:cpu][:cores]
-    # @machine.cpu_architecture     = api_sysinfo[:cpu][:architecture]
-    # @machine.ram_total_bytes      = api_sysinfo[:ram][:total_bytes]
-    # @machine.storage_total_bytes  = api_sysinfo[:storage][:total_bytes]
 
     respond_to do |format|
 

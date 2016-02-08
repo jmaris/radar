@@ -1,5 +1,5 @@
 class RamMetric < ActiveRecord::Base
-    belongs_to :machine
+    belongs_to :machine, dependent: :delete
     validates_associated :machine
 
     validates :ram, presence: true, numericality: true

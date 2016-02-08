@@ -2,26 +2,29 @@
 
 <p>
   <strong>Url:</strong>
-  <%= "#{@machine.protocol}://#{@machine.host}:#{@machine.port}/sonar_api_v1" %>
+  <a href="
+  <%= "#{@machine.protocol}://#{@machine.host}:#{@machine.port}/sonar_api_v1" %>"><%= @machine.host %></a>
   <br>
   <strong>Hostname:</strong>
   <%= @hostname %>
   <br>
   <strong>Current CPU load: </strong>
-  <%= @cpu_load %>
-  %
+  <%= @cpu_load %> %
   <br>
   <strong>Current RAM Load: </strong>
-  <%= @ram_load %>
-  %
+  <%= @ram_load %> %
   <br>
-  <div id="cpu_chart" style="width:100%; height:400px;"></div>
+  <strong>Update interval: </strong>
+  <%= pluralize(@update_interval, 'minute') %>
+  <br>
+  <div id="cpu_chart" style="width:50%; height:400px;float:left;"></div>
+  <div id="ram_chart" style="width:50%; height:400px;float:right;"></div>
   <script>
     $(function () {
       $('#cpu_chart').highcharts({
         yAxis: {
           title: {
-            text: 'Last 10 CPU metrics'
+            text: 'CPU Percentage'
           },
           labels: {
             formatter: function() {
@@ -47,6 +50,42 @@
         },
         series: [{
           data: <%= @cpu_load_last10 %>
+        }]
+      });
+    });
+
+  </script>
+  <script>
+    $(function () {
+      $('#ram_chart').highcharts({
+        yAxis: {
+          title: {
+            text: 'RAM Percentage'
+          },
+          labels: {
+            formatter: function() {
+              return this.value + ' %';
+            }
+          },
+        },
+        legend: {
+          enabled: false
+        },
+        xAxis: {
+          labels: {
+            enabled: false
+          },
+        },
+        title:{
+          text: 'Last 10 RAM metrics'
+        },
+        plotOptions: {
+          series: {
+            allowPointSelect: true
+          }
+        },
+        series: [{
+          data: <%= @ram_load_last10 %>
         }]
       });
     });

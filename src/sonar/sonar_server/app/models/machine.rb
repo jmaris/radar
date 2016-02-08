@@ -3,18 +3,27 @@ class Machine < ActiveRecord::Base
     validates       :host,            presence: true, uniqueness: true
     validates       :port,            presence: true, numericality: { only_integer: true }, inclusion: 1..65535
     validates       :update_interval, presence: true, numericality: true
-    has_many        :metrics
+    
+    # has_many        :cpu_metrics
+    # has_many        :ram_metrics
+
     # attr_accessible :protocol, :host, :port, :update_interval
 
     after_save      :sysinfo_update
     after_create    :launch_delayed_job_metrics
+    # after_destroy   :destroy_metrics
+
+    def self.api(protocol, host, port, path)
+        response = RestClient.get("#{protocol}://#{host}:#{port}/sonar_api_v1/#{path}") #not very smart to hardcode the API version, but works for now.
+        JSON.parse(response,symbolize_names: true) rescue {}
+    end
 
     private
     def sysinfo_update
-        machine_id = Machine.all.sort_by{ |s| s[:updated_at]}.last.id
+        machine_id = self.id
 
         machine = Machine.find(machine_id)
-        api_sysinfo = Metric.api(machine.protocol,machine.host,machine.port,"sysinfo")
+        api_sysinfo = Machine.api(machine.protocol,machine.host,machine.port,"sysinfo")
 
         self.update_column(:hostname, api_sysinfo[:hostname])
         self.update_column(:os, api_sysinfo[:os][:family])
@@ -26,7 +35,15 @@ class Machine < ActiveRecord::Base
     end
     
     def launch_delayed_job_metrics
-        machine_id = Machine.all.sort_by{ |s| s[:updated_at]}.last.id
+        machine_id = self.id
         Metric.save_metrics_dj(machine_id)
     end
+
+    def alerts_dj
+        machine_id = self.id
+
+    end
+
+    # def destroy_metrics
+    # end
 end

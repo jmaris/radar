@@ -8,6 +8,9 @@ class CreateMachines < ActiveRecord::Migration
         t.string    :host
         t.integer   :port
         t.integer   :update_interval
+        t.integer   :cpu_threshold
+        t.integer   :ram_threshold
+        t.integer   :swap_threshold
 
         # sysinfo
 
