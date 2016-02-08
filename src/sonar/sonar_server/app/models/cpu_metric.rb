@@ -1,17 +1,14 @@
-class CpuMetric < Metric
-# Attributes: CPU
-    has_one :companion, class_name: "CpuMetricCompanion", inverse_of: :cpu_metric, dependent: :destroy, autosave: true
-
-    delegate :cpu, :cpu=, to: :lazily_built_companion
-    # delegate :cpu, :cpu=, :load_average_1min, :load_average_1min=, :load_average_5min, :load_average_5min=, :load_average_15min, :load_average_15min=, to: :lazily_built_companion
-
+class CpuMetric < ActiveRecord::Base
+    belongs_to :machine
+    validates_associated :machine
+    
     validates :cpu, presence: true, numericality: true
-    # validates :load_average_1min, presence: true, numericality: true
-    # validates :load_average_5min, presence: true, numericality: true
-    # validates :load_average_15min, presence: true, numericality: true
+    validates :machine_id, presence: true, numericality: { only_integer: true }
+    validate :machine
 
-    private
-    def lazily_built_companion
-        companion || build_companion
+private
+
+    def machine
+        errors.add(:machine_id, "is invalid") unless Machine.exists?(self.machine_id)
     end
 end

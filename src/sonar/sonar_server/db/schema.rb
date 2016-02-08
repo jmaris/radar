@@ -13,11 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20160204121244) do
 
-  create_table "cpu_metric_companions", force: :cascade do |t|
-    t.integer  "cpu_metric_id"
+  create_table "cpu_metrics", force: :cascade do |t|
+    t.integer  "machine_id"
     t.float    "cpu"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -52,18 +52,11 @@ ActiveRecord::Schema.define(version: 20160204121244) do
     t.datetime "updated_at",                     null: false
   end
 
-  create_table "metrics", force: :cascade do |t|
+  create_table "ram_metrics", force: :cascade do |t|
     t.integer  "machine_id"
+    t.float    "ram"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "ram_metric_companions", force: :cascade do |t|
-    t.integer  "ram_metric_id"
-    t.float    "ram"
-    t.float    "swap"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
   end
 
 end

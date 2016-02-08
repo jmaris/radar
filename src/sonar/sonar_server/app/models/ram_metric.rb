@@ -1,15 +1,15 @@
-class RamMetric < Metric
-# Attributes: RAM, swap
-    has_one :companion, class_name: "RamMetricCompanion", inverse_of: :ram_metric, dependent: :destroy, autosave: true
-
-    delegate :ram, :ram=, to: :lazily_built_companion
-    # delegate :ram, :ram=, :swap, :swap=, to: :lazily_built_companion
+class RamMetric < ActiveRecord::Base
+    belongs_to :machine
+    validates_associated :machine
 
     validates :ram, presence: true, numericality: true
-    # validates :swap, presence: true, numericality: true
+    # validates :swap, presence: true, numericality: true #swap is not yet available
+    validates :machine_id, presence: true, numericality: { only_integer: true }
+    validate :machine
 
-    private
-    def lazily_built_companion
-        companion || build_companion
+private
+
+    def machine
+        errors.add(:machine_id, "is invalid") unless Machine.exists?(self.machine_id)
     end
 end

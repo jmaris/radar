@@ -1,8 +1,9 @@
-class CreateCpuMetricCompanions < ActiveRecord::Migration
+class CreateCpuMetrics < ActiveRecord::Migration
   def change
-    create_table :cpu_metric_companions do |t|
+    create_table :cpu_metrics do |t|
 
-      t.integer :cpu_metric_id
+      t.integer :machine_id
+
       t.float   :cpu
       # t.float   :load_average_1min
       # t.float   :load_average_5min
