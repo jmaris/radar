@@ -36,10 +36,12 @@ class Machine < ActiveRecord::Base
 
     def alerts_dj
         machine_id = self.id
-
         machine = Machine.find(machine_id)
-
         api_live = Machine.api(machine.protocol,machine.host,machine.port,"live")
+
+        if api_live[:cpu_percentage] > machine.cpu_threshold
+            
+        end
     end
 
     # def destroy_metrics
