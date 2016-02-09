@@ -2,7 +2,11 @@ class Machine < ActiveRecord::Base
     validates       :protocol,        presence: true
     validates       :host,            presence: true, uniqueness: true
     validates       :port,            presence: true, numericality: { only_integer: true }, inclusion: 1..65535
-    validates       :update_interval, presence: true, numericality: true
+    validates       :update_interval, presence: true, numericality: { only_integer: true }
+
+    has_many        :cpu_metrics
+    has_many        :ram_metrics
+    has_many        :alerts
 
     after_save      :sysinfo_update
     after_create    :launch_delayed_job_metrics
@@ -34,15 +38,15 @@ class Machine < ActiveRecord::Base
         Metric.save_metrics_dj(machine_id)
     end
 
-    def alerts_dj
-        machine_id = self.id
-        machine = Machine.find(machine_id)
-        api_live = Machine.api(machine.protocol,machine.host,machine.port,"live")
+    # def alerts_dj
+    #     machine_id = self.id
+    #     machine = Machine.find(machine_id)
+    #     api_live = Machine.api(machine.protocol,machine.host,machine.port,"live")
 
-        if api_live[:cpu_percentage] > machine.cpu_threshold
+    #     if api_live[:cpu_percentage] > machine.cpu_threshold
             
-        end
-    end
+    #     end
+    # end
 
     # def destroy_metrics
     # end

@@ -7,8 +7,7 @@ class RamMetric < ActiveRecord::Base
     validates :machine_id, presence: true, numericality: { only_integer: true }
     validate :machine
 
-private
-
+    private
     def machine
         errors.add(:machine_id, "is invalid") unless Machine.exists?(self.machine_id)
     end

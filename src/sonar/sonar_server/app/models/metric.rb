@@ -1,12 +1,17 @@
 class Metric < ActiveRecord::Base
 # Attributes: machine_id
-belongs_to :machine
-validates :machine, :presence => true #machine_id
+# belongs_to :machine
+# validates :machine, :presence => true #machine_id
+# has_many :cpu_metrics
+# has_many :ram_metrics
+
+    # def machine
+    #     errors.add(:machine_id, "is invalid") unless Machine.exists?(self.machine_id)
+    # end
 
 private
 
     def self.save_metrics_dj(machine_id)
-
         machine = Machine.find(machine_id)
         
         api_live = Machine.api(machine.protocol,machine.host,machine.port,"live")

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Alerts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Machine</th>
+      <th>Addressee</th>
+      <th>Cpu threshold</th>
+      <th>Ram threshold</th>
+      <th>Swap threshold</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @alerts.each do |alert| %>
+      <tr>
+        <td><%= alert.machine_id %></td>
+        <td><%= alert.addressee %></td>
+        <td><%= alert.cpu_threshold %></td>
+        <td><%= alert.ram_threshold %></td>
+        <td><%= alert.swap_threshold %></td>
+        <td><%= link_to 'Show', alert %></td>
+        <td><%= link_to 'Edit', edit_alert_path(alert) %></td>
+        <td><%= link_to 'Destroy', alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Alert', new_alert_path %>

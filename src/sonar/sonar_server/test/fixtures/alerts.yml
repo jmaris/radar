@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  machine_id: MyString
+  addressee: MyString
+  cpu_threshold: MyString
+  ram_threshold: MyString
+  swap_threshold: MyString
+
+two:
+  machine_id: MyString
+  addressee: MyString
+  cpu_threshold: MyString
+  ram_threshold: MyString
+  swap_threshold: MyString

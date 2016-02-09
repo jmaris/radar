@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204121244) do
+ActiveRecord::Schema.define(version: 20160209160231) do
+
+  create_table "alerts", force: :cascade do |t|
+    t.string   "machine_id"
+    t.string   "addressee"
+    t.string   "cpu_threshold"
+    t.string   "ram_threshold"
+    t.string   "swap_threshold"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "cpu_metrics", force: :cascade do |t|
     t.integer  "machine_id"
@@ -41,9 +51,6 @@ ActiveRecord::Schema.define(version: 20160204121244) do
     t.string   "host"
     t.integer  "port"
     t.integer  "update_interval"
-    t.integer  "cpu_threshold"
-    t.integer  "ram_threshold"
-    t.integer  "swap_threshold"
     t.string   "hostname"
     t.string   "os"
     t.string   "cpu_model"

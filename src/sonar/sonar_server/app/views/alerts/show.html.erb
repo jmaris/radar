@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @alert.machine_id %>
+</p>
+
+<p>
+  <strong>Addressee:</strong>
+  <%= @alert.addressee %>
+</p>
+
+<p>
+  <strong>Cpu threshold:</strong>
+  <%= @alert.cpu_threshold %>
+</p>
+
+<p>
+  <strong>Ram threshold:</strong>
+  <%= @alert.ram_threshold %>
+</p>
+
+<p>
+  <strong>Swap threshold:</strong>
+  <%= @alert.swap_threshold %>
+</p>
+
+<%= link_to 'Edit', edit_alert_path(@alert) %> |
+<%= link_to 'Back', alerts_path %>
