@@ -3,11 +3,6 @@ class Machine < ActiveRecord::Base
     validates       :host,            presence: true, uniqueness: true
     validates       :port,            presence: true, numericality: { only_integer: true }, inclusion: 1..65535
     validates       :update_interval, presence: true, numericality: true
-    
-    # has_many        :cpu_metrics
-    # has_many        :ram_metrics
-
-    # attr_accessible :protocol, :host, :port, :update_interval
 
     after_save      :sysinfo_update
     after_create    :launch_delayed_job_metrics
@@ -42,6 +37,9 @@ class Machine < ActiveRecord::Base
     def alerts_dj
         machine_id = self.id
 
+        machine = Machine.find(machine_id)
+
+        api_live = Machine.api(machine.protocol,machine.host,machine.port,"live")
     end
 
     # def destroy_metrics
