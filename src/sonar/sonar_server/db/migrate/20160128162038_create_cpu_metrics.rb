@@ -2,7 +2,7 @@ class CreateCpuMetrics < ActiveRecord::Migration
   def change
     create_table :cpu_metrics do |t|
 
-      t.integer :machine_id
+      t.belongs_to  :machine, index: true
 
       t.float   :cpu
       # t.float   :load_average_1min

@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20160209160231) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "cpu_metrics", ["machine_id"], name: "index_cpu_metrics_on_machine_id"
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -71,5 +73,7 @@ ActiveRecord::Schema.define(version: 20160209160231) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "ram_metrics", ["machine_id"], name: "index_ram_metrics_on_machine_id"
 
 end

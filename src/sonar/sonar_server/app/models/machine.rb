@@ -4,31 +4,18 @@ class Machine < ActiveRecord::Base
     validates       :port,            presence: true, numericality: { only_integer: true }, inclusion: 1..65535
     validates       :update_interval, presence: true, numericality: { only_integer: true }
 
-    has_many        :cpu_metrics
-    has_many        :ram_metrics
-    has_many        :alerts
+    has_many        :cpu_metrics,   dependent: :destroy
+    has_many        :ram_metrics,   dependent: :destroy
+    has_many        :alerts,        dependent: :destroy
 
     after_save      :sysinfo_update
     after_create    :launch_metric_save_metrics_dj
-    # after_create    :check_alias
-    # after_destroy   :destroy_metrics
-    before_destroy  :destroy_delayed_job
 
     private
 
     def self.api(protocol, host, port, path)
         response = RestClient.get("#{protocol}://#{host}:#{port}/sonar_api_v1/#{path}") #not very smart to hardcode the API version, but works for now.
         JSON.parse(response,symbolize_names: true) rescue {}
-    end
-
-    def destroy_delayed_job
-        dj_id = self.delayed_job_id
-        dj = Delayed::Job.find(dj_id)
-        dj.destroy
-    end
-
-    def check_alias
-        
     end
 
     def sysinfo_update

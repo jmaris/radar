@@ -1,5 +1,5 @@
 class Alert < ActiveRecord::Base
-    belongs_to              :machine, dependent: :delete
+    belongs_to              :machine
 
     validates               :check_interval, presence: true, numericality: { only_integer: true }
     validate                :machine

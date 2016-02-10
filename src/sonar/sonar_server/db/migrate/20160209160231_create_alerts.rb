@@ -1,7 +1,8 @@
 class CreateAlerts < ActiveRecord::Migration
   def change
     create_table :alerts do |t|
-      t.string  :machine_id
+      t.belongs_to  :machine, index: true
+
       t.string  :addressee
       t.integer :check_interval
       t.float   :cpu_threshold
