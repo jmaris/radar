@@ -1,4 +1,4 @@
-class AlertMailer < ApplicationMailer
+class SonarMailer < ApplicationMailer
     default from: 'alerts@sonar'
 
     def alert_email(alert_id)

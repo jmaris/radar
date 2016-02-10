@@ -14,6 +14,7 @@ class MachinesController < ApplicationController
     api_live            = Machine.api(@machine.protocol,@machine.host,@machine.port,"live")
     api_sysinfo         = Machine.api(@machine.protocol,@machine.host,@machine.port,"sysinfo")
     #####################
+    @alias              = @machine.alias
     @hostname           = api_sysinfo[:hostname]
     @cpu_load           = api_live[:cpu_percentage]
     @ram_load           = (api_live[:ram_bytes].to_f/api_sysinfo[:ram][:total_bytes].to_f*100).round(2)
@@ -86,6 +87,6 @@ class MachinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def machine_params
-      params.require(:machine).permit(:protocol, :host, :port, :update_interval)
+      params.require(:machine).permit(:alias, :protocol, :host, :port, :update_interval)
     end
   end

@@ -20,7 +20,7 @@ private
         RamMetric.create("machine_id" => machine_id, "ram" => (api_live[:ram_bytes].to_f/api_sysinfo[:ram][:total_bytes].to_f*100).round(2))
 
         if Machine.exists?(machine_id)
-        Metric.delay(run_at: machine.update_interval.minutes.from_now).save_metrics_dj(machine_id)
+            Metric.delay(run_at: machine.update_interval.minutes.from_now).save_metrics_dj(machine_id)
         end
     end
 end

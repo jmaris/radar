@@ -16,9 +16,10 @@ ActiveRecord::Schema.define(version: 20160209160231) do
   create_table "alerts", force: :cascade do |t|
     t.string   "machine_id"
     t.string   "addressee"
-    t.string   "cpu_threshold"
-    t.string   "ram_threshold"
-    t.string   "swap_threshold"
+    t.integer  "check_interval"
+    t.float    "cpu_threshold"
+    t.float    "ram_threshold"
+    t.float    "swap_threshold"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160209160231) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "machines", force: :cascade do |t|
+    t.string   "alias"
     t.string   "protocol"
     t.string   "host"
     t.integer  "port"

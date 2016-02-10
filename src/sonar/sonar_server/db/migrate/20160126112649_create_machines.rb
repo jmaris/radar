@@ -4,6 +4,7 @@ class CreateMachines < ActiveRecord::Migration
 
         #manual parameters
 
+        t.string    :alias
         t.string    :protocol # url: #{machine.protocol}://#{machine.host}:#{machine.port}
         t.string    :host
         t.integer   :port

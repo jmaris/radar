@@ -69,6 +69,6 @@ class AlertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alert_params
-      params.require(:alert).permit(:machine_id, :addressee, :cpu_threshold, :ram_threshold, :swap_threshold)
+      params.require(:alert).permit(:machine_id, :addressee, :check_interval, :cpu_threshold, :ram_threshold, :swap_threshold)
     end
 end
