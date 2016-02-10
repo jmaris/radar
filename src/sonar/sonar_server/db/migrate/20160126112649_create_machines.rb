@@ -13,6 +13,9 @@ class CreateMachines < ActiveRecord::Migration
         # t.integer   :ram_threshold
         # t.integer   :swap_threshold
 
+        # Delayed Job
+        t.integer   :delayed_job_id
+
         # sysinfo
 
         t.string    :hostname

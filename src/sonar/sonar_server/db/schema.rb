@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160209160231) do
     t.string   "host"
     t.integer  "port"
     t.integer  "update_interval"
+    t.integer  "delayed_job_id"
     t.string   "hostname"
     t.string   "os"
     t.string   "cpu_model"
