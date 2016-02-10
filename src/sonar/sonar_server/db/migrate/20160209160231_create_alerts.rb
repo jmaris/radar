@@ -8,6 +8,7 @@ class CreateAlerts < ActiveRecord::Migration
       t.float   :cpu_threshold
       t.float   :ram_threshold
       t.float   :swap_threshold
+      t.boolean :triggered
 
       t.timestamps null: false
     end

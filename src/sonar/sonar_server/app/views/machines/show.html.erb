@@ -17,15 +17,23 @@
   <strong>Current RAM Load: </strong>
   <%= @ram_load %> %
   <br>
+  <strong>Current storage load: </strong>
+  <%= @storage_load %> %
+  <br>
   <strong>Update interval: </strong>
   <%= pluralize(@update_interval, 'minute') %>
   <br>
   <div id="cpu_chart" style="width:50%; height:400px;float:left;"></div>
   <div id="ram_chart" style="width:50%; height:400px;float:right;"></div>
+  <div id="storage_chart" style="width:100%; height:200px;"></div>
   <script>
     $(function () {
       $('#cpu_chart').highcharts({
+        chart :{
+          type: 'area'
+        },
         yAxis: {
+          min: 0, max: 100,
           title: {
             text: 'CPU Percentage'
           },
@@ -56,12 +64,16 @@
         }]
       });
     });
-
   </script>
+
   <script>
     $(function () {
       $('#ram_chart').highcharts({
+        chart :{
+          type: 'area'
+        },
         yAxis: {
+          min: 0, max: 100,
           title: {
             text: 'RAM Percentage'
           },
@@ -83,17 +95,55 @@
           text: 'Last 10 RAM metrics'
         },
         plotOptions: {
-          series: {
-            allowPointSelect: true
-          }
+          area: {}
         },
         series: [{
           data: <%= @ram_load_last10 %>
         }]
       });
     });
-
   </script>
+
+  <script>
+    $(function () {
+      $('#storage_chart').highcharts({
+        chart :{
+          type: 'area'
+        },
+        yAxis: {
+          min: 0, max: 100,
+          title: {
+            text: 'Storage Percentage'
+          },
+          labels: {
+            formatter: function() {
+              return this.value + ' %';
+            }
+          },
+        },
+        legend: {
+          enabled: false
+        },
+        xAxis: {
+          labels: {
+            enabled: false
+          },
+        },
+        title:{
+          text: 'Last 10 storage metrics'
+        },
+        plotOptions: {
+          series: {
+            allowPointSelect: true
+          }
+        },
+        series: [{
+          data: <%= @storage_load_last10 %>
+        }]
+      });
+    });
+  </script>
+
 </p>
 
 <%= link_to 'Edit', edit_machine_path(@machine) %> |

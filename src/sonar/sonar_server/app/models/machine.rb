@@ -4,9 +4,12 @@ class Machine < ActiveRecord::Base
     validates       :port,            presence: true, numericality: { only_integer: true }, inclusion: 1..65535
     validates       :update_interval, presence: true, numericality: { only_integer: true }
 
-    has_many        :cpu_metrics,   dependent: :destroy
-    has_many        :ram_metrics,   dependent: :destroy
-    has_many        :alerts,        dependent: :destroy
+    # has_many        :metrics,           dependent: :destroy
+
+    has_many        :cpu_metrics,       dependent: :destroy
+    has_many        :ram_metrics,       dependent: :destroy
+    has_many        :storage_metrics,   dependent: :destroy
+    has_many        :alerts,            dependent: :destroy
 
     after_save      :sysinfo_update
     after_create    :launch_metric_save_metrics_dj
