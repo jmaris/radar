@@ -9,15 +9,11 @@ class CreateMachines < ActiveRecord::Migration
         t.string    :host
         t.integer   :port
         t.integer   :update_interval
-        # t.integer   :cpu_threshold
-        # t.integer   :ram_threshold
-        # t.integer   :swap_threshold
 
         # Delayed Job
         t.integer   :delayed_job_id
 
-        # sysinfo
-
+        # static system information
         t.string    :hostname
         t.string    :os # os.family + os.release from the API
         t.string    :cpu_model
