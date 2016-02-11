@@ -60,9 +60,6 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.6.0)
-    foundation-rails (6.1.2.0)
-      railties (>= 3.1.0)
-      sass (>= 3.3.0, < 3.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     highcharts-rails (4.1.9)
@@ -171,7 +168,6 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   delayed_job_active_record
-  foundation-rails
   highcharts-rails
   jbuilder (~> 2.0)
   jquery-rails

@@ -26,12 +26,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # vvv all the gems required for Sonar Server
-gem 'foundation-rails'
 gem 'rest-client'
 gem 'highcharts-rails'
 # gem 'clockwork', require: false
 gem 'delayed_job_active_record'
 # gem 'whenever', :require => false
+# gem 'bootstrap-sass'
+# gem 'foundation-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
