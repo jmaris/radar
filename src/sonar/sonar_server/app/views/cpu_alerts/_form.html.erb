@@ -1,10 +1,10 @@
-<%= form_for(@alert) do |f| %>
-  <% if @alert.errors.any? %>
+<%= form_for(@cpu_alert) do |f| %>
+  <% if @cpu_alert.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@alert.errors.count, "error") %> prohibited this alert from being saved:</h2>
+      <h2><%= pluralize(@cpu_alert.errors.count, "error") %> prohibited this cpu_alert from being saved:</h2>
 
       <ul>
-      <% @alert.errors.full_messages.each do |message| %>
+      <% @cpu_alert.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -20,20 +20,12 @@
     <%= f.text_field :addressee %>
   </div>
   <div class="field">
-    <%= f.label :check_interval %><br>
-    <%= f.text_field :check_interval %>
-  </div>
-  <div class="field">
     <%= f.label :cpu_threshold %><br>
     <%= f.text_field :cpu_threshold %>
   </div>
   <div class="field">
-    <%= f.label :ram_threshold %><br>
-    <%= f.text_field :ram_threshold %>
-  </div>
-  <div class="field">
-    <%= f.label :swap_threshold %><br>
-    <%= f.text_field :swap_threshold %>
+    <%= f.label :check_interval %><br>
+    <%= f.text_field :check_interval %>
   </div>
   <div class="actions">
     <%= f.submit %>

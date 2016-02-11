@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :alerts
+  resources :storage_alerts
+  resources :cpu_alerts
   resources :alerts
   resources :machines
   # The priority is based upon order of creation: first created -> highest priority.

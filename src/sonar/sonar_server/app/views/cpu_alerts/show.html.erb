@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @cpu_alert.machine_id %>
+</p>
+
+<p>
+  <strong>Addressee:</strong>
+  <%= @cpu_alert.addressee %>
+</p>
+
+<p>
+  <strong>Cpu threshold:</strong>
+  <%= @cpu_alert.cpu_threshold %>
+</p>
+
+<p>
+  <strong>Check interval:</strong>
+  <%= @cpu_alert.check_interval %>
+</p>
+
+<p>
+  <strong>Triggered:</strong>
+  <%= @cpu_alert.triggered %>
+</p>
+
+<%= link_to 'Edit', edit_cpu_alert_path(@cpu_alert) %> |
+<%= link_to 'Back', cpu_alerts_path %>

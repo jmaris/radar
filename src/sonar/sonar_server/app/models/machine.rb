@@ -5,19 +5,20 @@ class Machine < ActiveRecord::Base
     validates       :update_interval, presence: true, numericality: { only_integer: true }
 
     # has_many        :metrics,           dependent: :destroy
-
     has_many        :cpu_metrics,       dependent: :destroy
     has_many        :ram_metrics,       dependent: :destroy
     has_many        :storage_metrics,   dependent: :destroy
-    has_many        :alerts,            dependent: :destroy
 
-    after_save      :sysinfo_update
-    after_create    :launch_metric_save_metrics_dj
+    # has_many        :alerts,            dependent: :destroy
+    has_many        :cpu_alerts,        dependent: :destroy
+
+    after_save      :sysinfo_update # this updates the machine with static info provided by the sysinfo API
+    after_create    :launch_metric_save_metrics_dj # schedules a delayed job to check every N minutes and update the performance charts
 
     private
 
     def self.api(protocol, host, port, path)
-        response = RestClient.get("#{protocol}://#{host}:#{port}/sonar_api_v1/#{path}") #not very smart to hardcode the API version, but works for now.
+        response = RestClient.get("#{protocol}://#{host}:#{port}/sonar_api_v1/#{path}") # not very smart to hardcode the API version, but works for now.
         JSON.parse(response,symbolize_names: true) rescue {}
     end
 

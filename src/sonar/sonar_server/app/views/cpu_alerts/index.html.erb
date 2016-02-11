@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Cpu Alerts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Machine</th>
+      <th>Addressee</th>
+      <th>Cpu threshold</th>
+      <th>Check interval</th>
+      <th>Triggered</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cpu_alerts.each do |cpu_alert| %>
+      <tr>
+        <td><%= cpu_alert.machine_id %></td>
+        <td><%= cpu_alert.addressee %></td>
+        <td><%= cpu_alert.cpu_threshold %></td>
+        <td><%= cpu_alert.check_interval %></td>
+        <td><%= link_to 'Show', cpu_alert %></td>
+        <td><%= link_to 'Show', triggered %></td>
+        <td><%= link_to 'Edit', edit_cpu_alert_path(cpu_alert) %></td>
+        <td><%= link_to 'Destroy', cpu_alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cpu alert', new_cpu_alert_path %>

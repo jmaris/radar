@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @storage_alert.machine_id %>
+</p>
+
+<p>
+  <strong>Addressee:</strong>
+  <%= @storage_alert.addressee %>
+</p>
+
+<p>
+  <strong>Storage threshold:</strong>
+  <%= @storage_alert.storage_threshold %>
+</p>
+
+<p>
+  <strong>Check interval:</strong>
+  <%= @storage_alert.check_interval %>
+</p>
+
+<p>
+  <strong>Triggered:</strong>
+  <%= @storage_alert.triggered %>
+</p>
+
+<%= link_to 'Edit', edit_storage_alert_path(@storage_alert) %> |
+<%= link_to 'Back', storage_alerts_path %>
