@@ -9,7 +9,6 @@
       <th>Addressee</th>
       <th>Cpu threshold</th>
       <th>Check interval</th>
-      <th>Triggered</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,7 +21,6 @@
         <td><%= cpu_alert.cpu_threshold %></td>
         <td><%= cpu_alert.check_interval %></td>
         <td><%= link_to 'Show', cpu_alert %></td>
-        <td><%= link_to 'Show', triggered %></td>
         <td><%= link_to 'Edit', edit_cpu_alert_path(cpu_alert) %></td>
         <td><%= link_to 'Destroy', cpu_alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

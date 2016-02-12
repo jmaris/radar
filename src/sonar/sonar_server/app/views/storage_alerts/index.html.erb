@@ -9,7 +9,6 @@
       <th>Addressee</th>
       <th>Storage threshold</th>
       <th>Check interval</th>
-      <th>Triggered</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,7 +20,6 @@
         <td><%= storage_alert.addressee %></td>
         <td><%= storage_alert.storage_threshold %></td>
         <td><%= storage_alert.check_interval %></td>
-        <td><%= storage_alert.triggered %></td>
         <td><%= link_to 'Show', storage_alert %></td>
         <td><%= link_to 'Edit', edit_storage_alert_path(storage_alert) %></td>
         <td><%= link_to 'Destroy', storage_alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
