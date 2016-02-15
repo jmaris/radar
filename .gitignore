@@ -29,3 +29,6 @@ src/sonar/sonar_server/db/*.sqlite3-journal
 src/sonar/sonar_server/log/*
 src/sonar/sonar_server!/log/.keep
 src/sonar/sonar_server/tmp
+# ST3
+src/sonar/sonar_server/vendor/bundle/
+src/sonar/sonar_api/vendor/bundle/
