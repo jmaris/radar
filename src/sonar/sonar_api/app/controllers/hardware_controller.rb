@@ -34,7 +34,8 @@ class HardwareController < ApplicationController # logic goes in this hardware_c
                                         # "Total swap bytes": 17179869184 # not yet implemented
                                         },
                                     storage: {
-                                        "total_storage_bytes": (Sys::Filesystem.stat("/").blocks * Sys::Filesystem.stat("/").block_size)
+                                        "total_storage_bytes": (Sys::Filesystem.stat("/").blocks * Sys::Filesystem.stat("/").block_size),
+                                        "mountpoints": Sys::Filesystem.mounts.map(&:mount_point)
                                     }
                                 }
                             }
@@ -47,6 +48,7 @@ class HardwareController < ApplicationController # logic goes in this hardware_c
             "ram_bytes":        Vmstat.memory.active_bytes,
             # "swap_bytes":       65435, # not yet implemented
             "storage_bytes":    (Sys::Filesystem.stat("/").blocks * Sys::Filesystem.stat("/").block_size) - Sys::Filesystem.stat("/").bytes_free, # this gives the used bytes
+            "mountpoints": Sys::Filesystem.mounts.map(&:mount_point),
             "uptime_seconds":   Sys::Uptime.seconds
         }
     end
