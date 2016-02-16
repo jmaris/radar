@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'application#root'
 
-  get 'sonar_api_v1'          => 'hardware#status'
+  # get 'sonar_api_v1'          => 'hardware#status'
   get 'sonar_api_v1/live'     => 'hardware#live'
   get 'sonar_api_v1/sysinfo'  => 'hardware#sysinfo'
   
