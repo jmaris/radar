@@ -26,7 +26,7 @@ class StorageAlert < ActiveRecord::Base
         machine = Machine.find(machine_id)
 
         storage_path = "storage/"
-        storage_path << storage_alert.path
+        storage_path << ERB::Util.url_encode(storage_alert.path)
 
         api_live    = Machine.api(machine.protocol,machine.host,machine.port,"live")
         api_sysinfo = Machine.api(machine.protocol,machine.host,machine.port,"sysinfo")
