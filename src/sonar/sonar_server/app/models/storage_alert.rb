@@ -2,7 +2,6 @@ class StorageAlert < ActiveRecord::Base
     belongs_to              :machine
 
     validates               :check_interval, presence: true, numericality: { only_integer: true }
-    validates               :check_interval, presence: true, numericality: true
     validate                :machine
 
     after_create            :init # sets the triggered value to true
@@ -25,10 +24,17 @@ class StorageAlert < ActiveRecord::Base
         storage_alert = StorageAlert.find(storage_alert_id)
         machine_id = storage_alert.machine_id
         machine = Machine.find(machine_id)
-        api_live = Machine.api(machine.protocol,machine.host,machine.port,"live")
+
+        storage_path = "storage/"
+        storage_path << storage_alert.path
+
+        api_live    = Machine.api(machine.protocol,machine.host,machine.port,"live")
         api_sysinfo = Machine.api(machine.protocol,machine.host,machine.port,"sysinfo")
-        # live_storage = Machine.api(machine.protocol,machine.host,machine.port,"live")[:storage_bytes]
-        live_storage = (api_live[:storage_bytes].to_f/api_sysinfo[:storage][:total_bytes].to_f*100).round(2)
+        api_storage = Machine.api(machine.protocol,machine.host,machine.port,storage_path)
+
+        blocks_used = api_storage[:blocks] - api_storage[:blocks_free]
+        live_storage = (blocks_used*100)/api_storage[:blocks].to_f
+
         storage_threshold = storage_alert.storage_threshold
 
         if storage_alert.triggered == false

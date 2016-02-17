@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   root 'application#root'
 
   # get 'sonar_api_v1'          => 'hardware#status'
-  get 'sonar_api_v1/live'     => 'hardware#live'
-  get 'sonar_api_v1/sysinfo'  => 'hardware#sysinfo'
-  
+  get 'sonar_api_v1/live'             => 'hardware#live'
+  get 'sonar_api_v1/sysinfo'          => 'hardware#sysinfo'
+  get 'sonar_api_v1/storage(/:path)'  => 'hardware#storage'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

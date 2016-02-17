@@ -24,6 +24,7 @@ class SonarMailer < ApplicationMailer
         @machine_id         = machine.id
         @machine_alias      = machine.alias
         @storage_threshold  = storage_alert.storage_threshold
+        @storage_path       = storage_alert.path
 
         mail(to: @addressee, subject: 'Sonar storage_alert')
 

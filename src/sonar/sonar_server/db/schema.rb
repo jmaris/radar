@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20160211123326) do
   create_table "storage_alerts", force: :cascade do |t|
     t.integer  "machine_id"
     t.string   "addressee"
+    t.string   "path"
     t.float    "storage_threshold"
     t.integer  "check_interval"
     t.boolean  "triggered"
