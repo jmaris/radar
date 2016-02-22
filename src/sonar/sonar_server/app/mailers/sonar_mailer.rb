@@ -11,7 +11,7 @@ class SonarMailer < ApplicationMailer
         @machine_alias  = machine.alias
         @cpu_threshold  = cpu_alert.cpu_threshold
 
-        mail(to: @addressee, subject: 'Sonar cpu_alert')
+        mail(to: @addressee, subject: 'Sonar cpu alert')
 
     end
 
@@ -26,7 +26,7 @@ class SonarMailer < ApplicationMailer
         @storage_threshold  = storage_alert.storage_threshold
         @storage_path       = storage_alert.path
 
-        mail(to: @addressee, subject: 'Sonar storage_alert')
+        mail(to: @addressee, subject: 'Sonar storage alert')
 
     end
 end
