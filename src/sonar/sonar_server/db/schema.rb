@@ -11,16 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211123326) do
+ActiveRecord::Schema.define(version: 20160211111520) do
 
-  create_table "cpu_alerts", force: :cascade do |t|
+  create_table "alerts", force: :cascade do |t|
     t.integer  "machine_id"
     t.string   "addressee"
-    t.float    "cpu_threshold"
     t.integer  "check_interval"
     t.boolean  "triggered"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "cpu_alerts", force: :cascade do |t|
+    t.float    "cpu_threshold"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "cpu_metrics", force: :cascade do |t|
@@ -76,12 +81,8 @@ ActiveRecord::Schema.define(version: 20160211123326) do
   add_index "ram_metrics", ["machine_id"], name: "index_ram_metrics_on_machine_id"
 
   create_table "storage_alerts", force: :cascade do |t|
-    t.integer  "machine_id"
-    t.string   "addressee"
-    t.string   "path"
     t.float    "storage_threshold"
-    t.integer  "check_interval"
-    t.boolean  "triggered"
+    t.string   "path"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end

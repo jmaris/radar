@@ -1,8 +1,11 @@
 class CpuAlert < Alert
-    belongs_to              :machine
+    # belongs_to      :machine
 
-    validates               :cpu_threshold, presence: true, numericality: true
-    after_create            :launch_cpu_alert_check_dj
+    attr_accessor   :cpu_threshold
+    self.inheritance_column = :cpu_threshold
+
+    validates       :cpu_threshold, presence: true, numericality: true
+    #after_create    :launch_cpu_alert_check_dj
 
     private
 
@@ -12,7 +15,6 @@ class CpuAlert < Alert
     end
 
     def self.check_dj(cpu_alert_id)
-
         cpu_alert = CpuAlert.find(cpu_alert_id)
         machine_id = cpu_alert.machine_id
         machine = Machine.find(machine_id)

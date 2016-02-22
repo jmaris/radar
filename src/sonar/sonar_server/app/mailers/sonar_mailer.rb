@@ -38,7 +38,7 @@ class SonarMailer < ApplicationMailer
 
         if type == "cpu"
         
-            mail()
+            mail(to @addressee, subject: 'Sonar alert')
 
         elsif type == "storage"
         

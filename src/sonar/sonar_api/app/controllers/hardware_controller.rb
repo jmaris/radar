@@ -1,8 +1,14 @@
 class HardwareController < ApplicationController # logic goes in this hardware_controller.rb file
 
     def live
+        if Sys::CPU.load_avg.first > Sys::CPU.processors.count
+            cpu_percentage = 100
+        else
+            cpu_percentage = (Sys::CPU.load_avg.first*100 / Sys::CPU.processors.count).round(2)
+        end
+
         render json: {
-            "cpu_percentage":   (Sys::CPU.load_avg.first*100 / Sys::CPU.processors.count).round(2), #cpu load averaged to the last minute
+            "cpu_percentage":   cpu_percentage, #cpu load averaged to the last minute
             "cpu_load_average": Sys::CPU.load_avg, # standard UNIX load average
             "ram_bytes":        Vmstat.memory.active_bytes,
             # "swap_bytes":       65435, # not yet implemented

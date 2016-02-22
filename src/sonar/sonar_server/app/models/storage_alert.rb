@@ -1,8 +1,11 @@
 class StorageAlert < Alert
-    belongs_to              :machine
+    # belongs_to      :machine
 
-    validates               :storage_threshold, presence: true, numericality: true
-    after_create            :launch_storage_alert_check_dj
+    attr_accessor   :storage_threshold
+    self.inheritance_column = :storage_threshold
+
+    validates       :storage_threshold, presence: true, numericality: true
+    after_create    :launch_storage_alert_check_dj
 
     private
 
