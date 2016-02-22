@@ -2,7 +2,8 @@ class CpuAlert < ActiveRecord::Base
     belongs_to              :machine
 
     validates               :check_interval, presence: true, numericality: { only_integer: true }
-    validates               :check_interval, presence: true, numericality: true
+    validates               :cpu_threshold, presence: true, numericality: true
+    validates               :addressee, presence: true
     validate                :machine
 
     after_create            :init # sets the triggered value to true
