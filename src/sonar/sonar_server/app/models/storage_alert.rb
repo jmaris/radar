@@ -1,20 +1,10 @@
-class StorageAlert < ActiveRecord::Base
+class StorageAlert < Alert
     belongs_to              :machine
 
-    validates               :check_interval, presence: true, numericality: { only_integer: true }
     validates               :storage_threshold, presence: true, numericality: true
-    validates               :addressee, presence: true
-    validate                :machine
-
-    after_create            :init # sets the triggered value to true
     after_create            :launch_storage_alert_check_dj
 
     private
-
-    def init
-        self.triggered = 0
-        self.save
-    end
 
     def launch_storage_alert_check_dj # DJ stands for "Delayed Job"
         storage_alert_id = self.id
@@ -52,10 +42,5 @@ class StorageAlert < ActiveRecord::Base
             end
         end
         StorageAlert.delay(run_at: storage_alert.check_interval.minutes.from_now).check_dj(storage_alert.id)
-
-    end
-
-    def machine
-        errors.add(:machine_id, "is invalid") unless Machine.exists?(self.machine_id)
     end
 end

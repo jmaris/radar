@@ -29,4 +29,26 @@ class SonarMailer < ApplicationMailer
         mail(to: @addressee, subject: 'Sonar storage alert')
 
     end
+
+    def alert_email(alert_id,type)
+
+        alert = Alert.find(alert_id)
+
+        @addressee = alert.addressee
+
+        if type == "cpu"
+        
+            mail()
+
+        elsif type == "storage"
+        
+        elsif type == "ram"
+
+        else
+            #"do shit"
+
+        end
+
+
+    end
 end

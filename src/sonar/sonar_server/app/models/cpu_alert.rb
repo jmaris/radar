@@ -1,20 +1,10 @@
-class CpuAlert < ActiveRecord::Base
+class CpuAlert < Alert
     belongs_to              :machine
 
-    validates               :check_interval, presence: true, numericality: { only_integer: true }
     validates               :cpu_threshold, presence: true, numericality: true
-    validates               :addressee, presence: true
-    validate                :machine
-
-    after_create            :init # sets the triggered value to true
     after_create            :launch_cpu_alert_check_dj
 
     private
-
-    def init
-        self.triggered = 0
-        self.save
-    end
 
     def launch_cpu_alert_check_dj # DJ stands for "Delayed Job"
         cpu_alert_id = self.id
@@ -42,10 +32,5 @@ class CpuAlert < ActiveRecord::Base
             end
         end
         CpuAlert.delay(run_at: cpu_alert.check_interval.minutes.from_now).check_dj(cpu_alert.id)
-
-    end
-
-    def machine
-        errors.add(:machine_id, "is invalid") unless Machine.exists?(self.machine_id)
     end
 end
