@@ -65,7 +65,9 @@ class Alert < ActiveRecord::Base
             when "CpuAlert"
                 SonarMailer.cpu_alert_email(actable_id).deliver_later
             when "RamAlert"
-            when "StorageAlert"    
+                SonarMailer.ram_alert_email(actable_id).deliver_later
+            when "StorageAlert"
+                SonarMailer.storage_alert_email(actable_id).deliver_later
             end
             alert.triggered = true
             alert.save

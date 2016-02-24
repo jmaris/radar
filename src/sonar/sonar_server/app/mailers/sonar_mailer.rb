@@ -9,7 +9,7 @@ class SonarMailer < ApplicationMailer
         @addressee      = cpu_alert.addressee
         @machine_id     = machine.id
         @machine_alias  = machine.alias
-        @threshold  = cpu_alert.threshold
+        @threshold      = cpu_alert.threshold
 
         mail(to: @addressee, subject: 'Sonar cpu alert')
 
@@ -23,32 +23,9 @@ class SonarMailer < ApplicationMailer
         @addressee          = storage_alert.addressee
         @machine_id         = machine.id
         @machine_alias      = machine.alias
-        @threshold  = storage_alert.threshold
+        @threshold          = storage_alert.threshold
         @storage_path       = storage_alert.path
 
         mail(to: @addressee, subject: 'Sonar storage alert')
-
-    end
-
-    def alert_email(alert_id,type)
-
-        alert = Alert.find(alert_id)
-
-        @addressee = alert.addressee
-
-        if type == "cpu"
-        
-            mail(to @addressee, subject: 'Sonar alert')
-
-        elsif type == "storage"
-        
-        elsif type == "ram"
-
-        else
-            #"do shit"
-
-        end
-
-
     end
 end
