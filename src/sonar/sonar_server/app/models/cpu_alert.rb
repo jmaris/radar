@@ -1,38 +1,20 @@
-class CpuAlert < Alert
-    # belongs_to      :machine
+class CpuAlert < ActiveRecord::Base
+    
+    acts_as :alert
 
-    attr_accessor   :cpu_threshold
-    self.inheritance_column = :cpu_threshold
-
-    validates       :cpu_threshold, presence: true, numericality: true
-    #after_create    :launch_cpu_alert_check_dj
+    validates       :threshold, presence: true, numericality: true
 
     private
 
-    def launch_cpu_alert_check_dj # DJ stands for "Delayed Job"
-        cpu_alert_id = self.id
-        CpuAlert.check_dj(cpu_alert_id)
-    end
-
-    def self.check_dj(cpu_alert_id)
+    def self.is_higher(live_api,cpu_alert_id)
+        live_cpu = live_api[:cpu_percentage]
         cpu_alert = CpuAlert.find(cpu_alert_id)
-        machine_id = cpu_alert.machine_id
-        machine = Machine.find(machine_id)
-        live_cpu = Machine.api(machine.protocol,machine.host,machine.port,"live")[:cpu_percentage]
-        cpu_threshold = cpu_alert.cpu_threshold
+        threshold = cpu_alert.threshold
 
-        if cpu_alert.triggered == false
-            if live_cpu > cpu_threshold
-                SonarMailer.cpu_alert_email(cpu_alert_id).deliver_later
-                cpu_alert.triggered = 1
-                cpu_alert.save
-            end
-        elsif cpu_alert.triggered == true
-            if live_cpu < cpu_threshold
-                cpu_alert.triggered = 0
-                cpu_alert.save
-            end
+        if live_cpu > threshold
+            true
+        else
+            false
         end
-        CpuAlert.delay(run_at: cpu_alert.check_interval.minutes.from_now).check_dj(cpu_alert.id)
     end
 end

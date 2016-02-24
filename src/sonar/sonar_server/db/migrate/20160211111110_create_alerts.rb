@@ -5,6 +5,8 @@ class CreateAlerts < ActiveRecord::Migration
       t.string 	:addressee
       t.integer :check_interval
       t.boolean :triggered
+      # for inheritance
+      t.actable
 
       t.timestamps null: false
     end

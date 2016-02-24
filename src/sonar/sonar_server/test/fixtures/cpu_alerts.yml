@@ -3,13 +3,13 @@
 one:
   machine_id: MyString
   addressee: MyString
-  cpu_threshold: MyString
+  threshold: MyString
   check_interval: MyString
   triggered: MyString
 
 two:
   machine_id: MyString
   addressee: MyString
-  cpu_threshold: MyString
+  threshold: MyString
   check_interval: MyString
   triggered: MyString

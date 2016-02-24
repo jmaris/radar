@@ -18,7 +18,7 @@ class CpuAlertsControllerTest < ActionController::TestCase
 
   test "should create cpu_alert" do
     assert_difference('CpuAlert.count') do
-      post :create, cpu_alert: { addressee: @cpu_alert.addressee, check_interval: @cpu_alert.check_interval, cpu_threshold: @cpu_alert.cpu_threshold, machine_id: @cpu_alert.machine_id, triggered: @cpu_alert.triggered }
+      post :create, cpu_alert: { addressee: @cpu_alert.addressee, check_interval: @cpu_alert.check_interval, threshold: @cpu_alert.threshold, machine_id: @cpu_alert.machine_id, triggered: @cpu_alert.triggered }
     end
 
     assert_redirected_to cpu_alert_path(assigns(:cpu_alert))
@@ -35,7 +35,7 @@ class CpuAlertsControllerTest < ActionController::TestCase
   end
 
   test "should update cpu_alert" do
-    patch :update, id: @cpu_alert, cpu_alert: { addressee: @cpu_alert.addressee, check_interval: @cpu_alert.check_interval, cpu_threshold: @cpu_alert.cpu_threshold, machine_id: @cpu_alert.machine_id, triggered: @cpu_alert.triggered }
+    patch :update, id: @cpu_alert, cpu_alert: { addressee: @cpu_alert.addressee, check_interval: @cpu_alert.check_interval, threshold: @cpu_alert.threshold, machine_id: @cpu_alert.machine_id, triggered: @cpu_alert.triggered }
     assert_redirected_to cpu_alert_path(assigns(:cpu_alert))
   end
 

@@ -18,7 +18,7 @@ class StorageAlertsControllerTest < ActionController::TestCase
 
   test "should create storage_alert" do
     assert_difference('StorageAlert.count') do
-      post :create, storage_alert: { addressee: @storage_alert.addressee, check_interval: @storage_alert.check_interval, machine_id: @storage_alert.machine_id, storage_threshold: @storage_alert.storage_threshold, triggered: @storage_alert.triggered }
+      post :create, storage_alert: { addressee: @storage_alert.addressee, check_interval: @storage_alert.check_interval, machine_id: @storage_alert.machine_id, threshold: @storage_alert.threshold, triggered: @storage_alert.triggered }
     end
 
     assert_redirected_to storage_alert_path(assigns(:storage_alert))
@@ -35,7 +35,7 @@ class StorageAlertsControllerTest < ActionController::TestCase
   end
 
   test "should update storage_alert" do
-    patch :update, id: @storage_alert, storage_alert: { addressee: @storage_alert.addressee, check_interval: @storage_alert.check_interval, machine_id: @storage_alert.machine_id, storage_threshold: @storage_alert.storage_threshold, triggered: @storage_alert.triggered }
+    patch :update, id: @storage_alert, storage_alert: { addressee: @storage_alert.addressee, check_interval: @storage_alert.check_interval, machine_id: @storage_alert.machine_id, threshold: @storage_alert.threshold, triggered: @storage_alert.triggered }
     assert_redirected_to storage_alert_path(assigns(:storage_alert))
   end
 

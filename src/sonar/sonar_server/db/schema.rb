@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20160211111520) do
     t.string   "addressee"
     t.integer  "check_interval"
     t.boolean  "triggered"
+    t.integer  "actable_id"
+    t.string   "actable_type"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
   create_table "cpu_alerts", force: :cascade do |t|
-    t.float    "cpu_threshold"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.float "threshold"
   end
 
   create_table "cpu_metrics", force: :cascade do |t|
@@ -81,10 +81,10 @@ ActiveRecord::Schema.define(version: 20160211111520) do
   add_index "ram_metrics", ["machine_id"], name: "index_ram_metrics_on_machine_id"
 
   create_table "storage_alerts", force: :cascade do |t|
-    t.float    "storage_threshold"
+    t.float    "threshold"
     t.string   "path"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "storage_metrics", force: :cascade do |t|

@@ -3,13 +3,13 @@
 one:
   machine_id: 1
   addressee: MyString
-  storage_threshold: 1.5
+  threshold: 1.5
   check_interval: 1
   triggered: false
 
 two:
   machine_id: 1
   addressee: MyString
-  storage_threshold: 1.5
+  threshold: 1.5
   check_interval: 1
   triggered: false

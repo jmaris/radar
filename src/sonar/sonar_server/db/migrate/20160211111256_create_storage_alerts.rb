@@ -1,7 +1,7 @@
 class CreateStorageAlerts < ActiveRecord::Migration
   def change
     create_table  :storage_alerts do |t|
-      t.float     :storage_threshold
+      t.float     :threshold
       t.string    :path
       #common
       # t.integer   :machine_id
