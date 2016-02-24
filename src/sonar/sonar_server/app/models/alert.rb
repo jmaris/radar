@@ -25,11 +25,12 @@ class Alert < ActiveRecord::Base
         actable_id = self.actable_id
         # actable_type = self.actable_type
 
-        if actable_type.constantize.is_higher(live_api,actable_id)
+        if actable_type.constantize.is_higher(actable_id)
             alert_email_trigger(alert_id)
         else
             alert_email_untrigger(alert_id)
         end
+        
         alert.delay(run_at: alert.check_interval.minutes.from_now).check_dj
     end
 
@@ -56,10 +57,6 @@ class Alert < ActiveRecord::Base
         alert = Alert.find(alert_id)
         type = alert.actable_type.constantize
         actable_alert = type.find(actable_id)
-
-        machine_id = alert.machine_id
-        machine = Machine.find(machine_id)
-        live_api = Machine.api(machine.protocol,machine.host,machine.port,"live")
 
         if actable_alert.triggered
             puts "Alert triggered. Not triggering."
