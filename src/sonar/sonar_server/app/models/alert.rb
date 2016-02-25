@@ -48,6 +48,14 @@ class Alert < ActiveRecord::Base
         actable_alert = type.find(actable_id)
 
         if actable_alert.triggered
+            case actable_type
+            when "CpuAlert"
+                SonarMailer.cpu_unalert_email(actable_id).deliver_later
+            when "RamAlert"
+                SonarMailer.ram_unalert_email(actable_id).deliver_later
+            when "StorageAlert"
+                SonarMailer.storage_unalert_email(actable_id).deliver_later
+            end
             alert.triggered = false
             alert.save
         end
