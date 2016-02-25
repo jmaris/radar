@@ -4,7 +4,4 @@ class StorageMetric < ActiveRecord::Base
     
     validates :storage, presence: true, numericality: true
     validates :machine_id, presence: true, numericality: { only_integer: true }
-
-    private
-
 end

@@ -4,6 +4,4 @@ class CpuMetric < ActiveRecord::Base
     
     validates :cpu, presence: true, numericality: true
     validates :machine_id, presence: true, numericality: { only_integer: true }
-
-    private
 end

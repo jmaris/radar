@@ -10,7 +10,7 @@ class Machine < ActiveRecord::Base
     has_many        :storage_metrics,   dependent: :destroy
 
     # has_many        :alerts,            dependent: :destroy
-    has_many        :cpu_alerts,        dependent: :destroy
+    has_many        :alerts,        dependent: :destroy
 
     after_save      :sysinfo_update # this updates the machine with static info provided by the sysinfo API
     after_create    :launch_metric_save_metrics_dj # schedules a delayed job to check every N minutes and update the performance charts
