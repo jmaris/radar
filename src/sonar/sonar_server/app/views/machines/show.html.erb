@@ -8,6 +8,7 @@
   <strong>Alias:</strong>
   <%= @alias %>
   <br>
+  <% if @status %>
   <strong>Hostname:</strong>
   <%= @hostname %>
   <br>
@@ -20,6 +21,10 @@
   <strong>Current storage load: </strong>
   <%= @storage_load %> %
   <br>
+  <% else %>
+  <strong>HOST IS CURRENTLY DOWN</strong>
+  <br>
+  <% end %>
   <strong>Update interval: </strong>
   <%= pluralize(@update_interval, 'minute') %>
   <br>

@@ -10,12 +10,23 @@ class MachinesController < ApplicationController
   # GET /machines/1
   # GET /machines/1.json
   def show
+    api_live = Machine.api(@machine.protocol,@machine.host,@machine.port,"live")
+    api_sysinfo = Machine.api(@machine.protocol,@machine.host,@machine.port,"sysinfo")
+    @status               = false
+    @status               = true if Machine.api(@machine.protocol,@machine.host,@machine.port,"live")
     @alias                = @machine.alias
+    ###### API access
+    # @hostname             = api_sysinfo[:hostname]
+    # @cpu_load             = api_live[:cpu_percentage]
+    # @ram_load             = (api_live[:ram_bytes].to_f/api_sysinfo[:ram][:total_bytes].to_f*100).round(2)
+    # @storage_load         = StorageMetric.where(machine_id = @machine.id).last.storage
+    # # @swap_load          = api_live[:swap] # swap not yet implemented
+    # @storage_bytes        = api_sysinfo[:storage][:total_bytes]
+    ###### endof API access
     @hostname             = @machine.hostname
     @cpu_load             = CpuMetric.where(machine_id = @machine.id).last.cpu
     @ram_load             = RamMetric.where(machine_id = @machine.id).last.ram
     @storage_load         = StorageMetric.where(machine_id = @machine.id).last.storage
-    # @swap_load          = api_live[:swap] # swap not yet implemented
     @storage_bytes        = @machine.storage_total_bytes
     # @uptime               = api_live[:uptime_seconds]
     @update_interval      = @machine.update_interval
