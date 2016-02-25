@@ -2,7 +2,6 @@
   <% if @storage_alert.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@storage_alert.errors.count, "error") %> prohibited this storage_alert from being saved:</h2>
-
       <ul>
       <% @storage_alert.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -19,6 +18,10 @@
     <%= f.label :addressee %><br>
     <%= f.text_field :addressee %>
   </div>
+<p>
+  <strong>Mountpoints:</strong>
+  <%= @mountpoints %>
+</p>
   <div class="field">
     <%= f.label :path %><br>
     <%= f.text_field :path %>

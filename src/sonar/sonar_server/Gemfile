@@ -30,6 +30,8 @@ gem 'rest-client'
 gem 'highcharts-rails'
 gem 'delayed_job_active_record'
 gem 'active_record-acts_as'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
