@@ -54,10 +54,11 @@ class MachinesController < ApplicationController
     respond_to do |format|
 
       if @machine.save
-
-        format.html { redirect_to @machine, notice: 'Machine was successfully created.' }
+        flash[:success] = 'Machine was successfully saved.'
+        format.html { redirect_to @machine }
         format.json { render :show, status: :created, location: @machine }
       else
+        flash[:danger] = 'There was a problem creating the Machine.'
         format.html { render :new }
         format.json { render json: @machine.errors, status: :unprocessable_entity }
       end
@@ -69,9 +70,11 @@ class MachinesController < ApplicationController
   def update
     respond_to do |format|
       if @machine.update(machine_params)
-        format.html { redirect_to @machine, notice: 'Machine was successfully updated.' }
+        flash[:success] = 'Machine was successfully updated.'
+        format.html { redirect_to @machine }
         format.json { render :show, status: :ok, location: @machine }
       else
+        flash[:danger] = 'There was a problem updating the Machine.'
         format.html { render :edit }
         format.json { render json: @machine.errors, status: :unprocessable_entity }
       end
@@ -83,7 +86,8 @@ class MachinesController < ApplicationController
   def destroy
     @machine.destroy
     respond_to do |format|
-      format.html { redirect_to machines_url, notice: 'Machine was successfully destroyed.' }
+      flash[:success] = 'Machine was successfully destroyed.'
+      format.html { redirect_to machines_url}
       format.json { head :no_content }
     end
   end
