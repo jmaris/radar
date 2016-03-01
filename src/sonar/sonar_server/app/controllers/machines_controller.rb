@@ -55,12 +55,12 @@ class MachinesController < ApplicationController
 
       if @machine.save
         flash[:success] = 'Machine was successfully saved.'
-        format.html { redirect_to @machine }
-        format.json { render :show, status: :created, location: @machine }
+        format.html { redirect_to machines_url }
+        format.js
       else
         flash[:danger] = 'There was a problem creating the Machine.'
         format.html { render :new }
-        format.json { render json: @machine.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

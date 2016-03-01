@@ -15,6 +15,7 @@ class StorageAlertsController < ApplicationController
   # GET /storage_alerts/new
   def new
     @storage_alert = StorageAlert.new
+    @machine_ids = Machine.ids
   end
 
   # GET /storage_alerts/1/edit

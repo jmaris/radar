@@ -1,33 +1,32 @@
 <%= form_for(@cpu_alert) do |f| %>
-  <% if @cpu_alert.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cpu_alert.errors.count, "error") %> prohibited this cpu_alert from being saved:</h2>
+<% if @cpu_alert.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@cpu_alert.errors.count, "error") %> prohibited this cpu_alert from being saved:</h2>
 
-      <ul>
-      <% @cpu_alert.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :machine_id %><br>
-    <%= f.number_field :machine_id %>
-  </div>
-  <div class="field">
-    <%= f.label :addressee %><br>
-    <%= f.text_field :addressee %>
-  </div>
-  <div class="field">
-    <%= f.label :threshold %><br>
-    <%= f.text_field :threshold %>
-  </div>
-  <div class="field">
-    <%= f.label :check_interval %><br>
-    <%= f.number_field :check_interval %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <ul>
+    <% @cpu_alert.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="field">
+  <%= f.label :machine_id %><br>
+  <%= f.number_field :machine_id %>
+</div>
+<div class="field">
+  <%= f.label :addressee %><br>
+  <%= f.text_field :addressee %>
+</div>
+<div class="field">
+  <%= f.label :threshold %><br>
+  <%= f.text_field :threshold %>
+</div>
+<div class="field">
+  <%= f.label :check_interval %><br>
+  <%= f.number_field :check_interval %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>
