@@ -13,8 +13,8 @@
 <div class="field">
   <%= f.label :machine_id %><br>
   <%= f.select :machine_id, @machine_ids %>
-    <strong>Mountpoints for machine ID <%= @machine_ids.first %> <% @machine = Machine.find(@machine_ids.first) %> <% mountpoints = Machine.api(@machine.protocol,@machine.host,@machine.port,"live")[:mountpoints] %> <%= mountpoints %>:</strong>
-    <%= @mountpoints %>
+    <!-- <strong>Mountpoints for machine ID <%= @machine_ids.last %> <% @machine = Machine.find(@machine_ids.last) %> <% @mountpoints = Machine.api(@machine.protocol,@machine.host,@machine.port,"live")[:mountpoints] %> </strong>
+    <%= @mountpoints %> -->
 </div>
 <div class="field">
   <%= f.label :addressee %><br>
@@ -22,11 +22,11 @@
 </div>
 <div class="field">
   <%= f.label :path %><br>
-  <%= f.text_field :path %>
+  <%= f.select :path, @mountpoints %>
 </div>
 <div class="field">
   <%= f.label :threshold %><br>
-  <%= f.text_field :threshold %>
+  <%= f.number_field :threshold, :class => 'text_field', :step => 0.5 %>
 </div>
 <div class="field">
   <%= f.label :check_interval %><br>
