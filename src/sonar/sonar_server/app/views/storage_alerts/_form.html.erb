@@ -13,10 +13,11 @@
 <div class="field">
   <%= f.label :machine_id %><br>
   <%= f.select :machine_id, @machine_ids, {}, :onChange=>"javascript: get_mountpoints(this.value);" %>
+  <% @machine = Machine.find(@machine_ids.first) %> <% @mountpoints = Machine.api(@machine.protocol,@machine.host,@machine.port,"live")[:mountpoints] %>
   <br>
   <strong>Mountpoints:</strong>
   <div id="mountpoint_list">
-
+    <%= @mountpoints %>
   </div> 
 </div>
 <div class="field">

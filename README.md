@@ -29,7 +29,6 @@ Work is divided in four stages, chronologically ordered.
     - ~~Frameworks to use~~
     - ~~Languages to use~~
   - UI design (ongoing)
-  - Implementation network map (ongoing)
 
 ## Stage 2: Study
 - ~~Viablity study~~
