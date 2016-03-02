@@ -1,6 +1,5 @@
 class StorageAlertsController < ApplicationController
   before_action :set_storage_alert, only: [:show, :edit, :update, :destroy]
-
   # GET /storage_alerts
   # GET /storage_alerts.json
   def index

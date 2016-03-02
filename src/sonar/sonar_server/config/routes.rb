@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root  'machines#index'
+  match 'get_mountpoints', to: 'mountpoints#get', via: [:post]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

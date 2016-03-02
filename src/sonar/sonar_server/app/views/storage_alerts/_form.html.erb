@@ -12,26 +12,47 @@
 
 <div class="field">
   <%= f.label :machine_id %><br>
-  <%= f.select :machine_id, @machine_ids %>
-    <% @machine = Machine.find(@machine_ids.last) %> <% @mountpoints = Machine.api(@machine.protocol,@machine.host,@machine.port,"live")[:mountpoints] %>
-  </div>
-  <div class="field">
-    <%= f.label :addressee %><br>
-    <%= f.text_field :addressee %>
-  </div>
-  <div class="field">
-    <%= f.label :path %><br>
-    <%= f.select :path, @mountpoints %>
-  </div>
-  <div class="field">
-    <%= f.label :threshold %><br>
-    <%= f.number_field :threshold, :class => 'text_field', :step => 0.5 %>
-  </div>
-  <div class="field">
-    <%= f.label :check_interval %><br>
-    <%= f.number_field :check_interval %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  <% end %>
+  <%= f.select :machine_id, @machine_ids, {}, :onChange=>"javascript: get_mountpoints(this.value);" %>
+  <br>
+  <strong>Mountpoints:</strong>
+  <div id="mountpoint_list">
+
+  </div> 
+</div>
+<div class="field">
+  <%= f.label :addressee %><br>
+  <%= f.text_field :addressee%>
+</div>
+<div class="field">
+  <%= f.label :path %><br>
+  <%= f.text_field :path %>
+</div>
+<div class="field">
+  <%= f.label :threshold %><br>
+  <%= f.number_field :threshold, :class => 'text_field', :step => 0.5 %>
+</div>
+<div class="field">
+  <%= f.label :check_interval %><br>
+  <%= f.number_field :check_interval %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<script>
+
+  function get_mountpoints(machine_id)
+  {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function ()
+    {
+      if (xhttp.readyState == 4 && xhttp.status == 200)
+      {
+        document.getElementById("mountpoint_list").innerHTML = xhttp.responseText;
+      };
+    };
+    xhttp.open("POST", "../get_mountpoints", true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
+    xhttp.send(machine_id);
+  };
+</script>
+<% end %>
