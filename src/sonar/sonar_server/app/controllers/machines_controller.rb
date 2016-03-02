@@ -48,11 +48,9 @@ class MachinesController < ApplicationController
   # POST /machines
   # POST /machines.json
   def create
-
     @machine = Machine.new(machine_params)
 
     respond_to do |format|
-
       if @machine.save
         flash[:success] = 'Machine was successfully saved.'
         format.html { redirect_to machines_url }

@@ -1,5 +1,6 @@
 class StorageAlertsController < ApplicationController
   before_action :set_storage_alert, only: [:show, :edit, :update, :destroy]
+  before_action :get_machine_ids, only: [:edit, :new, :show, :create, :update]
   # GET /storage_alerts
   # GET /storage_alerts.json
   def index
@@ -14,7 +15,6 @@ class StorageAlertsController < ApplicationController
   # GET /storage_alerts/new
   def new
     @storage_alert = StorageAlert.new
-    @machine_ids = Machine.ids
   end
 
   # GET /storage_alerts/1/edit
@@ -65,6 +65,10 @@ class StorageAlertsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_storage_alert
       @storage_alert = StorageAlert.find(params[:id])
+    end
+
+    def get_machine_ids
+      @machine_ids = Machine.ids
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
