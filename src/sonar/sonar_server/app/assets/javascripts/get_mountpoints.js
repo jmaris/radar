@@ -6,6 +6,8 @@
       if (xhttp.readyState == 4 && xhttp.status == 200)
       {
         document.getElementById("mountpoint_list").innerHTML = xhttp.responseText;
+        // document.getElementById("storage_alert_path").options.length = 0;
+        document.forms["storage_alert_form"].elements["storage_alert[path]"].options.length = 0;
       };
     };
     xhttp.open("GET", "../machine_mountpoints/"+machine_id, true);
