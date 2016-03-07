@@ -1,4 +1,4 @@
-get_mountpoints = (machine_id) ->
+@get_mountpoints = (machine_id) ->
   xhttp = new XMLHttpRequest
 
   xhttp.onreadystatechange = ->
