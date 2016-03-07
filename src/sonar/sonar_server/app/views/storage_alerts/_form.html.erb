@@ -12,7 +12,7 @@
 
 <div class="field">
   <%= f.label :machine_id %><br>
-  <%= f.select :machine_id, @machine_ids%>
+  <%= f.select :machine_id, @machine_ids, {}, onChange:"javascript: get_mountpoints(this.value)" %>
 </div>
 <div class="field">
   <%= f.label :addressee %><br>
