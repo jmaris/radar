@@ -21,7 +21,7 @@
 //      //
         var select=document.getElementById("storage_alert_path")
         for (i=0; i<ajaxresponse.length; i++){
-          select.options[select.options.length] = new ajaxresponse_json.mountpoints[i]
+          select.options[select.options.length] = new Option(ajaxresponse_json.mountpoints[i])
         }
       };
     };
