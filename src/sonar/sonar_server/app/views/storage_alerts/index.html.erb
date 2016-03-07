@@ -32,4 +32,7 @@
 
 <br>
 
-<%= link_to 'New Storage alert', new_storage_alert_path, id: "new_storage_alert_link" %>
+<%= link_to new_storage_alert_path, class: 'btn btn-success', remote: true, id: "new_storage_alert_link" do %>
+<i class="glyphicon glyphicon-plus"></i>
+New Storage Alert
+<% end %>

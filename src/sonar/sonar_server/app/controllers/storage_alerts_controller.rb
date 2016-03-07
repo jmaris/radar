@@ -28,11 +28,13 @@ class StorageAlertsController < ApplicationController
 
     respond_to do |format|
       if @storage_alert.save
-        format.html { redirect_to @storage_alert, notice: 'Storage alert was successfully created.' }
-        format.json { render :show, status: :created, location: @storage_alert }
+        flash[:success] = 'Storage Alert was successfully saved.'
+        format.html { redirect_to storage_alerts_url }
+        format.js
       else
+        flash[:danger] = 'There was a problem creating the Storage Alert.'
         format.html { render :new }
-        format.json { render json: @storage_alert.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -42,9 +44,11 @@ class StorageAlertsController < ApplicationController
   def update
     respond_to do |format|
       if @storage_alert.update(storage_alert_params)
-        format.html { redirect_to @storage_alert, notice: 'Storage alert was successfully updated.' }
+        flash[:success] = 'Storage Alert was successfully updated.'
+        format.html { redirect_to @storage_alert}
         format.json { render :show, status: :ok, location: @storage_alert }
       else
+        flash[:danger] = 'There was a problem updating the Storage Alert.'
         format.html { render :edit }
         format.json { render json: @storage_alert.errors, status: :unprocessable_entity }
       end
@@ -56,7 +60,8 @@ class StorageAlertsController < ApplicationController
   def destroy
     @storage_alert.destroy
     respond_to do |format|
-      format.html { redirect_to storage_alerts_url, notice: 'Storage alert was successfully destroyed.' }
+      flash[:success] = 'Storage Alert was successfully destroyed.'
+      format.html { redirect_to storage_alerts_url}
       format.json { head :no_content }
     end
   end
