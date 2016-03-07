@@ -69,6 +69,6 @@ class CpuAlertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cpu_alert_params
-      params.require(:cpu_alert).permit(:machine_id, :addressee, :threshold, :check_interval)
+      params.require(:cpu_alert).permit(:machine_id, :addressee, :threshold, :check_interval, :custom_message)
     end
 end
