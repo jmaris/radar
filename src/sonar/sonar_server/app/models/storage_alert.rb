@@ -2,7 +2,7 @@ class StorageAlert < ActiveRecord::Base
 
     acts_as :alert # inheritance with gem 'active_record-acts_as'
 
-    validates       :threshold, presence: true, numericality: true
+    validates       :threshold, presence: true, numericality: true, inclusion: {in: 0..100}
     validates       :path, presence: true
 
     private

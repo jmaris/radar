@@ -2,8 +2,8 @@ class CpuAlert < ActiveRecord::Base
     
     acts_as :alert
 
-    validates       :threshold, presence: true, numericality: true
-
+    validates       :threshold, presence: true, numericality: true, inclusion: {in: 0..100}
+    
     private
 
     def self.is_higher(cpu_alert_id)
