@@ -1,32 +1,40 @@
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+  });
+</script>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Cpu Alerts</h1>
-
-<table>
-  <thead>
+<div class = "table-responsive">
+  <table class="table table-striped">
+   <caption>CPU Alerts</caption>
+   <thead>
     <tr>
       <th>Machine</th>
       <th>Addressee</th>
       <th>Cpu threshold</th>
       <th>Check interval</th>
+      <th>Custom message</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @cpu_alerts.each do |cpu_alert| %>
-      <tr>
-        <td><%= cpu_alert.machine_id %></td>
-        <td><%= cpu_alert.addressee %></td>
-        <td><%= cpu_alert.threshold %></td>
-        <td><%= cpu_alert.check_interval %></td>
-        <td><%= link_to 'Show', cpu_alert %></td>
-        <td><%= link_to 'Edit', edit_cpu_alert_path(cpu_alert) %></td>
-        <td><%= link_to 'Destroy', cpu_alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tr>
+      <td><%= cpu_alert.machine_id %></td>
+      <td><%= cpu_alert.addressee %></td>
+      <td><%= cpu_alert.threshold %></td>
+      <td><%= cpu_alert.check_interval %></td>
+      <td><a class="btn btn-primary btn-xs" tabindex="0" role="button" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover" title="Message content" data-content="<%= h(cpu_alert.custom_message).gsub(/\n/, '<br/>') %>">Display</a></td>
+      <td><%= link_to 'Show', cpu_alert, class: 'btn btn-primary btn-xs' %></td>
+      <td><%= link_to 'Edit', edit_cpu_alert_path(cpu_alert), class: 'btn btn-primary btn-xs' %></td>
+      <td><%= link_to 'Destroy', cpu_alert, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-xs btn-danger' %></td>    </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

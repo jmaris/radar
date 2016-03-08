@@ -1,15 +1,15 @@
 <script>
-$(document).ready(function(){
+  $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
-});
+  });
 </script>
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Storage Alerts</h1>
-
-<table>
-  <thead>
+<div class = "table-responsive">
+  <table class="table table-striped">
+   <caption>Storage Alerts</caption>
+   <thead>
     <tr>
       <th>Machine</th>
       <th>Addressee</th>
@@ -23,20 +23,21 @@ $(document).ready(function(){
 
   <tbody>
     <% @storage_alerts.each do |storage_alert| %>
-      <tr>
-        <td><%= storage_alert.machine_id %></td>
-        <td><%= storage_alert.addressee %></td>
-        <td><%= storage_alert.path %></td>
-        <td><%= storage_alert.threshold %></td>
-        <td><%= storage_alert.check_interval %></td>
-        <td><a tabindex="0" role="button" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover" title="Message content" data-content="<%= h(storage_alert.custom_message).gsub(/\n/, '<br/>') %>">Display</a></td>
-        <td><%= link_to 'Show', storage_alert %></td>
-        <td><%= link_to 'Edit', edit_storage_alert_path(storage_alert) %></td>
-        <td><%= link_to 'Destroy', storage_alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= storage_alert.machine_id %></td>
+      <td><%= storage_alert.addressee %></td>
+      <td><%= storage_alert.path %></td>
+      <td><%= storage_alert.threshold %></td>
+      <td><%= storage_alert.check_interval %></td>
+      <td><a class="btn btn-primary btn-xs" tabindex="0" role="button" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover" title="Message content" data-content="<%= h(storage_alert.custom_message).gsub(/\n/, '<br/>') %>">Display</a></td>
+      <td><%= link_to 'Show', storage_alert, class: 'btn btn-primary btn-xs' %></td>
+      <td><%= link_to 'Edit', edit_storage_alert_path(storage_alert), class: 'btn btn-primary btn-xs' %></td>
+      <td><%= link_to 'Destroy', storage_alert, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-xs btn-danger' %></td>    </tr>
+    </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 

@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root  'machines#index'
-  get 'machine_mountpoints(/:machine_id)' => 'mountpoints#get'
+  # root  'machines#index'
+  root  'static#show', static: "home"
+  get   'machine_mountpoints(/:machine_id)' => "mountpoints#get"
+  get   '/static/:static' => "static#show"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
