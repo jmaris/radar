@@ -29,7 +29,7 @@ $(document).ready(function(){
         <td><%= storage_alert.path %></td>
         <td><%= storage_alert.threshold %></td>
         <td><%= storage_alert.check_interval %></td>
-        <td><a tabindex="0" role="button" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover" title="Message content" data-content="<%= storage_alert.custom_message %>">Display</a></td>
+        <td><a tabindex="0" role="button" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover" title="Message content" data-content="<%= h(storage_alert.custom_message).gsub(/\n/, '<br/>') %>">Display</a></td>
         <td><%= link_to 'Show', storage_alert %></td>
         <td><%= link_to 'Edit', edit_storage_alert_path(storage_alert) %></td>
         <td><%= link_to 'Destroy', storage_alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
