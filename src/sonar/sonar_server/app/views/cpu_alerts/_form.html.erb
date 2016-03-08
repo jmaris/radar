@@ -20,7 +20,7 @@
 </div>
 <div class="field">
   <%= f.label :threshold %><br>
-  <%= f.text_field :threshold %>
+  <%= f.number_field :threshold, :class => 'text_field', :step => 0.5 %>
 </div>
 <div class="field">
   <%= f.label :check_interval %><br>
