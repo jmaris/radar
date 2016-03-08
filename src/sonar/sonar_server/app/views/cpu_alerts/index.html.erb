@@ -30,4 +30,6 @@
 
 <br>
 
-<%= link_to 'New Cpu alert', new_cpu_alert_path %>
+<%= link_to new_cpu_alert_path, class: 'btn btn-success', remote: true, id:"new_cpu_alert_link" do %>
+<i class="glyphicon glyphicon-plus"></i> New CPU Alert
+<% end %>
