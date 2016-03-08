@@ -32,7 +32,6 @@ class StorageAlertsController < ApplicationController
         format.html { redirect_to storage_alerts_url }
         format.js
       else
-        flash[:danger] = 'There was a problem creating the Storage Alert.'
         format.html { render :new }
         format.js
       end
@@ -48,7 +47,6 @@ class StorageAlertsController < ApplicationController
         format.html { redirect_to @storage_alert}
         format.json { render :show, status: :ok, location: @storage_alert }
       else
-        flash[:danger] = 'There was a problem updating the Storage Alert.'
         format.html { render :edit }
         format.json { render json: @storage_alert.errors, status: :unprocessable_entity }
       end

@@ -56,7 +56,6 @@ class MachinesController < ApplicationController
         format.html { redirect_to machines_url }
         format.js
       else
-        flash[:danger] = 'There was a problem creating the Machine.'
         format.html { render :new }
         format.js
       end
@@ -72,7 +71,6 @@ class MachinesController < ApplicationController
         format.html { redirect_to @machine }
         format.json { render :show, status: :ok, location: @machine }
       else
-        flash[:danger] = 'There was a problem updating the Machine.'
         format.html { render :edit }
         format.json { render json: @machine.errors, status: :unprocessable_entity }
       end

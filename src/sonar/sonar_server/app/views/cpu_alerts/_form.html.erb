@@ -1,14 +1,17 @@
 <%= form_for(@cpu_alert) do |f| %>
 <% if @cpu_alert.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@cpu_alert.errors.count, "error") %> prohibited this cpu_alert from being saved:</h2>
 
-  <ul>
-    <% @cpu_alert.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+<div id="error_explanation">
+  <div class="alert alert-danger">
+    <%= pluralize(@cpu_alert.errors.count, "error") %> prohibited this CPU Alert from being saved:
+    <ul>
+      <% @cpu_alert.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
+
 <% end %>
 <div class="field">
   <%= f.label :machine_id %><br>
@@ -30,7 +33,8 @@
   <%= f.label :custom_message %><br>
   <%= f.text_area :custom_message %>
 </div>
+<br>
 <div class="actions">
-  <%= f.submit %>
+  <%= f.submit "Save CPU Alert", class: "btn btn-primary" %>
 </div>
 <% end %>

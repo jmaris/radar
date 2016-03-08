@@ -1,38 +1,41 @@
 <%= form_for(@machine) do |f| %>
-  <% if @machine.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
+<% if @machine.errors.any? %>
 
-      <ul>
+<div id="error_explanation">
+  <div class="alert alert-danger">
+    <%= pluralize(@machine.errors.count, "error") %> prohibited this Machine from being saved:
+    <ul>
       <% @machine.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </ul>
+  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :alias %> <br>
-    <%= f.text_field :alias %>
-  </div>
-  <div class="field">
-    <%= f.label :protocol %> <br>
-    <%= f.text_field :protocol %>
-  </div>
-  <div class="field">
-    <%= f.label :host %> <br>
-    <%= f.text_field :host %>
-  </div>
-  <div class="field">
-    <%= f.label :port %> <br>
-    <%= f.number_field :port %>
-  </div>
-  <div class="field">
-    <%= f.label :update_interval %> <br>
-    <%= f.number_field :update_interval %>
-  </div>
+<% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+  <%= f.label :alias %> <br>
+  <%= f.text_field :alias %>
+</div>
+<div class="field">
+  <%= f.label :protocol %> <br>
+  <%= f.text_field :protocol %>
+</div>
+<div class="field">
+  <%= f.label :host %> <br>
+  <%= f.text_field :host %>
+</div>
+<div class="field">
+  <%= f.label :port %> <br>
+  <%= f.number_field :port %>
+</div>
+<div class="field">
+  <%= f.label :update_interval %> <br>
+  <%= f.number_field :update_interval %>
+</div>
+<br>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

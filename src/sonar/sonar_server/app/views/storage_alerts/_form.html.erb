@@ -1,13 +1,17 @@
 <%= form_for(@storage_alert) do |f| %>
 <% if @storage_alert.errors.any? %>
+
 <div id="error_explanation">
-  <h2><%= pluralize(@storage_alert.errors.count, "error") %> prohibited this storage_alert from being saved:</h2>
-  <ul>
+  <div class="alert alert-danger">
+  <%= pluralize(@storage_alert.errors.count, "error") %> prohibited this Storage Alert from being saved:
+    <ul>
     <% @storage_alert.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
+
 <% end %>
 
 <div class="field">
@@ -34,7 +38,8 @@
   <%= f.label :custom_message %><br>
   <%= f.text_area :custom_message %>
 </div>
+<br>
 <div class="actions">
-  <%= f.submit %>
+  <%= f.submit "Save Storage Alert", class: "btn btn-primary" %>
 </div>
 <% end %>
