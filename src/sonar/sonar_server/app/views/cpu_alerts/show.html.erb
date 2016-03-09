@@ -15,24 +15,16 @@
 <dl class="dl-horizontal">
   <dt>Machine ID</dt>
   <dd><%= @cpu_alert.machine_id %></dd>
-</dl>
 
-<dl class="dl-horizontal">
   <dt>E-Mail Address</dt>
   <dd><%= @cpu_alert.addressee %></dd>
-</dl>
 
-<dl class="dl-horizontal">
   <dt>CPU threshold</dt>
   <dd><%= @cpu_alert.threshold %>%</dd>
-</dl>
 
-<dl class="dl-horizontal">
   <dt>Check interval</dt>
   <dd><%= pluralize(@cpu_alert.check_interval, "minute") %></dd>
-</dl>
 
-<dl class="dl-horizontal">
   <dt>Triggered</dt>
   <dd><%= @cpu_alert.triggered %></dd>
 </dl>

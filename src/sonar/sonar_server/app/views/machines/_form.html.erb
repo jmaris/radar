@@ -1,4 +1,4 @@
-<%= form_for(@machine) do |f| %>
+<%= bootstrap_form_for(@machine) do |f| %>
 <% if @machine.errors.any? %>
 
 <div id="error_explanation">
@@ -15,27 +15,23 @@
 <% end %>
 
 <div class="field">
-  <%= f.label :alias %> <br>
-  <%= f.text_field :alias %>
+  <%= f.text_field :alias, placeholder: 'Machine alias' %>
 </div>
 <div class="field">
-  <%= f.label :protocol %> <br>
-  <%= f.text_field :protocol %>
+  <%= f.text_field :protocol, placeholder: 'http' %>
 </div>
 <div class="field">
-  <%= f.label :host %> <br>
-  <%= f.text_field :host %>
+  <%= f.text_field :host, placeholder: 'example.com', help: 'Address or IP of the machine you want to get data from relative to the Sonar Web server.' %>
 </div>
 <div class="field">
-  <%= f.label :port %> <br>
-  <%= f.number_field :port %>
+  <%= f.number_field :port, placeholder: '4963', help: 'Port of the Sonar API server. 4963 is the default port.' %>
 </div>
 <div class="field">
-  <%= f.label :update_interval %> <br>
-  <%= f.number_field :update_interval %>
+  <%= f.number_field :update_interval, placeholder: 1, help: 'Positive integer, minutes between each graph update.' %>
 </div>
 <br>
 <div class="actions">
-  <%= f.submit "Save Machine", class: "btn btn-primary" %>
+  <%= f.submit 'Save machine', class: 'btn btn-primary' %>
 </div>
+<br>
 <% end %>

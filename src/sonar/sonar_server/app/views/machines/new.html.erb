@@ -1,7 +1,15 @@
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+<%= link_to machines_path, class: 'btn btn-warning', data: { toggle: 'tooltip', title: 'Back', confirm: 'Discard changes and go back?' } do %>
+<i class="glyphicon glyphicon-arrow-left"></i>
+<% end %>
+
 <div class="page-header">
   <h1>New machine</h1>
 </div>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', machines_path %>

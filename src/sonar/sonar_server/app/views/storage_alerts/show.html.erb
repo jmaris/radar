@@ -17,29 +17,19 @@
 <dl class="dl-horizontal">
   <dt>Machine ID</dt>
   <dd><%= @storage_alert.machine_id %></dd>
-</dl>
 
-<dl class="dl-horizontal">
   <dt>E-Mail Address</dt>
   <dd><%= @storage_alert.addressee %></dd>
-</dl>
 
-<dl class="dl-horizontal">
   <dt>Partition</dt>
   <dd><%= @storage_alert.path %></dd>
-</dl>
 
-<dl class="dl-horizontal">
   <dt>Storage threshold</dt>
   <dd><%= @storage_alert.threshold %>%</dd>
-</dl>
 
-<dl class="dl-horizontal">
   <dt>Check interval</dt>
   <dd><%= pluralize(@storage_alert.check_interval, "minute") %></dd>
-</dl>
 
-<dl class="dl-horizontal">
   <dt>Triggered</dt>
   <dd><%= @storage_alert.triggered %></dd>
 </dl>
