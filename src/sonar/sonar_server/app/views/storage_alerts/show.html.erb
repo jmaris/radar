@@ -1,34 +1,45 @@
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({ container: 'body'});   
+  });
+</script>
+
+<div class="btn-group" role="group" aria-label="Actions">
+  <%= link_to storage_alerts_path, class: 'btn btn-default', data: { toggle: 'tooltip', title: 'Back'} do %>
+  <i class="glyphicon glyphicon-arrow-left"></i>
+  <% end %>
+
+  <%= link_to edit_storage_alert_path(@storage_alert), class: 'btn btn-default', data: { toggle: 'tooltip', title: 'Edit' } do %><i class="glyphicon glyphicon-edit"></i><% end %>
+</div>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Machine:</strong>
-  <%= @storage_alert.machine_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Machine ID</dt>
+  <dd><%= @storage_alert.machine_id %></dd>
+</dl>
 
-<p>
-  <strong>Addressee:</strong>
-  <%= @storage_alert.addressee %>
-</p>
+<dl class="dl-horizontal">
+  <dt>E-Mail Address</dt>
+  <dd><%= @storage_alert.addressee %></dd>
+</dl>
 
-<p>
-  <strong>Path:</strong>
-  <%= @storage_alert.path %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Partition</dt>
+  <dd><%= @storage_alert.path %></dd>
+</dl>
 
-<p>
-  <strong>Storage threshold:</strong>
-  <%= @storage_alert.threshold %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Storage threshold</dt>
+  <dd><%= @storage_alert.threshold %>%</dd>
+</dl>
 
-<p>
-  <strong>Check interval:</strong>
-  <%= @storage_alert.check_interval %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Check interval</dt>
+  <dd><%= pluralize(@storage_alert.check_interval, "minute") %></dd>
+</dl>
 
-<p>
-  <strong>Triggered:</strong>
-  <%= @storage_alert.triggered %>
-</p>
-
-<%= link_to 'Edit', edit_storage_alert_path(@storage_alert) %> |
-<%= link_to 'Back', storage_alerts_path %>
+<dl class="dl-horizontal">
+  <dt>Triggered</dt>
+  <dd><%= @storage_alert.triggered %></dd>
+</dl>

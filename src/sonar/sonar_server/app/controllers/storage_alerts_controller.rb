@@ -1,6 +1,8 @@
 class StorageAlertsController < ApplicationController
   before_action :set_storage_alert, only: [:show, :edit, :update, :destroy]
   before_action :get_mountpoints, only: [:edit, :new, :show, :create, :update]
+  before_action :get_machines, only: [:edit, :new, :show, :create, :update]
+  
   # GET /storage_alerts
   # GET /storage_alerts.json
   def index
@@ -70,8 +72,11 @@ class StorageAlertsController < ApplicationController
       @storage_alert = StorageAlert.find(params[:id])
     end
 
-    def get_mountpoints
+    def get_machines
       @machine_ids = Machine.ids
+    end
+
+    def get_mountpoints
       machine = Machine.first
       @mountpoints = Machine.api(machine.protocol,machine.host,machine.port,"live")[:mountpoints]
     end

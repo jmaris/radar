@@ -48,6 +48,7 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap_form (2.3.0)
     builder (3.2.2)
     byebug (8.2.2)
     coffee-rails (4.1.1)
@@ -176,6 +177,7 @@ DEPENDENCIES
   active_record-acts_as
   autoprefixer-rails
   bootstrap-sass
+  bootstrap_form
   byebug
   coffee-rails (~> 4.1.0)
   delayed_job_active_record

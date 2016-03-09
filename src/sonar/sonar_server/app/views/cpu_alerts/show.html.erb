@@ -1,29 +1,38 @@
-<p id="notice"><%= notice %></p>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({ container: 'body'});   
+  });
+</script>
 
-<p>
-  <strong>Machine:</strong>
-  <%= @cpu_alert.machine_id %>
-</p>
+<div class="btn-group" role="group" aria-label="Actions">
+  <%= link_to cpu_alerts_path, class: 'btn btn-default', data: { toggle: 'tooltip', title: 'Back'} do %>
+  <i class="glyphicon glyphicon-arrow-left"></i>
+  <% end %>
 
-<p>
-  <strong>Addressee:</strong>
-  <%= @cpu_alert.addressee %>
-</p>
+  <%= link_to edit_cpu_alert_path(@cpu_alert), class: 'btn btn-default', data: { toggle: 'tooltip', title: 'Edit' } do %><i class="glyphicon glyphicon-edit"></i><% end %>
+</div>
 
-<p>
-  <strong>Cpu threshold:</strong>
-  <%= @cpu_alert.threshold %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Machine ID</dt>
+  <dd><%= @cpu_alert.machine_id %></dd>
+</dl>
 
-<p>
-  <strong>Check interval:</strong>
-  <%= @cpu_alert.check_interval %>
-</p>
+<dl class="dl-horizontal">
+  <dt>E-Mail Address</dt>
+  <dd><%= @cpu_alert.addressee %></dd>
+</dl>
 
-<p>
-  <strong>Triggered:</strong>
-  <%= @cpu_alert.triggered %>
-</p>
+<dl class="dl-horizontal">
+  <dt>CPU threshold</dt>
+  <dd><%= @cpu_alert.threshold %>%</dd>
+</dl>
 
-<%= link_to 'Edit', edit_cpu_alert_path(@cpu_alert) %> |
-<%= link_to 'Back', cpu_alerts_path %>
+<dl class="dl-horizontal">
+  <dt>Check interval</dt>
+  <dd><%= pluralize(@cpu_alert.check_interval, "minute") %></dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>Triggered</dt>
+  <dd><%= @cpu_alert.triggered %></dd>
+</dl>

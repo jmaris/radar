@@ -1,5 +1,6 @@
 class CpuAlertsController < ApplicationController
   before_action :set_cpu_alert, only: [:show, :edit, :update, :destroy]
+  before_action :get_machines, only: [:edit, :new, :show, :create, :update]
 
   # GET /cpu_alerts
   # GET /cpu_alerts.json
@@ -68,6 +69,10 @@ class CpuAlertsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_cpu_alert
       @cpu_alert = CpuAlert.find(params[:id])
+    end
+
+    def get_machines
+      @machine_ids = Machine.ids
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

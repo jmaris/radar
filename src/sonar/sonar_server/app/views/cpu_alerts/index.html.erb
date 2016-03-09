@@ -4,19 +4,28 @@
   });
 </script>
 
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({ container: 'body'});   
+  });
+</script>
+
 <p id="notice"><%= notice %></p>
 
-<div class = "table-responsive">
+<div class="page-header">
+  <h1>CPU alerts</h1>
+</div>
+
+<div class="table-responsive text-center">
   <table class="table table-striped">
-   <caption>CPU Alerts</caption>
    <thead>
     <tr>
-      <th>Machine</th>
-      <th>Addressee</th>
-      <th>Cpu threshold</th>
-      <th>Check interval</th>
-      <th>Custom message</th>
-      <th colspan="3"></th>
+      <th class="text-center">Machine</th>
+      <th class="text-center">Addressee</th>
+      <th class="text-center">Cpu threshold</th>
+      <th class="text-center">Check interval</th>
+      <th class="text-center">Custom message</th>
+      <th class="text-center">Operations</th>
     </tr>
   </thead>
 
@@ -27,10 +36,12 @@
       <td><%= cpu_alert.addressee %></td>
       <td><%= cpu_alert.threshold %></td>
       <td><%= cpu_alert.check_interval %></td>
-      <td><a class="btn btn-primary btn-xs" tabindex="0" role="button" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover" title="Message content" data-content="<%= h(cpu_alert.custom_message).gsub(/\n/, '<br/>') %>">Display</a></td>
-      <td><%= link_to 'Show', cpu_alert, class: 'btn btn-primary btn-xs' %></td>
-      <td><%= link_to 'Edit', edit_cpu_alert_path(cpu_alert), class: 'btn btn-primary btn-xs' %></td>
-      <td><%= link_to 'Destroy', cpu_alert, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-xs btn-danger' %></td>    </tr>
+      <td><a class="btn btn-info btn-xs" tabindex="0" role="button" data-html="true" data-toggle="popover" data-placement="bottom" data-trigger="toggle" title="Message content" data-content="<%= h(cpu_alert.custom_message).gsub(/\n/, '<br/>') %>"><i class="glyphicon glyphicon-info-sign"></i></a></td>
+      <td><div class="btn-group" role="group" aria-label="Operations">
+        <%= link_to cpu_alert, class: 'btn btn-default btn-xs', data: { toggle: 'tooltip', title: 'View' } do %><i class="glyphicon glyphicon-eye-open"></i><% end %>
+        <%= link_to edit_cpu_alert_path(cpu_alert), class: 'btn btn-default btn-xs', data: { toggle: 'tooltip', title: 'Edit' } do %><i class="glyphicon glyphicon-edit"></i><% end %>
+        <%= link_to cpu_alert, method: :delete, data: { confirm: 'Delete item?', toggle: 'tooltip', title: 'Delete' }, class: 'btn btn-xs btn-danger' do %><i class="glyphicon glyphicon-remove"></i><% end %>
+      </div></td>
       <% end %>
     </tbody>
   </table>
