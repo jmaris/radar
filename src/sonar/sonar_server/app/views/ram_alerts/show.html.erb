@@ -1,0 +1,32 @@
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({ container: 'body'});   
+  });
+</script>
+
+<div class="btn-group" role="group" aria-label="Actions">
+  <%= link_to ram_alerts_path, class: 'btn btn-default', data: { toggle: 'tooltip', title: 'Back'} do %>
+  <i class="glyphicon glyphicon-arrow-left"></i>
+  <% end %>
+
+  <%= link_to edit_ram_alert_path(@ram_alert), class: 'btn btn-default', data: { toggle: 'tooltip', title: 'Edit' } do %><i class="glyphicon glyphicon-edit"></i><% end %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<dl class="dl-horizontal">
+  <dt>Machine ID</dt>
+  <dd><%= @ram_alert.machine_id %></dd>
+
+  <dt>E-Mail Address</dt>
+  <dd><%= @ram_alert.addressee %></dd>
+
+  <dt>RAM threshold</dt>
+  <dd><%= @ram_alert.threshold %>%</dd>
+
+  <dt>Check interval</dt>
+  <dd><%= pluralize(@ram_alert.check_interval, "minute") %></dd>
+
+  <dt>Triggered</dt>
+  <dd><%= @ram_alert.triggered %></dd>
+</dl>

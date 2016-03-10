@@ -19,5 +19,6 @@ class CpuAlert < ActiveRecord::Base
         else
             false
         end
+        
     end
 end

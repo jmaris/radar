@@ -1,10 +1,10 @@
-<%= bootstrap_form_for(@cpu_alert) do |f| %>
-<% if @cpu_alert.errors.any? %>
+<%= bootstrap_form_for(@ram_alert) do |f| %>
+<% if @ram_alert.errors.any? %>
 
 <div class="alert alert-danger">
-  <%= pluralize(@cpu_alert.errors.count, "error") %> prohibited this CPU Alert from being saved:
+  <%= pluralize(@ram_alert.errors.count, "error") %> prohibited this RAM Alert from being saved:
   <ul>
-    <% @cpu_alert.errors.full_messages.each do |message| %>
+    <% @ram_alert.errors.full_messages.each do |message| %>
     <li><%= message %></li>
     <% end %>
   </ul>
@@ -19,7 +19,7 @@
   <%= f.text_field :addressee, label: 'E-Mail address', placeholder: 'sonar_alert@example.com' %>
 </div>
 <div class="field">
-  <%= f.number_field :threshold, label: 'CPU threshold', placeholder: '50', class: 'text_field', step: 0.5, help: 'Positive number, percentage of CPU usage.' %>
+  <%= f.number_field :threshold, label: 'RAM threshold', placeholder: '50', class: 'text_field', step: 0.5, help: 'Positive number, percentage of RAM usage.' %>
 </div>
 <div class="field">
   <%= f.number_field :check_interval, placeholder: '5', help: 'Positive integer between 1 and 1440, minutes between each check.' %>
@@ -29,7 +29,7 @@
 </div>
 <br>
 <div class="actions">
-  <%= f.submit 'Save CPU alert', class: 'btn btn-primary' %>
+  <%= f.submit 'Save RAM alert', class: 'btn btn-primary' %>
 </div>
 <br>
 <% end %>

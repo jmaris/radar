@@ -23,5 +23,6 @@ class StorageAlert < ActiveRecord::Base
         else
         	false
         end
+        
     end
 end

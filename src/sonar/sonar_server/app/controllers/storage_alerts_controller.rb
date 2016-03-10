@@ -46,7 +46,7 @@ class StorageAlertsController < ApplicationController
     respond_to do |format|
       if @storage_alert.update(storage_alert_params)
         flash[:success] = 'Storage Alert was successfully updated.'
-        format.html { redirect_to @storage_alert}
+        format.html { redirect_to @storage_alert }
         format.json { render :show, status: :ok, location: @storage_alert }
       else
         format.html { render :edit }

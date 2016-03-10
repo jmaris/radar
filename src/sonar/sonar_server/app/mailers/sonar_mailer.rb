@@ -12,7 +12,7 @@ class SonarMailer < ApplicationMailer
         @threshold      = cpu_alert.threshold
         @custom_message = cpu_alert.custom_message
 
-        mail(to: @addressee, subject: 'Sonar cpu alert')
+        mail(to: @addressee, subject: 'Sonar CPU alert')
 
     end
 
@@ -26,7 +26,36 @@ class SonarMailer < ApplicationMailer
         @machine_alias  = machine.alias
         @threshold      = cpu_alert.threshold
 
-        mail(to: @addressee, subject: 'Sonar cpu alert')
+        mail(to: @addressee, subject: 'Sonar CPU alert solved')
+
+    end
+
+    def ram_alert_email(ram_alert_id)
+
+        ram_alert       = RamAlert.find(ram_alert_id)
+        machine         = Machine.find(ram_alert.machine_id)
+
+        @addressee      = ram_alert.addressee
+        @machine_id     = machine.id
+        @machine_alias  = machine.alias
+        @threshold      = ram_alert.threshold
+        @custom_message = ram_alert.custom_message
+
+        mail(to: @addressee, subject: 'Sonar RAM alert')
+
+    end
+
+    def ram_unalert_email(ram_alert_id)
+
+        ram_alert       = RamAlert.find(ram_alert_id)
+        machine         = Machine.find(ram_alert.machine_id)
+
+        @addressee      = ram_alert.addressee
+        @machine_id     = machine.id
+        @machine_alias  = machine.alias
+        @threshold      = ram_alert.threshold
+
+        mail(to: @addressee, subject: 'Sonar RAM alert solved')
 
     end
 
@@ -56,6 +85,6 @@ class SonarMailer < ApplicationMailer
         @threshold          = storage_alert.threshold
         @storage_path       = storage_alert.path
 
-        mail(to: @addressee, subject: 'Sonar storage alert')
+        mail(to: @addressee, subject: 'Sonar storage alert solved')
     end
 end

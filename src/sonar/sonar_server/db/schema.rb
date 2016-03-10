@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211111520) do
+ActiveRecord::Schema.define(version: 20160310090757) do
 
   create_table "alerts", force: :cascade do |t|
     t.integer  "machine_id"
@@ -70,6 +70,12 @@ ActiveRecord::Schema.define(version: 20160211111520) do
     t.integer  "storage_total_bytes", limit: 16
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+  end
+
+  create_table "ram_alerts", force: :cascade do |t|
+    t.float    "threshold"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ram_metrics", force: :cascade do |t|

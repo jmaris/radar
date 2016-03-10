@@ -1,40 +1,38 @@
 <%= bootstrap_form_for(@storage_alert) do |f| %>
 <% if @storage_alert.errors.any? %>
 
-<div id="error_explanation">
-  <div class="alert alert-danger">
-  <%= pluralize(@storage_alert.errors.count, "error") %> prohibited this Storage Alert from being saved:
-    <ul>
-    <% @storage_alert.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+<div class="alert alert-danger">
+	<%= pluralize(@storage_alert.errors.count, "error") %> prohibited this Storage Alert from being saved:
+	<ul>
+		<% @storage_alert.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
 </div>
 
 <% end %>
 
 <div class="field">
-<%= f.select :machine_id, @machine_ids, label: "Machine ID", onChange: 'javascript: get_mountpoints(this.value)' %>
+	<%= f.select :machine_id, @machine_ids, label: "Machine ID", onChange: 'javascript: get_mountpoints(this.value)' %>
 </div>
 <div class="field">
-<%= f.text_field :addressee, label: 'E-Mail address', placeholder: 'sonar_alert@example.com' %>
+	<%= f.text_field :addressee, label: 'E-Mail address', placeholder: 'sonar_alert@example.com' %>
 </div>
 <div class="field">
-<%= f.select :path, @mountpoints, label: 'Partition' %>
+	<%= f.select :path, @mountpoints, label: 'Partition' %>
 </div>
 <div class="field">
-<%= f.number_field :threshold, label: 'Storage threshold', placeholder: '50', class: 'text_field', step: 0.5, help: 'Positive number, percentage of storage usage.' %>
+	<%= f.number_field :threshold, label: 'Storage threshold', placeholder: '50', class: 'text_field', step: 0.5, help: 'Positive number, percentage of storage usage.' %>
 </div>
 <div class="field">
-<%= f.number_field :check_interval, placeholder: '5', help: 'Positive integer between 1 and 1440, minutes between each check.' %>
+	<%= f.number_field :check_interval, placeholder: '5', help: 'Positive integer between 1 and 1440, minutes between each check.' %>
 </div>
 <div class="field">
-<%= f.text_area :custom_message, placeholder: 'Type your message.' %>
+	<%= f.text_area :custom_message, placeholder: 'Type your message.' %>
 </div>
 <br>
 <div class="actions">
-  <%= f.submit "Save Storage Alert", class: "btn btn-primary" %>
+	<%= f.submit "Save Storage Alert", class: "btn btn-primary" %>
 </div>
 <br>
 <% end %>
