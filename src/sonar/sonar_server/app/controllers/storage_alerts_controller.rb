@@ -73,7 +73,11 @@ class StorageAlertsController < ApplicationController
     end
 
     def get_machines
-      @machine_ids = Machine.ids
+      machines = Machine.all
+      @machines_hash = {}
+      machines.each do |machine|
+        @machines_hash[machine.alias] = machine.id
+      end
     end
 
     def get_mountpoints

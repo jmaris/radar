@@ -13,7 +13,7 @@
 <% end %>
 
 <div class="field">
-  <%= f.select :machine_id, @machine_ids, label: 'Machine ID' %>
+  <%= f.select :machine_id, @machines_hash, label: 'Machine' %>
 </div>
 <div class="field">
   <%= f.text_field :addressee, label: 'E-Mail address', placeholder: 'sonar_alert@example.com' %>
