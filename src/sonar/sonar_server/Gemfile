@@ -32,6 +32,7 @@ gem 'delayed_job_active_record'
 gem 'active_record-acts_as'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
+gem 'twitter-bootstrap-rails-confirm'
 gem 'autoprefixer-rails'
 
 # Use Unicorn as the app server

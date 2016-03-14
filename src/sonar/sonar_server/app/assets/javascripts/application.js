@@ -13,6 +13,7 @@
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
+//= require twitter/bootstrap/rails/confirm
 //= require turbolinks
 // HIGHCHARTS SHIT
 //= require highcharts
