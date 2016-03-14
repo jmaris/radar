@@ -33,12 +33,13 @@
 
   <dt>Current storage load</dt>
   <dd><%= @storage_load %>%</dd>
-  <% else %>
-  <strong>HOST IS CURRENTLY DOWN</strong>
-  <% end %>
 
   <dt>Update interval</dd>
   <dd><%= pluralize(@update_interval, 'minute') %></dd>
+
+  <% else %>
+  <strong>HOST IS CURRENTLY DOWN</strong>
+  <% end %>
 
 </dl>
 

@@ -19,7 +19,10 @@ class Machine < ActiveRecord::Base
 
     def self.api(protocol, host, port, path)
         response = RestClient.get("#{protocol}://#{host}:#{port}/sonar_api_v1/#{path}") # not very smart to hardcode the API version, but works for now.
-        JSON.parse(response,symbolize_names: true) rescue {}
+        JSON.parse(response,symbolize_names: true)
+    rescue
+        RestClient::Exception
+        "error"
     end
 
     def sysinfo_update
