@@ -81,6 +81,6 @@ class RamAlertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ram_alert_params
-      params.require(:ram_alert).permit(:machine_id, :addressee, :threshold, :check_interval, :custom_message)
+      params.require(:ram_alert).permit(:machine_id, :addressee, :threshold, :check_interval, :duration, :custom_message)
     end
 end

@@ -25,6 +25,7 @@
       <th class="text-center">Path</th>
       <th class="text-center">CPU threshold</th>
       <th class="text-center">Check interval</th>
+      <th class="text-center">Duration</th>
       <th class="text-center">Custom message</th>
       <th class="text-center">Operations</th>
     </tr>
@@ -37,7 +38,8 @@
       <td><%= storage_alert.addressee %></td>
       <td><%= storage_alert.path %></td>
       <td><%= storage_alert.threshold %></td>
-      <td><%= storage_alert.check_interval %></td>
+      <td><%= storage_alert.check_interval %> </td>
+      <td><%= storage_alert.duration %></td>
       <td><a class="btn btn-info btn-xs" tabindex="0" role="button" data-html="true" data-toggle="popover" data-placement="bottom" data-trigger="toggle" title="Message content" data-content="<%= h(storage_alert.custom_message).gsub(/\n/, '<br/>') %>"><i class="glyphicon glyphicon-info-sign"></i></a></td>
       <td><div class="btn-group" role="group" aria-label="Operations">
         <%= link_to storage_alert, class: 'btn btn-default btn-xs', data: { toggle: 'tooltip', title: 'View' } do %><i class="glyphicon glyphicon-eye-open"></i><% end %>

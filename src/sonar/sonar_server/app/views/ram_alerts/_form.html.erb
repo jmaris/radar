@@ -13,7 +13,7 @@
 <% end %>
 
 <div class="field">
-  <%= f.select :machine_id, @machine_ids, label: 'Machine ID' %>
+<%= f.select :machine_id, @machines_hash %>
 </div>
 <div class="field">
   <%= f.text_field :addressee, label: 'E-Mail address', placeholder: 'sonar_alert@example.com' %>
@@ -23,6 +23,9 @@
 </div>
 <div class="field">
   <%= f.number_field :check_interval, placeholder: '5', help: 'Positive integer between 1 and 1440, minutes between each check.' %>
+</div>
+<div class="field">
+  <%= f.number_field :duration, placeholder: '10', help: 'Positive integer between 1 and 1440, greater than or equal to the check interval, minutes during which the condition has to be met in order for the alert to get triggered.' %>
 </div>
 <div class="field">
   <%= f.text_area :custom_message, placeholder: 'Type your message.' %>

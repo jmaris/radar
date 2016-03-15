@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160310090757) do
     t.boolean  "triggered"
     t.integer  "actable_id"
     t.string   "actable_type"
+    t.integer  "delayed_job_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

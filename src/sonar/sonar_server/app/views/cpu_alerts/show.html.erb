@@ -25,6 +25,9 @@
   <dt>Check interval</dt>
   <dd><%= pluralize(@cpu_alert.check_interval, "minute") %></dd>
 
+  <dt>duration</dt>
+  <dd><%= pluralize(@cpu_alert.duration, "minute") %></dd>
+
   <dt>Triggered</dt>
   <dd><%= @cpu_alert.triggered %></dd>
 </dl>

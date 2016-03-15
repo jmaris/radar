@@ -9,6 +9,8 @@ class CreateAlerts < ActiveRecord::Migration
       t.boolean :triggered
       # for inheritance
       t.actable
+      # dj_reference to delete DJs when deleting alerts
+      t.integer :delayed_job_id # delayed job reference
 
       t.timestamps null: false
     end
