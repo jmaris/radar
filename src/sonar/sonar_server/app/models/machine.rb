@@ -1,8 +1,9 @@
 class Machine < ActiveRecord::Base
-    validates       :protocol,        presence: true
-    validates       :host,            presence: true, uniqueness: true
-    validates       :port,            presence: true, numericality: { only_integer: true }, inclusion: 1..65535
-    validates       :update_interval, presence: true, numericality: { only_integer: true }
+    validates       :alias,             presence: true
+    validates       :protocol,          presence: true, format: { with: /\A(https?)\Z/i }
+    validates       :host,              presence: true, uniqueness: true
+    validates       :port,              presence: true, numericality: { only_integer: true }, inclusion: 1..65535
+    validates       :update_interval,   presence: true, numericality: { only_integer: true }
 
     # has_many        :metrics,           dependent: :destroy
     has_many        :cpu_metrics,       dependent: :destroy

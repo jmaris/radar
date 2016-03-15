@@ -5,6 +5,7 @@ class Alert < ActiveRecord::Base
     belongs_to		:machine
 
     validates   	:check_interval, presence: true, numericality: { only_integer: true }, inclusion: {in: 1..1440}
+    validates       :duration, presence: true, numericality: { only_integer: true }, inclusion: {in: 1..1440}
     validates   	:addressee, presence: true
     validate    	:machine
 

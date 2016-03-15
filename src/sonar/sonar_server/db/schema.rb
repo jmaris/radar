@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20160310090757) do
     t.integer  "machine_id"
     t.string   "addressee"
     t.integer  "check_interval"
+    t.integer  "duration"
     t.string   "custom_message"
     t.boolean  "triggered"
     t.integer  "actable_id"

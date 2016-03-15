@@ -1,15 +1,13 @@
 <%= bootstrap_form_for(@machine) do |f| %>
 <% if @machine.errors.any? %>
 
-<div id="error_explanation">
-  <div class="alert alert-danger">
-    <%= pluralize(@machine.errors.count, "error") %> prohibited this Machine from being saved:
-    <ul>
-      <% @machine.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+<div class="alert alert-danger">
+  <%= pluralize(@machine.errors.count, "error") %> prohibited this Machine from being saved:
+  <ul>
+    <% @machine.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
 </div>
 
 <% end %>
@@ -17,8 +15,11 @@
 <div class="field">
   <%= f.text_field :alias, placeholder: 'Machine alias' %>
 </div>
+<!-- <div class="field"> -->
+<!-- <%= f.text_field :protocol, placeholder: 'http' %> -->
+<!-- </div> -->
 <div class="field">
-  <%= f.text_field :protocol, placeholder: 'http' %>
+  <%= f.select :protocol, options_for_select([["HTTP", "http"], ["HTTPS", "https"]]) %>
 </div>
 <div class="field">
   <%= f.text_field :host, placeholder: 'example.com', help: 'Address or IP of the machine you want to get data from relative to the Sonar Web server.' %>
