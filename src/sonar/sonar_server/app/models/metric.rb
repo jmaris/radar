@@ -1,6 +1,6 @@
 class Metric < ActiveRecord::Base
 
-private
+    private
 
     def self.save_metrics_dj(machine_id)
         machine = Machine.find(machine_id)

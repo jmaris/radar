@@ -11,7 +11,7 @@ class CreateMachines < ActiveRecord::Migration
         t.integer   :update_interval
 
         # Delayed Job
-        t.integer   :delayed_job_id
+        t.references   :delayed_job
 
         # static system information
         t.string    :hostname

@@ -5,13 +5,12 @@ class Machine < ActiveRecord::Base
     validates       :port,              presence: true, numericality: { only_integer: true }, inclusion: 1..65535
     validates       :update_interval,   presence: true, numericality: { only_integer: true }
 
-    # has_many        :metrics,           dependent: :destroy
     has_many        :cpu_metrics,       dependent: :destroy
     has_many        :ram_metrics,       dependent: :destroy
     has_many        :storage_metrics,   dependent: :destroy
 
-    # has_many        :alerts,            dependent: :destroy
-    has_many        :alerts,        dependent: :destroy
+    has_many        :alerts,            dependent: :destroy
+    # has_one         :delayed_job,       dependent: :destroy
 
     after_save      :sysinfo_update # this updates the machine with static info provided by the sysinfo API
     after_create    :launch_metric_save_metrics_dj # schedules a delayed job to check every N minutes and update the performance charts

@@ -4,6 +4,8 @@ class Alert < ActiveRecord::Base
 
     belongs_to		:machine
 
+    # has_one         :delayed_job,       dependent: :destroy #delayed_job_id
+
     validates   	:check_interval, presence: true, numericality: { only_integer: true }, inclusion: {in: 1..1440}
     validates       :duration, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: :check_interval}, inclusion: {in: 1..1440}
     validates   	:addressee, presence: true
@@ -32,7 +34,10 @@ class Alert < ActiveRecord::Base
             alert_email_untrigger(alert_id)
         end
         
-        alert.delay(run_at: alert.check_interval.minutes.from_now).check_dj
+        delayed_job = alert.delay(run_at: alert.check_interval.minutes.from_now).check_dj
+
+        alert.delayed_job_id = delayed_job.id
+        alert.save
     end
 
     # private
