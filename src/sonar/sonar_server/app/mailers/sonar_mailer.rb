@@ -6,6 +6,7 @@ class SonarMailer < ApplicationMailer
         cpu_alert       = CpuAlert.find(cpu_alert_id)
         machine         = Machine.find(cpu_alert.machine_id)
 
+        @alert          = cpu_alert
         @addressee      = cpu_alert.addressee
         @machine_id     = machine.id
         @machine_alias  = machine.alias
@@ -21,6 +22,7 @@ class SonarMailer < ApplicationMailer
         cpu_alert       = CpuAlert.find(cpu_alert_id)
         machine         = Machine.find(cpu_alert.machine_id)
 
+        @alert          = cpu_alert
         @addressee      = cpu_alert.addressee
         @machine_id     = machine.id
         @machine_alias  = machine.alias
@@ -35,6 +37,7 @@ class SonarMailer < ApplicationMailer
         ram_alert       = RamAlert.find(ram_alert_id)
         machine         = Machine.find(ram_alert.machine_id)
 
+        @alert          = ram_alert
         @addressee      = ram_alert.addressee
         @machine_id     = machine.id
         @machine_alias  = machine.alias
@@ -50,6 +53,7 @@ class SonarMailer < ApplicationMailer
         ram_alert       = RamAlert.find(ram_alert_id)
         machine         = Machine.find(ram_alert.machine_id)
 
+        @alert          = ram_alert
         @addressee      = ram_alert.addressee
         @machine_id     = machine.id
         @machine_alias  = machine.alias
@@ -64,6 +68,7 @@ class SonarMailer < ApplicationMailer
         storage_alert       = StorageAlert.find(storage_alert_id)
         machine             = Machine.find(storage_alert.machine_id)
 
+        @alert              = storage_alert
         @addressee          = storage_alert.addressee
         @machine_id         = machine.id
         @machine_alias      = machine.alias
@@ -79,6 +84,7 @@ class SonarMailer < ApplicationMailer
         storage_alert       = StorageAlert.find(storage_alert_id)
         machine             = Machine.find(storage_alert.machine_id)
 
+        @alert              = storage_alert
         @addressee          = storage_alert.addressee
         @machine_id         = machine.id
         @machine_alias      = machine.alias

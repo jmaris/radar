@@ -1,5 +1,7 @@
 
 Sonar has triggered an automatic alert because the CPU usage exceeds <%= @threshold %> % for <%= @machine_alias %>.
 
+<% if @alert.custom_message.empty? == false %>
 Below is the system administrator message:
 <%= @custom_message %>
+<% end %>

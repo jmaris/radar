@@ -33,7 +33,7 @@
 
   <tbody>
     <% @storage_alerts.each do |storage_alert| %>
-      <% if ram_alert.triggered %>
+      <% if storage_alert.triggered %>
         <tr class="danger">
       <% else %>
         <tr>

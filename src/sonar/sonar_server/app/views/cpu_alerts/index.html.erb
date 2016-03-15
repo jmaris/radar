@@ -32,7 +32,7 @@
 
   <tbody>
     <% @cpu_alerts.each do |cpu_alert| %>
-      <% if ram_alert.triggered %>
+      <% if cpu_alert.triggered %>
         <tr class="danger">
       <% else %>
         <tr>
