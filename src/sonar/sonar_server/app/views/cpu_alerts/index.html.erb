@@ -32,7 +32,11 @@
 
   <tbody>
     <% @cpu_alerts.each do |cpu_alert| %>
-    <tr>
+      <% if ram_alert.triggered %>
+        <tr class="danger">
+      <% else %>
+        <tr>
+      <% end %>
       <td> <%= cpu_alert.machine_id %> </td>
       <td> <%= cpu_alert.addressee %> </td>
       <td> <%= cpu_alert.threshold %> </td>

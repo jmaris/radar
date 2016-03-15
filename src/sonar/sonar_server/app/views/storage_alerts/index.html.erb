@@ -33,7 +33,11 @@
 
   <tbody>
     <% @storage_alerts.each do |storage_alert| %>
-    <tr>
+      <% if ram_alert.triggered %>
+        <tr class="danger">
+      <% else %>
+        <tr>
+      <% end %>
       <td><%= storage_alert.machine_id %></td>
       <td><%= storage_alert.addressee %></td>
       <td><%= storage_alert.path %></td>
