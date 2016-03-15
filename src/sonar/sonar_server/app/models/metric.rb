@@ -1,13 +1,4 @@
 class Metric < ActiveRecord::Base
-# Attributes: machine_id
-# belongs_to :machine
-# validates :machine, :presence => true #machine_id
-# has_many :cpu_metrics
-# has_many :ram_metrics
-
-    # def machine
-    #     errors.add(:machine_id, "is invalid") unless Machine.exists?(self.machine_id)
-    # end
 
 private
 
