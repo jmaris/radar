@@ -8,7 +8,7 @@ class Alert < ActiveRecord::Base
 
     validates   	:check_interval, presence: true, numericality: { only_integer: true }, inclusion: {in: 1..1440}
     validates       :duration, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: :check_interval}, inclusion: {in: 1..1440}
-    validates   	:addressee, presence: true
+    validates   	:addressee, presence: true, format: { with: /\A(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})\z/i }
     validate    	:machine
 
     after_create	:init # sets the triggered value to false and starts the Delayed Job

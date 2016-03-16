@@ -22,7 +22,7 @@
   <%= f.select :path, @mountpoints, label: 'Partition' %>
 </div>
 <div class="field">
-  <%= f.number_field :threshold, label: 'Storage threshold', placeholder: '50', class: 'text_field', step: 0.5, help: 'Positive number, percentage of storage usage.' %>
+  <%= f.number_field :threshold, label: 'Storage threshold', placeholder: '50.5', class: 'text_field', step: 0.5, help: 'Positive number, percentage of storage usage.' %>
 </div>
 <div class="field">
   <%= f.number_field :check_interval, placeholder: '5', help: 'Positive integer between 1 and 1440, minutes between each check.' %>
