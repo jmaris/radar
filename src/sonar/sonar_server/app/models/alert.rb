@@ -72,9 +72,7 @@ class Alert < ActiveRecord::Base
         type = alert.actable_type.constantize
         actable_alert = type.find(actable_id)
 
-        if actable_alert.triggered
-            puts "Alert triggered. Not triggering."
-        else
+        unless actable_alert.triggered
             case actable_type
             when "CpuAlert"
                 SonarMailer.cpu_alert_email(actable_id).deliver_later

@@ -1,7 +1,7 @@
 
 Sonar has triggered an automatic alert because the storage usage exceeds <%= @threshold %> % for <%= @machine_alias %> at path <%= @storage_path %>.
 
-<% if @alert.custom_message.empty? == false %>
+<% unless @alert.custom_message.empty? %>
 Below is the system administrator message:
 <%= @custom_message %>
 <% end %>
