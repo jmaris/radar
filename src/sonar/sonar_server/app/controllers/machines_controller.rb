@@ -14,15 +14,15 @@ class MachinesController < ApplicationController
     @storage_bytes        = @machine.storage_total_bytes
     @update_interval      = @machine.update_interval
     @status               = false
-    @status               = true unless Machine.api(@machine.protocol,@machine.host,@machine.port,"live") == "error"
+    @status               = true unless Machine.api(@machine.protocol, @machine.host, @machine.port, 'live') == 'error'
     if @status
-      api_live              = Machine.api(@machine.protocol,@machine.host,@machine.port,"live")
-      api_sysinfo           = Machine.api(@machine.protocol,@machine.host,@machine.port,"sysinfo")
+      api_live              = Machine.api(@machine.protocol, @machine.host, @machine.port, 'live')
+      api_sysinfo           = Machine.api(@machine.protocol, @machine.host, @machine.port, 'sysinfo')
       @hostname             = api_sysinfo[:hostname]
       @cpu_load             = api_live[:cpu_percentage]
-      @ram_load             = (api_live[:ram_bytes].to_f/api_sysinfo[:ram][:total_bytes].to_f*100).round(2)
+      @ram_load             = (api_live[:ram_bytes].to_f/api_sysinfo[:ram][:total_bytes].to_f * 100).round(2)
       # @swap_load            = api_live[:swap] # swap not yet implemented
-      @storage_load         = (api_live[:storage_bytes].to_f/api_sysinfo[:storage][:total_bytes].to_f*100).round(2) # we should be calling the API for this
+      @storage_load         = (api_live[:storage_bytes].to_f/api_sysinfo[:storage][:total_bytes].to_f * 100).round(2) # we should be calling the API for this
       @uptime               = api_live[:uptime_seconds]
     end
     @cpu_load_last10      = CpuMetric.where(machine_id: @machine.id).last(10).map(&:cpu) # short for CpuMetric.where(machine_id: 3).last(10).map {|cpu_metric| cpu_metric.cpu}
@@ -48,11 +48,10 @@ class MachinesController < ApplicationController
       if @machine.save
         flash[:success] = 'Machine was successfully saved.'
         format.html { redirect_to machines_url }
-        format.js
       else
         format.html { render :new }
-        format.js
       end
+      format.js
     end
   end
 
@@ -77,19 +76,20 @@ class MachinesController < ApplicationController
     @machine.destroy
     respond_to do |format|
       flash[:success] = 'Machine was successfully destroyed.'
-      format.html { redirect_to machines_url}
+      format.html { redirect_to machines_url }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_machine
-      @machine ||= Machine.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def machine_params
-      params.require(:machine).permit(:alias, :protocol, :host, :port, :update_interval)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_machine
+    @machine ||= Machine.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def machine_params
+    params.require(:machine).permit(:alias, :protocol, :host, :port, :update_interval)
+  end
   end

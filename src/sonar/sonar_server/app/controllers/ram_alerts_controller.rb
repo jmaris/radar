@@ -31,11 +31,10 @@ class RamAlertsController < ApplicationController
       if @ram_alert.save
         flash[:success] = 'RAM Alert was successfully saved.'
         format.html { redirect_to ram_alerts_url }
-        format.js
       else
         format.html { render :new }
-        format.js
       end
+      format.js
     end
   end
 
