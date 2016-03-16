@@ -25,11 +25,8 @@
   <dd><%= @storage_alert.path %></dd>
 
   <dt>Storage threshold</dt>
-  <dd><%= @storage_alert.threshold %>%</dd>
+  <dd><% if @storage_alert.triggered %> <span class="label label-danger"> <% end %> <%= @storage_alert.threshold %> <% if @storage_alert.triggered %> % </span> <% else %> % <% end %> </dd>
 
   <dt>Check interval</dt>
   <dd><%= pluralize(@storage_alert.check_interval, "minute") %></dd>
-
-  <dt>Triggered</dt>
-  <dd><%= @storage_alert.triggered %></dd>
 </dl>

@@ -38,7 +38,8 @@
   <dd><%= pluralize(@update_interval, 'minute') %></dd>
 
   <% else %>
-  <strong>HOST IS CURRENTLY DOWN</strong>
+  <br>
+  <span class="label label-danger">HOST IS CURRENTLY DOWN</span>
   <% end %>
 
 </dl>

@@ -22,11 +22,8 @@
   <dd><%= @ram_alert.addressee %></dd>
 
   <dt>RAM threshold</dt>
-  <dd><%= @ram_alert.threshold %>%</dd>
+  <dd><% if @ram_alert.triggered %> <span class="label label-danger"> <% end %> <%= @ram_alert.threshold %> <% if @ram_alert.triggered %> % </span> <% else %> % <% end %> </dd>
 
   <dt>Check interval</dt>
   <dd><%= pluralize(@ram_alert.check_interval, "minute") %></dd>
-
-  <dt>Triggered</dt>
-  <dd><%= @ram_alert.triggered %></dd>
 </dl>
