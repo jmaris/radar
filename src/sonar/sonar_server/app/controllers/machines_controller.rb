@@ -14,7 +14,7 @@ class MachinesController < ApplicationController
     @storage_bytes        = @machine.storage_total_bytes
     @update_interval      = @machine.update_interval
     @status               = false
-    @status               = true if Machine.api(@machine.protocol,@machine.host,@machine.port,"live") != "error"
+    @status               = true unless Machine.api(@machine.protocol,@machine.host,@machine.port,"live") == "error"
     if @status
       api_live              = Machine.api(@machine.protocol,@machine.host,@machine.port,"live")
       api_sysinfo           = Machine.api(@machine.protocol,@machine.host,@machine.port,"sysinfo")

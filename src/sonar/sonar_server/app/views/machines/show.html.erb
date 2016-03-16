@@ -14,156 +14,155 @@
 
 <dl class="dl-horizontal">
 
-  <dt>URL</dt>
-  <dd><a href=" <%= "#{@machine.protocol}://#{@machine.host}:#{@machine.port}" %>"><%= "#{@machine.protocol}://#{@machine.host}:#{@machine.port}" %></a></dd>
+  <dt> URL </dt>
+  <dd> <a data-original-title="" class="btn btn-default btn-xs <% unless @status %> btn-danger <% end %>" <% unless @status %> data-toggle="tooltip" data-title="Host can't be reached" <% end %> href="<%= "#{@machine.protocol}://#{@machine.host}:#{@machine.port}" %>"><%= "#{@machine.protocol}://#{@machine.host}:#{@machine.port}" %> </a> </dd>
 
-  <dt>Alias</dt>
-  <dd><%= @machine.alias %></dd>
+  <dt> Alias </dt>
+  <dd> <%= @machine.alias %> </dd>
+
+  <dt> Hostname </dt>
+  <dd> <%= @machine.hostname %> </dd>
+
+  <dt> Update interval </dd>
+  <dd> <%= pluralize(@machine.update_interval, 'minute') %> </dd>
 
   <% if @status %>
 
-  <dt>Hostname</dt>
-  <dd><%= @machine.hostname %></dd>
+  <br>
 
   <dt>Current CPU load</dt>
-  <dd><%= @cpu_load %>%</dd>
+  <dd><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="<%= @cpu_load %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @cpu_load %>%;"><%= @cpu_load %> %</div></div></dd>
 
   <dt>Current RAM load</dt>
-  <dd><%= @ram_load %>%</dd>
+  <dd><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="<%= @ram_load %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @ram_load %>%;"><%= @ram_load %> %</div></div></dd>
 
   <dt>Current storage load</dt>
-  <dd><%= @storage_load %>%</dd>
+  <dd><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="<%= @storage_load %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @storage_load %>%;"><%= @storage_load %> %</div></div></dd>
 
-  <dt>Update interval</dd>
-  <dd><%= pluralize(@update_interval, 'minute') %></dd>
+    <% end %>
 
-  <% else %>
-  <br>
-  <span class="label label-danger">HOST IS CURRENTLY DOWN</span>
-  <% end %>
+  </dl>
 
-</dl>
-
-<p>
-  <div id="cpu_chart" style="width:50%; height:400px;float:left;"></div>
-  <div id="ram_chart" style="width:50%; height:400px;float:right;"></div>
-  <div id="storage_chart" style="width:100%; height:200px;"></div>
-  <script>
-    $(function () {
-      $('#cpu_chart').highcharts({
-        chart :{
-          type: 'area'
-        },
-        yAxis: {
-          min: 0, max: 100,
-          title: {
-            text: 'CPU Percentage'
+  <p>
+    <div id="cpu_chart" style="width:50%; height:400px;float:left;"></div>
+    <div id="ram_chart" style="width:50%; height:400px;float:right;"></div>
+    <div id="storage_chart" style="width:100%; height:200px;"></div>
+    <script>
+      $(function () {
+        $('#cpu_chart').highcharts({
+          chart :{
+            type: 'area'
           },
-          labels: {
-            formatter: function() {
-              return this.value + ' %';
-            }
+          yAxis: {
+            min: 0, max: 100,
+            title: {
+              text: 'CPU Percentage'
+            },
+            labels: {
+              formatter: function() {
+                return this.value + ' %';
+              }
+            },
           },
-        },
-        legend: {
-          enabled: false
-        },
-        xAxis: {
-          labels: {
+          legend: {
             enabled: false
           },
-        },
-        title:{
-          text: 'Last 10 CPU metrics'
-        },
-        plotOptions: {
-          series: {
-            allowPointSelect: true
-          }
-        },
-        series: [{
-          data: <%= @cpu_load_last10 %>
-        }]
-      });
-    });
-  </script>
-
-  <script>
-    $(function () {
-      $('#ram_chart').highcharts({
-        chart :{
-          type: 'area'
-        },
-        yAxis: {
-          min: 0, max: 100,
-          title: {
-            text: 'RAM Percentage'
+          xAxis: {
+            labels: {
+              enabled: false
+            },
           },
-          labels: {
-            formatter: function() {
-              return this.value + ' %';
+          title:{
+            text: 'Last 10 CPU metrics'
+          },
+          plotOptions: {
+            series: {
+              allowPointSelect: true
             }
           },
-        },
-        legend: {
-          enabled: false
-        },
-        xAxis: {
-          labels: {
+          series: [{
+            data: <%= @cpu_load_last10 %>
+          }]
+        });
+      });
+    </script>
+
+    <script>
+      $(function () {
+        $('#ram_chart').highcharts({
+          chart :{
+            type: 'area'
+          },
+          yAxis: {
+            min: 0, max: 100,
+            title: {
+              text: 'RAM Percentage'
+            },
+            labels: {
+              formatter: function() {
+                return this.value + ' %';
+              }
+            },
+          },
+          legend: {
             enabled: false
           },
-        },
-        title:{
-          text: 'Last 10 RAM metrics'
-        },
-        plotOptions: {
-          area: {}
-        },
-        series: [{
-          data: <%= @ram_load_last10 %>
-        }]
-      });
-    });
-  </script>
-
-  <script>
-    $(function () {
-      $('#storage_chart').highcharts({
-        chart :{
-          type: 'area'
-        },
-        yAxis: {
-          min: 0, max: 100,
-          title: {
-            text: 'Storage Percentage'
+          xAxis: {
+            labels: {
+              enabled: false
+            },
           },
-          labels: {
-            formatter: function() {
-              return this.value + ' %';
+          title:{
+            text: 'Last 10 RAM metrics'
+          },
+          plotOptions: {
+            area: {}
+          },
+          series: [{
+            data: <%= @ram_load_last10 %>
+          }]
+        });
+      });
+    </script>
+
+    <script>
+      $(function () {
+        $('#storage_chart').highcharts({
+          chart :{
+            type: 'area'
+          },
+          yAxis: {
+            min: 0, max: 100,
+            title: {
+              text: 'Storage Percentage'
+            },
+            labels: {
+              formatter: function() {
+                return this.value + ' %';
+              }
+            },
+          },
+          legend: {
+            enabled: false
+          },
+          xAxis: {
+            labels: {
+              enabled: false
+            },
+          },
+          title:{
+            text: 'Last 10 storage metrics'
+          },
+          plotOptions: {
+            series: {
+              allowPointSelect: true
             }
           },
-        },
-        legend: {
-          enabled: false
-        },
-        xAxis: {
-          labels: {
-            enabled: false
-          },
-        },
-        title:{
-          text: 'Last 10 storage metrics'
-        },
-        plotOptions: {
-          series: {
-            allowPointSelect: true
-          }
-        },
-        series: [{
-          data: <%= @storage_load_last10 %>
-        }]
+          series: [{
+            data: <%= @storage_load_last10 %>
+          }]
+        });
       });
-    });
-  </script>
+    </script>
 
-</p>
+  </p>
