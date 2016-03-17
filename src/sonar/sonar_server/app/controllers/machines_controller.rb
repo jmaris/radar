@@ -88,8 +88,8 @@ class MachinesController < ApplicationController
     @machine ||= Machine.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the internet, only allow the white list through.
   def machine_params
-    params.require(:machine).permit(:alias, :protocol, :host, :port, :update_interval)
+    params.require(:machine).permit(:alias, :protocol, :host, :port,:update_interval)
   end
-  end
+end

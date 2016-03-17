@@ -1,7 +1,7 @@
 class StorageAlertsController < ApplicationController
   before_action :set_storage_alert, only: [:show, :edit, :update, :destroy]
-  before_action :get_mountpoints, only: [:edit, :new, :show, :create, :update]
-  before_action :get_machines, only: [:edit, :new, :show, :create, :update]
+  before_action :set_mountpoints, only: [:edit, :new, :show, :create, :update]
+  before_action :set_machines, only: [:edit, :new, :show, :create, :update]
   
   # GET /storage_alerts
   # GET /storage_alerts.json
@@ -32,11 +32,10 @@ class StorageAlertsController < ApplicationController
       if @storage_alert.save
         flash[:success] = 'Storage Alert was successfully saved.'
         format.html { redirect_to storage_alerts_url }
-        format.js
       else
         format.html { render :new }
-        format.js
       end
+      format.js
     end
   end
 
@@ -67,26 +66,27 @@ class StorageAlertsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
-    def set_storage_alert
-      @storage_alert = StorageAlert.find(params[:id])
-    end
+  def set_storage_alert
+    @storage_alert = StorageAlert.find(params[:id])
+  end
 
-    def get_machines
-      machines = Machine.all
-      @machines_hash = {}
-      machines.each do |machine|
-        @machines_hash[machine.alias] = machine.id
-      end
+  def set_machines
+    machines = Machine.all
+    @machines_hash = {}
+    machines.each do |machine|
+      @machines_hash[machine.alias] = machine.id
     end
+  end
 
-    def get_mountpoints
-      machine = Machine.first
-      @mountpoints = Machine.api(machine.protocol,machine.host,machine.port,"live")[:mountpoints]
-    end
+  def set_mountpoints
+    machine = Machine.first
+    @mountpoints = Machine.api(machine.protocol,machine.host,machine.port,"live")[:mountpoints]
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def storage_alert_params
-      params.require(:storage_alert).permit(:machine_id, :addressee, :path, :threshold, :check_interval, :duration, :custom_message)
-    end
+  # Never trust parameters from the internet, only allow the white list through.
+  def storage_alert_params
+    params.require(:storage_alert).permit(:machine_id, :addressee, :path, :threshold, :duration, :custom_message)
+  end
 end

@@ -1,6 +1,6 @@
 class CpuAlertsController < ApplicationController
   before_action :set_cpu_alert, only: [:show, :edit, :update, :destroy]
-  before_action :get_machines, only: [:edit, :new, :show, :create, :update]
+  before_action :set_machines, only: [:edit, :new, :show, :create, :update]
 
   # GET /cpu_alerts
   # GET /cpu_alerts.json
@@ -31,11 +31,10 @@ class CpuAlertsController < ApplicationController
       if @cpu_alert.save
         flash[:success] = 'CPU Alert was successfully saved.'
         format.html { redirect_to cpu_alerts_url }
-        format.js
       else
         format.html { render :new }
-        format.js
       end
+      format.js
     end
   end
 
@@ -45,7 +44,7 @@ class CpuAlertsController < ApplicationController
     respond_to do |format|
       if @cpu_alert.update(cpu_alert_params)
         flash[:success] = 'CPU Alert was successfully updated.'
-        format.html { redirect_to @cpu_alert}
+        format.html { redirect_to @cpu_alert }
         format.json { render :show, status: :ok, location: @cpu_alert }
       else
         format.html { render :edit }
@@ -60,27 +59,28 @@ class CpuAlertsController < ApplicationController
     @cpu_alert.destroy
     respond_to do |format|
       flash[:success] = 'Machine was successfully destroyed.'
-      format.html { redirect_to cpu_alerts_url}
+      format.html { redirect_to cpu_alerts_url }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cpu_alert
-      @cpu_alert = CpuAlert.find(params[:id])
-    end
 
-    def get_machines
-      machines = Machine.all
-      @machines_hash = {}
-      machines.each do |machine|
-        @machines_hash[machine.alias] = machine.id
-      end
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cpu_alert
+    @cpu_alert = CpuAlert.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cpu_alert_params
-      params.require(:cpu_alert).permit(:machine_id, :addressee, :threshold, :check_interval, :duration, :custom_message)
+  def set_machines
+    machines = Machine.all
+    @machines_hash = {}
+    machines.each do |machine|
+      @machines_hash[machine.alias] = machine.id
     end
+  end
+
+  # Never trust parameters from the internet, only allow the white list through.
+  def cpu_alert_params
+    params.require(:cpu_alert).permit(:machine_id, :addressee, :threshold, :duration, :custom_message)
+  end
 end

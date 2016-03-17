@@ -1,6 +1,6 @@
 class RamAlertsController < ApplicationController
   before_action :set_ram_alert, only: [:show, :edit, :update, :destroy]
-  before_action :get_machines, only: [:edit, :new, :show, :create, :update]
+  before_action :set_machines, only: [:edit, :new, :show, :create, :update]
 
   # GET /ram_alerts
   # GET /ram_alerts.json
@@ -65,21 +65,21 @@ class RamAlertsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ram_alert
-      @ram_alert = RamAlert.find(params[:id])
-    end
 
-    def get_machines
-      machines = Machine.all
-      @machines_hash = {}
-      machines.each do |machine|
-        @machines_hash[machine.alias] = machine.id
-      end
-    end
+  def set_ram_alert
+    @ram_alert = RamAlert.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def ram_alert_params
-      params.require(:ram_alert).permit(:machine_id, :addressee, :threshold, :check_interval, :duration, :custom_message)
+  def set_machines
+    machines = Machine.all
+    @machines_hash = {}
+    machines.each do |machine|
+      @machines_hash[machine.alias] = machine.id
     end
+  end
+
+  # Never trust parameters from the internet, only allow the white list through.
+  def ram_alert_params
+    params.require(:ram_alert).permit(:machine_id, :addressee, :threshold, :duration, :custom_message)
+  end
 end
