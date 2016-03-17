@@ -6,14 +6,24 @@ class Alert < ActiveRecord::Base
   # has_one         :delayed_job,       dependent: :destroy #delayed_job_id
 
   #validates     :check_interval, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..1440 }
-  #validates     :duration, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: :check_interval }, inclusion: { in: 1..1440 }
+  validates     :duration, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..1440 }
   validates     :addressee, presence: true, format: { with: /\A(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})\z/i }
   validate      :machine
+  validate      :duration_must_be_equal_to_or_higher_than_update_interval
 
   after_create  :init # sets triggered to false, copies check_interval from machine
 
   def machine
-    errors.add(:machine_id, 'does not exist') unless Machine.exists?(self.machine_id)
+    unless Machine.exists?(self.machine_id)
+      errors.add(:machine_id, 'does not exist')
+    end
+  end
+
+  def duration_must_be_equal_to_or_higher_than_update_interval
+    machine_update_interval = Machine.find(self.machine_id).update_interval
+    if self.duration.nil? || self.duration < machine_update_interval
+      errors.add(:duration, "must be equal to or greater than #{machine_update_interval}")
+    end
   end
 
   def check_dj
