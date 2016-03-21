@@ -3,7 +3,7 @@ class CreateStorageAlerts < ActiveRecord::Migration
     create_table  :storage_alerts do |t|
       t.float     :threshold
       t.string    :path
-      #common
+      # common
       # t.integer   :machine_id
       # t.string    :addressee
       # t.integer   :check_interval

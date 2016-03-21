@@ -22,6 +22,9 @@
   <dt>CPU threshold</dt>
   <dd><% if @cpu_alert.triggered %> <span class="label label-danger"> <% end %> <%= @cpu_alert.threshold %> <% if @cpu_alert.triggered %> % </span> <% else %> % <% end %> </dd>
 
+  <dt>Check interval</dt>
+  <dd><%= pluralize(@machine.update_interval, "minute") %></dd>
+
   <dt>Duration</dt>
   <dd><%= pluralize(@cpu_alert.duration, "minute") %></dd>
 

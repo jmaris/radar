@@ -28,8 +28,11 @@
   <dd><% if @storage_alert.triggered %> <span class="label label-danger"> <% end %> <%= @storage_alert.threshold %> <% if @storage_alert.triggered %> % </span> <% else %> % <% end %> </dd>
 
   <dt>Check interval</dt>
-  <dd><%= pluralize(@storage_alert.check_interval, "minute") %></dd>
+  <dd><%= pluralize(@machine.update_interval, "minute") %></dd>
 
   <dt>Duration</dt>
   <dd><%= pluralize(@storage_alert.duration, "minute") %></dd>
+
+  <dt>Cycles</dt>
+  <dd><%= @storage_alert.duration / @machine.update_interval %></dd>
 </dl>

@@ -66,8 +66,10 @@ class RamAlertsController < ApplicationController
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
   def set_ram_alert
     @ram_alert = RamAlert.find(params[:id])
+    @machine = Machine.find(@ram_alert.machine_id)
   end
 
   def set_machines

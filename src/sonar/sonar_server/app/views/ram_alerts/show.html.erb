@@ -25,8 +25,11 @@
   <dd><% if @ram_alert.triggered %> <span class="label label-danger"> <% end %> <%= @ram_alert.threshold %> <% if @ram_alert.triggered %> % </span> <% else %> % <% end %> </dd>
 
   <dt>Check interval</dt>
-  <dd><%= pluralize(@ram_alert.check_interval, "minute") %></dd>
+  <dd><%= pluralize(@machine.update_interval, "minute") %></dd>
 
   <dt>Duration</dt>
   <dd><%= pluralize(@ram_alert.duration, "minute") %></dd>
+
+  <dt>Cycles</dt>
+  <dd><%= @ram_alert.duration / @machine.update_interval %></dd>
 </dl>

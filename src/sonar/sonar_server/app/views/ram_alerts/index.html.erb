@@ -21,7 +21,6 @@
       <th class="text-center">Machine ID</th>
       <th class="text-center">E-Mail address</th>
       <th class="text-center">RAM threshold</th>
-      <th class="text-center">Check interval</th>
       <th class="text-center">Duration</th>
       <th class="text-center">Custom message</th>
       <th class="text-center">Operations</th>
@@ -38,7 +37,6 @@
       <td> <%= ram_alert.machine_id %> </td>
       <td> <%= ram_alert.addressee %> </td>
       <td> <%= ram_alert.threshold %> % </td>
-      <td> <%= pluralize(ram_alert.check_interval, "minute") %> </td>
       <td> <%= pluralize(ram_alert.duration, "minute") %> </td>
       <td> <a class="btn btn-info btn-xs <% if ram_alert.custom_message.empty? %> disabled <% end %>" tabindex="0" role="button" data-html="true" data-toggle="popover" data-placement="bottom" data-trigger="toggle" title="Message content" data-content="<%= h(ram_alert.custom_message).gsub(/\n/, '<br/>') %>"> <i class="glyphicon glyphicon-info-sign"> </i> </a> </td>
       <td> <div class="btn-group" role="group" aria-label="Operations">

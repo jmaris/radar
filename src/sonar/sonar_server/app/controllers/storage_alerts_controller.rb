@@ -70,6 +70,7 @@ class StorageAlertsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
   def set_storage_alert
     @storage_alert = StorageAlert.find(params[:id])
+    @machine = Machine.find(@storage_alert.machine_id)
   end
 
   def set_machines

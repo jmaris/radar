@@ -6,21 +6,20 @@ class RamAlert < ActiveRecord::Base
   private
 
   def self.is_higher(ram_alert_id)
-    machine         = Machine.find(Alert.where(actable_type: "RamAlert", actable_id: ram_alert_id).first.machine_id)
-    live_api        = Machine.api(machine.protocol,machine.host,machine.port,"live")
-    sysinfo_api     = Machine.api(machine.protocol,machine.host,machine.port,"sysinfo")
+    machine     = Machine.find(Alert.where(actable_type: "RamAlert", actable_id: ram_alert_id).first.machine_id)
 
-    live_ram        = live_api[:ram_bytes]
-    sysinfo_ram     = sysinfo_api[:ram][:total_bytes]
-    ram_percentage  = (live_ram.to_f / sysinfo_ram.to_f)*100
-    ram_alert       = RamAlert.find(ram_alert_id)
-    threshold       = ram_alert.threshold
+    ram_alert   = RamAlert.find(ram_alert_id)
+    threshold   = ram_alert.threshold
 
-    if ram_percentage > threshold
-      true
-    else
-      false
+    cycles = ram_alert.duration / machine.update_interval
+
+    for i in 0..(cycles - 1)
+      if RamMetric.where(machine_id: machine.id).last(cycles)[i].ram < threshold
+        return false
+      end
+      if i == (cycles - 1)
+        return true
+      end
     end
-    
   end
 end
