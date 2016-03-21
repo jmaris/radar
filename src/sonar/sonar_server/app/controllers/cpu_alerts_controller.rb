@@ -69,6 +69,7 @@ class CpuAlertsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_cpu_alert
     @cpu_alert = CpuAlert.find(params[:id])
+    @machine = Machine.find(@cpu_alert.machine_id)
   end
 
   def set_machines

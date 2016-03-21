@@ -11,8 +11,8 @@ class Alert < ActiveRecord::Base
   validate      :machine
   validate      :duration_must_be_equal_to_or_higher_than_update_interval
 
-  after_create  :init # sets triggered to false, copies check_interval from machine
-
+  after_create  :init # sets triggered to false
+  
   def machine
     unless Machine.exists?(self.machine_id)
       errors.add(:machine_id, 'does not exist')
@@ -30,6 +30,8 @@ class Alert < ActiveRecord::Base
     alert = self
     alert_id = id
 
+    machine = Machine.find(alert.machine_id)
+
     actable_id
     # actable_type = self.actable_type
 
@@ -39,7 +41,7 @@ class Alert < ActiveRecord::Base
       alert_email_untrigger(alert_id)
     end
 
-    delayed_job = alert.delay(run_at: alert.check_interval.minutes.from_now).check_dj
+    delayed_job = alert.delay(run_at: machine.update_interval.minutes.from_now).check_dj
 
     alert.delayed_job_id = delayed_job.id
     alert.save
@@ -48,8 +50,6 @@ class Alert < ActiveRecord::Base
   # private
 
   def init
-    machine = Machine.find(machine_id)
-    self.check_interval = machine.update_interval
     self.triggered = false
     self.save
     self.check_dj
