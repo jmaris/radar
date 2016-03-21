@@ -29,10 +29,4 @@
 
   <dt>Check interval</dt>
   <dd><%= pluralize(@machine.update_interval, "minute") %></dd>
-
-  <dt>Duration</dt>
-  <dd><%= pluralize(@storage_alert.duration, "minute") %></dd>
-
-  <dt>Cycles</dt>
-  <dd><%= @storage_alert.duration / @machine.update_interval %></dd>
 </dl>

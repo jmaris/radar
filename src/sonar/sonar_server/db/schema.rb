@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160310090757) do
   create_table "alerts", force: :cascade do |t|
     t.integer  "machine_id"
     t.string   "addressee"
-    t.integer  "duration"
+    t.integer  "check_interval"
     t.string   "custom_message"
     t.boolean  "triggered"
     t.integer  "actable_id"
@@ -27,7 +27,8 @@ ActiveRecord::Schema.define(version: 20160310090757) do
   end
 
   create_table "cpu_alerts", force: :cascade do |t|
-    t.float "threshold"
+    t.float   "threshold"
+    t.integer "duration"
   end
 
   create_table "cpu_metrics", force: :cascade do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20160310090757) do
 
   create_table "ram_alerts", force: :cascade do |t|
     t.float    "threshold"
+    t.integer  "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

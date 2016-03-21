@@ -25,9 +25,6 @@
   <%= f.number_field :threshold, label: 'Storage threshold', placeholder: '50.5', class: 'text_field', step: 0.1, help: 'Positive number, percentage of storage usage.' %>
 </div>
 <div class="field">
-  <%= f.number_field :duration, placeholder: '10', help: 'Positive integer between 1 and 1440, greater than or equal to the machine\'s update interval, minutes, duration for which the condition has to be met in order to trigger the alert.' %>
-</div>
-<div class="field">
   <%= f.text_area :custom_message, placeholder: 'Type your message.' %>
 </div>
 <br>

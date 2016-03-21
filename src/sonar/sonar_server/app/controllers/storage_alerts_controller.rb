@@ -88,6 +88,6 @@ class StorageAlertsController < ApplicationController
 
   # Never trust parameters from the internet, only allow the white list through.
   def storage_alert_params
-    params.require(:storage_alert).permit(:machine_id, :addressee, :path, :threshold, :duration, :custom_message)
+    params.require(:storage_alert).permit(:machine_id, :addressee, :path, :threshold, :custom_message)
   end
 end
