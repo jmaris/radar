@@ -1,7 +1,6 @@
 class CreateRamMetrics < ActiveRecord::Migration
   def change
     create_table :ram_metrics do |t|
-
       t.belongs_to  :machine, index: true
 
       t.float       :ram

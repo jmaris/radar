@@ -1,0 +1,2 @@
+module LogAlertsHelper
+end

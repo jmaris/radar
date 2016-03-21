@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Log Alerts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Logger type</th>
+      <th>Path</th>
+      <th>Arguments</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @log_alerts.each do |log_alert| %>
+      <tr>
+        <td><%= log_alert.logger_type %></td>
+        <td><%= log_alert.path %></td>
+        <td><%= log_alert.arguments %></td>
+        <td><%= link_to 'Show', log_alert %></td>
+        <td><%= link_to 'Edit', edit_log_alert_path(log_alert) %></td>
+        <td><%= link_to 'Destroy', log_alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Log alert', new_log_alert_path %>

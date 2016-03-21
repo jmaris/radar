@@ -23,7 +23,7 @@ class CpuAlert < ActiveRecord::Base
     cycles = cpu_alert.duration / machine.update_interval
 
     for i in 0..(cycles - 1)
-      if CpuMetric.where(machine_id: machine.id).last(cycles)[i].cpu < threshold
+      if CpuMetric.where(machine_id: machine.id).count < cycles || CpuMetric.where(machine_id: machine.id).last(cycles)[i].cpu < threshold
         return false
       end
       if i == (cycles - 1)

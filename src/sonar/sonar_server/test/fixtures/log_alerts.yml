@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  logger_type: MyString
+  path: MyString
+  arguments: MyString
+
+two:
+  logger_type: MyString
+  path: MyString
+  arguments: MyString

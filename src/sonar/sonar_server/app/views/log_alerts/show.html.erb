@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Logger type:</strong>
+  <%= @log_alert.logger_type %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @log_alert.path %>
+</p>
+
+<p>
+  <strong>Arguments:</strong>
+  <%= @log_alert.arguments %>
+</p>
+
+<%= link_to 'Edit', edit_log_alert_path(@log_alert) %> |
+<%= link_to 'Back', log_alerts_path %>

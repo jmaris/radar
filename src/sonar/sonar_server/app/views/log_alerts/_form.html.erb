@@ -1,0 +1,34 @@
+<%= bootstrap_form_for(@log_alert) do |f| %>
+  <% if @log_alert.errors.any? %>
+
+  <div class="alert alert-danger">
+    <%= pluralize(@log_alert.errors.count, "error") %> prohibited this CPU Alert from being saved:
+    <ul>
+      <% @log_alert.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <% end %>
+
+  <div class="field">
+    <%= f.select :machine_id, @machines_hash %>
+  </div>
+  <div class="field">
+    <%= f.text_field :addressee %>
+  </div>
+  <div class="field">
+    <%= f.text_field :logger_type %>
+  </div>
+  <div class="field">
+    <%= f.text_field :path %>
+  </div>
+  <div class="field">
+    <%= f.text_field :arguments %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Save log alert', class: 'btn btn-primary' %>
+  </div>
+  <br>
+<% end %>

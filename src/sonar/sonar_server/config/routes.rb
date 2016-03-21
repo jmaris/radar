@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :log_alerts
   resources :ram_alerts
   resources :storage_alerts
   resources :cpu_alerts
