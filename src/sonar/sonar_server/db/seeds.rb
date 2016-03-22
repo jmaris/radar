@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Machine.create(protocol: "http", host: "localhost", port: "4963", update_interval: 1, alias: "pc-test-localhost")
-Machine.create(protocol: "http", host: "127.0.0.1", port: "4963", update_interval: 5, alias: "pc-test-127.0.0.1")
+Machine.create(protocol: 'http', host: 'localhost', port: '4963', update_interval: 1, alias: 'pc-test-localhost')
+Machine.create(protocol: 'http', host: '127.0.0.1', port: '4963', update_interval: 5, alias: 'pc-test-127.0.0.1')
 ##
 CpuMetric.create(machine_id: 2, cpu: 88)
 CpuMetric.create(machine_id: 2, cpu: 6)

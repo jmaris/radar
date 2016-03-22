@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   root 'application#root'
 
   # get 'sonar_api_v1'                  => 'hardware#status'
-  get 'sonar_api_v1/live'             => 'hardware#live'
-  get 'sonar_api_v1/sysinfo'          => 'hardware#sysinfo'
-  get 'sonar_api_v1/storage(/:path)'  => 'hardware#storage'
+  get 'sonar_api_v1/live'                               => 'hardware#live'
+  get 'sonar_api_v1/sysinfo'                            => 'hardware#sysinfo'
+  get 'sonar_api_v1/storage/:path'                      => 'hardware#storage'
+  get 'sonar_api_v1/logs/custom/:path/:regex'           => 'log#custom', constraints: { path: /[^\/]+/ }
+  #get 'sonar_api_v1/logs/:blah(/:path/:regex)'   => 'log#blah'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
