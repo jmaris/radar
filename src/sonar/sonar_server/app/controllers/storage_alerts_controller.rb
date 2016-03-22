@@ -30,7 +30,7 @@ class StorageAlertsController < ApplicationController
 
     respond_to do |format|
       if @storage_alert.save
-        flash[:success] = 'Storage Alert was successfully saved.'
+        flash[:success] = 'Storage alert was successfully saved.'
         format.html { redirect_to storage_alerts_url }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class StorageAlertsController < ApplicationController
   def update
     respond_to do |format|
       if @storage_alert.update(storage_alert_params)
-        flash[:success] = 'Storage Alert was successfully updated.'
+        flash[:success] = 'Storage alert was successfully updated.'
         format.html { redirect_to @storage_alert }
         format.json { render :show, status: :ok, location: @storage_alert }
       else
@@ -59,7 +59,7 @@ class StorageAlertsController < ApplicationController
   def destroy
     @storage_alert.destroy
     respond_to do |format|
-      flash[:success] = 'Storage Alert was successfully destroyed.'
+      flash[:success] = 'Storage alert was successfully destroyed.'
       format.html { redirect_to storage_alerts_url}
       format.json { head :no_content }
     end

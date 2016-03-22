@@ -15,17 +15,23 @@
   <div class="field">
     <%= f.select :machine_id, @machines_hash %>
   </div>
+<div class="field">
+  <%= f.text_field :addressee, label: 'E-Mail address', placeholder: 'sonar_alert@example.com' %>
+</div>
   <div class="field">
-    <%= f.text_field :addressee %>
+    <%= f.select :logger_type, ['custom', 'systemd'] %>
   </div>
   <div class="field">
-    <%= f.text_field :logger_type %>
+    <%= f.text_field :path, placeholder: 'placeholder', help: 'Help.' %>
   </div>
   <div class="field">
-    <%= f.text_field :path %>
+    <%= f.text_field :arguments, placeholder: 'placeholder', help: 'Help.' %>
   </div>
   <div class="field">
-    <%= f.text_field :arguments %>
+    <%= f.number_field :check_interval, placeholder: '10', help: 'Positive integer between 1 and 1440, minutes between each check.' %>
+  </div>
+  <div class="field">
+    <%= f.text_area :custom_message, placeholder: 'Type your message.' %>
   </div>
   <div class="actions">
     <%= f.submit 'Save log alert', class: 'btn btn-primary' %>

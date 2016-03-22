@@ -25,7 +25,7 @@
   <%= f.number_field :port, placeholder: '4963', help: 'Port of the Sonar API server. 4963 is the default port.' %>
 </div>
 <div class="field">
-  <%= f.number_field :update_interval, placeholder: 1, help: 'Positive integer, minutes between each graph update.' %>
+  <%= f.number_field :update_interval, placeholder: 1, help: 'Positive integer between 1 and 1440, minutes between each graph update.' %>
 </div>
 <br>
 <div class="actions">

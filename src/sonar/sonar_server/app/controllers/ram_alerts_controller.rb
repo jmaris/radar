@@ -29,7 +29,7 @@ class RamAlertsController < ApplicationController
 
     respond_to do |format|
       if @ram_alert.save
-        flash[:success] = 'RAM Alert was successfully saved.'
+        flash[:success] = 'RAM alert was successfully saved.'
         format.html { redirect_to ram_alerts_url }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class RamAlertsController < ApplicationController
   def update
     respond_to do |format|
       if @ram_alert.update(ram_alert_params)
-        flash[:success] = 'RAM Alert was successfully updated.'
+        flash[:success] = 'RAM alert was successfully updated.'
         format.html { redirect_to @ram_alert }
         format.json { render :show, status: :ok, location: @ram_alert }
       else
@@ -58,7 +58,7 @@ class RamAlertsController < ApplicationController
   def destroy
     @ram_alert.destroy
     respond_to do |format|
-      flash[:success] = 'RAM Alert was successfully destroyed.'
+      flash[:success] = 'RAM alert was successfully destroyed.'
       format.html { redirect_to ram_alerts_url, notice: 'Ram alert was successfully destroyed.' }
       format.json { head :no_content }
     end

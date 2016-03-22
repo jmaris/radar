@@ -1,19 +1,29 @@
-<p id="notice"><%= notice %></p>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({ container: 'body'});   
+  });
+</script>
 
-<p>
-  <strong>Logger type:</strong>
-  <%= @log_alert.logger_type %>
-</p>
+<div class="btn-group" role="group" aria-label="Actions">
+  <%= link_to log_alerts_path, class: 'btn btn-default', data: { toggle: 'tooltip', title: 'Back'} do %>
+  <i class="glyphicon glyphicon-arrow-left"></i>
+  <% end %>
 
-<p>
-  <strong>Path:</strong>
-  <%= @log_alert.path %>
-</p>
+  <%= link_to edit_log_alert_path(@log_alert), class: 'btn btn-default', data: { toggle: 'tooltip', title: 'Edit' } do %><i class="glyphicon glyphicon-edit"></i><% end %>
+</div>
 
-<p>
-  <strong>Arguments:</strong>
-  <%= @log_alert.arguments %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Machine ID</dt>
+  <dd><%= @log_alert.machine_id %></dd>
 
-<%= link_to 'Edit', edit_log_alert_path(@log_alert) %> |
-<%= link_to 'Back', log_alerts_path %>
+  <dt>E-Mail Address</dt>
+  <dd><%= @log_alert.addressee %></dd>
+
+  <dt>Logger type</dt>
+  <dd><%= @log_alert.logger_type %></dd>
+
+  <dt>Path</dt>
+  <dd><%= @log_alert.path %></dd>
+
+  <dt>Arguments</dt>
+  <dd><%= @log_alert.arguments %></dd>

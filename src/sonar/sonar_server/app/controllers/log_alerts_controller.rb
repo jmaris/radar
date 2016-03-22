@@ -29,12 +29,12 @@ class LogAlertsController < ApplicationController
 
     respond_to do |format|
       if @log_alert.save
-        format.html { redirect_to @log_alert, notice: 'Log alert was successfully created.' }
-        format.json { render :show, status: :created, location: @log_alert }
+        flash[:success] = 'Log alert was successfully saved.'
+        format.html { redirect_to log_alerts_url }
       else
         format.html { render :new }
-        format.json { render json: @log_alert.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 
@@ -43,7 +43,8 @@ class LogAlertsController < ApplicationController
   def update
     respond_to do |format|
       if @log_alert.update(log_alert_params)
-        format.html { redirect_to @log_alert, notice: 'Log alert was successfully updated.' }
+        flash[:success] = 'Log alert was successfully updated.'
+        format.html { redirect_to @log_alert }
         format.json { render :show, status: :ok, location: @log_alert }
       else
         format.html { render :edit }
@@ -57,6 +58,7 @@ class LogAlertsController < ApplicationController
   def destroy
     @log_alert.destroy
     respond_to do |format|
+      flash[:success] = 'Log alert was successfully destroyed.'
       format.html { redirect_to log_alerts_url, notice: 'Log alert was successfully destroyed.' }
       format.json { head :no_content }
     end
@@ -66,6 +68,7 @@ class LogAlertsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_log_alert
     @log_alert = LogAlert.find(params[:id])
+    @machine = Machine.find(@log_alert.machine_id)
   end
 
   def set_machines
@@ -78,6 +81,6 @@ class LogAlertsController < ApplicationController
 
   # Never trust parameters from the internet, only allow the white list through.
   def log_alert_params
-    params.require(:log_alert).permit(:machine_id, :addressee, :logger_type, :path, :arguments)
+    params.require(:log_alert).permit(:machine_id, :addressee, :logger_type, :path, :arguments, :check_interval, :custom_message)
   end
 end

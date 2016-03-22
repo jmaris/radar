@@ -29,7 +29,7 @@ class CpuAlertsController < ApplicationController
 
     respond_to do |format|
       if @cpu_alert.save
-        flash[:success] = 'CPU Alert was successfully saved.'
+        flash[:success] = 'CPU alert was successfully saved.'
         format.html { redirect_to cpu_alerts_url }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class CpuAlertsController < ApplicationController
   def update
     respond_to do |format|
       if @cpu_alert.update(cpu_alert_params)
-        flash[:success] = 'CPU Alert was successfully updated.'
+        flash[:success] = 'CPU alert was successfully updated.'
         format.html { redirect_to @cpu_alert }
         format.json { render :show, status: :ok, location: @cpu_alert }
       else
@@ -58,7 +58,7 @@ class CpuAlertsController < ApplicationController
   def destroy
     @cpu_alert.destroy
     respond_to do |format|
-      flash[:success] = 'Machine was successfully destroyed.'
+      flash[:success] = 'CPU alert was successfully destroyed.'
       format.html { redirect_to cpu_alerts_url }
       format.json { head :no_content }
     end
