@@ -12,6 +12,14 @@ class RamAlert < ActiveRecord::Base
     end
   end
 
+  def init
+    machine_update_interval = Machine.find(self.machine_id).update_interval
+    self.check_interval = machine_update_interval
+    self.triggered = false
+    self.save
+    self.check_dj
+  end
+
   private
 
   def self.is_higher(ram_alert_id)

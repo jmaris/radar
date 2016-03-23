@@ -19,13 +19,13 @@
   <%= f.text_field :addressee, label: 'E-Mail address', placeholder: 'sonar_alert@example.com' %>
 </div>
   <div class="field">
-    <%= f.select :logger_type, ['custom', 'systemd'] %>
+    <%= f.select :logger_type, {'Custom' => 'custom', 'Systemd' => 'systemd'} %>
   </div>
   <div class="field">
-    <%= f.text_field :path, placeholder: 'placeholder', help: 'Help.' %>
+    <%= f.text_field :path, placeholder: '/var/log/mylog.log', help: 'Absolute path for the logfile.' %>
   </div>
   <div class="field">
-    <%= f.text_field :arguments, placeholder: 'placeholder', help: 'Help.' %>
+    <%= f.text_field :arguments, placeholder: '/ERROR/', help: 'Regular expression to match to the logfile.' %>
   </div>
   <div class="field">
     <%= f.number_field :check_interval, placeholder: '10', help: 'Positive integer between 1 and 1440, minutes between each check.' %>

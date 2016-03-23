@@ -23,8 +23,7 @@ class LogController < ApplicationController
 				'regex':  regex,
 				'match':
 				{
-					'string': nil,
-					'size':   0,
+					'size':   nil,
 					'status': 'can\'t open file'
 				}
 			}, status: 404
@@ -35,15 +34,15 @@ class LogController < ApplicationController
 		end
 
 		if match = regex.match(file)
+			match_amount = (file =~ regex)
 			render json:
 			{
 				'path':   path, 
 				'regex':  regex,
 				'match':
 				{
-					'string': match.to_s,
-					'size':   match.size,
-					'status': 'match found'
+					'amount': match_amount,
+					'status': 'match(es) found'
 				}
 			}
     	else
@@ -53,8 +52,7 @@ class LogController < ApplicationController
 				'regex':  regex,
 				'match':
 				{
-					'string': nil,
-					'size':   0,
+					'amount': 0,
 					'status': 'match not found'
 				}
 			}

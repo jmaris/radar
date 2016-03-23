@@ -5,7 +5,7 @@ class Alert < ActiveRecord::Base
 
   # has_one         :delayed_job,       dependent: :destroy #delayed_job_id
 
-  validates     :check_interval, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..1440 }
+  # validates     :check_interval, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..1440 }
   validates     :addressee, presence: true, format: { with: /\A(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})\z/i }
   validate      :machine
 

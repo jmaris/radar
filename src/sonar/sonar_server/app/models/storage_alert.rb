@@ -5,13 +5,21 @@ class StorageAlert < ActiveRecord::Base
   validates       :threshold, presence: true, numericality: true, inclusion: {in: 0..100}
   validates       :path, presence: true
 
+  def init
+    machine_update_interval = Machine.find(self.machine_id).update_interval
+    self.check_interval = machine_update_interval
+    self.triggered = false
+    self.save
+    self.check_dj
+  end
+
   private
 
   def self.is_higher(storage_alert_id)
     machine       = Machine.find(Alert.where(actable_type: "StorageAlert", actable_id: storage_alert_id).first.machine_id)
     storage_alert = StorageAlert.find(storage_alert_id)
 
-    storage_path  = "storage/"
+    storage_path  = 'storage/'
     storage_path  << ERB::Util.url_encode(storage_alert.path)
     storage_api   = Machine.api(machine.protocol,machine.host,machine.port,storage_path)
 
