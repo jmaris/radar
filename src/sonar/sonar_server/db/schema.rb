@@ -60,8 +60,9 @@ ActiveRecord::Schema.define(version: 20160321162204) do
     t.string   "logger_type"
     t.string   "path"
     t.string   "arguments"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "match_amount"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "machines", force: :cascade do |t|

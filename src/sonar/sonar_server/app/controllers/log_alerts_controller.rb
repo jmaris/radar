@@ -59,7 +59,7 @@ class LogAlertsController < ApplicationController
     @log_alert.destroy
     respond_to do |format|
       flash[:success] = 'Log alert was successfully destroyed.'
-      format.html { redirect_to log_alerts_url, notice: 'Log alert was successfully destroyed.' }
+      format.html { redirect_to log_alerts_url }
       format.json { head :no_content }
     end
   end

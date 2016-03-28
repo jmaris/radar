@@ -15,7 +15,7 @@ class LogController < ApplicationController
 		# byebug
 
 		begin
-			open(path)
+			log = open(path)
 		rescue
 			render json:
 			{
@@ -29,7 +29,6 @@ class LogController < ApplicationController
 			}, status: 404
 			return 404
 		else
-			log 	= open(path)
 			file 	= log.read
 		end
 
@@ -57,5 +56,6 @@ class LogController < ApplicationController
 				}
 			}
 		end
+		close(path)
     end
 end

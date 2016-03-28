@@ -5,6 +5,8 @@ class RamAlert < ActiveRecord::Base
   validates     :duration, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..1440 }
   validate      :duration_must_be_equal_to_or_higher_than_update_interval
 
+  after_create  :init # sets triggered to false
+
   def duration_must_be_equal_to_or_higher_than_update_interval
     machine_update_interval = Machine.find(self.machine_id).update_interval
     if self.duration.nil? || self.duration < machine_update_interval

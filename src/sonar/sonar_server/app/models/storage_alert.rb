@@ -5,6 +5,8 @@ class StorageAlert < ActiveRecord::Base
   validates       :threshold, presence: true, numericality: true, inclusion: {in: 0..100}
   validates       :path, presence: true
 
+  after_create  :init # sets triggered to false
+
   def init
     machine_update_interval = Machine.find(self.machine_id).update_interval
     self.check_interval = machine_update_interval

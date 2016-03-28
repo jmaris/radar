@@ -9,7 +9,7 @@ class Alert < ActiveRecord::Base
   validates     :addressee, presence: true, format: { with: /\A(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})\z/i }
   validate      :machine
 
-  after_create  :init # sets triggered to false
+  # after_create  :init # sets triggered to false
   
   def machine
     unless Machine.exists?(self.machine_id)
@@ -40,11 +40,11 @@ class Alert < ActiveRecord::Base
 
   # private
 
-  def init
-    self.triggered = false
-    self.save
-    self.check_dj
-  end
+  # def init
+  #   self.triggered = false
+  #   self.save
+  #   self.check_dj
+  # end
 
   def alert_email_untrigger(alert_id)
     alert = Alert.find(alert_id)
@@ -59,6 +59,8 @@ class Alert < ActiveRecord::Base
         SonarMailer.ram_unalert_email(actable_id).deliver_later
       when 'StorageAlert'
         SonarMailer.storage_unalert_email(actable_id).deliver_later
+      when 'LogAlert'
+        SonarMailer.log_unalert_email(actable_id).deliver_later
       end
       alert.triggered = false
       alert.save
@@ -78,6 +80,8 @@ class Alert < ActiveRecord::Base
         SonarMailer.ram_alert_email(actable_id).deliver_later
       when 'StorageAlert'
         SonarMailer.storage_alert_email(actable_id).deliver_later
+      when 'LogAlert'
+        SonarMailer.log_alert_email(actable_id).deliver_later
       end
       alert.triggered = true
       alert.save

@@ -63,6 +63,35 @@ class SonarMailer < ApplicationMailer
 
     end
 
+    def log_alert_email(log_alert_id)
+
+        log_alert       = LogAlert.find(log_alert_id)
+        machine         = Machine.find(log_alert.machine_id)
+
+        @alert          = log_alert
+        @addressee      = log_alert.addressee
+        @machine_id     = machine.id
+        @machine_alias  = machine.alias
+        @custom_message = log_alert.custom_message
+
+        mail(to: @addressee, subject: 'Sonar log alert')
+
+    end
+
+    def log_unalert_email(log_alert_id)
+
+        log_alert       = LogAlert.find(log_alert_id)
+        machine         = Machine.find(log_alert.machine_id)
+
+        @alert          = log_alert
+        @addressee      = log_alert.addressee
+        @machine_id     = machine.id
+        @machine_alias  = machine.alias
+
+        mail(to: @addressee, subject: 'Sonar log alert solved')
+
+    end
+
     def storage_alert_email(storage_alert_id)
 
         storage_alert       = StorageAlert.find(storage_alert_id)
