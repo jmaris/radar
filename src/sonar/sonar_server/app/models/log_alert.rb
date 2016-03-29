@@ -19,7 +19,6 @@ class LogAlert < ActiveRecord::Base
     log_path          << '/'
     log_path          << ERB::Util.url_encode(log_alert.arguments)
     log_api           = Machine.api(machine.protocol,machine.host,machine.port,log_path)
-    # byebug
     if log_api.class == String && log_api == "error"
       errors.add(:path, 'is invalid')
     elsif log_api[:match][:status] == "can't open file"
@@ -56,8 +55,6 @@ class LogAlert < ActiveRecord::Base
     log_path  << '/'
     log_path  << ERB::Util.url_encode(log_alert.arguments)
     log_api   = Machine.api(machine.protocol,machine.host,machine.port,log_path)
-    
-    # byebug
 
     if log_alert.match_amount < log_api[:match][:amount]
       true
@@ -65,7 +62,7 @@ class LogAlert < ActiveRecord::Base
       logger.debug "showing log_alert"
       logger.debug log_alert
       logger.debug "showing the API"
-      logger.debug log_api[:match][:amount]
+      logger.debug log_api
       logger.debug "API returned less matches than we have on file.
       This is probably because the log has rotated.
       Rotating logs is not supported yet."
