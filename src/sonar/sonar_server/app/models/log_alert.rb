@@ -42,6 +42,21 @@ class LogAlert < ActiveRecord::Base
     self.check_dj
   end
 
+  def acknowledge
+    machine = Machine.find(self.machine_id)
+    log_alert         = self
+    log_path          = 'logs/'
+    log_path          << ERB::Util.url_encode(log_alert.logger_type)
+    log_path          << '/'
+    log_path          << ERB::Util.url_encode(log_alert.path)
+    log_path          << '/'
+    log_path          << ERB::Util.url_encode(log_alert.arguments)
+    log_api           = Machine.api(machine.protocol,machine.host,machine.port,log_path)
+    self.match_amount = log_api[:match][:amount]
+    self.triggered    = false
+    self.save
+  end
+
   private
 
   def self.is_higher(log_alert_id)

@@ -33,7 +33,6 @@ class Alert < ActiveRecord::Base
     end
 
     delayed_job = alert.delay(run_at: machine.update_interval.minutes.from_now).check_dj
-
     alert.delayed_job_id = delayed_job.id
     alert.save
   end
