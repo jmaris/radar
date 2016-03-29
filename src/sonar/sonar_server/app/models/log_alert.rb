@@ -4,10 +4,28 @@ class LogAlert < ActiveRecord::Base
   validates     :check_interval, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..1440 }
   validates     :logger_type, presence: true, inclusion: { in: ['custom', 'systemd'] }
   validates     :path, presence: true # validate the path actually exists
-  validates     :arguments, presence: true # [RegEx format]
-  #validate
+  validates     :arguments, presence: true, format: { with: /\A\/(.{1,})\/[m,i,x]{0,3}\z/i }
+  validate      :path_exists
 
   after_create  :init # sets triggered to false
+
+  def path_exists
+    machine           = Machine.find(self.machine_id)
+    log_alert         = self
+    log_path          = 'logs/'
+    log_path          << ERB::Util.url_encode(log_alert.logger_type)
+    log_path          << '/'
+    log_path          << ERB::Util.url_encode(log_alert.path)
+    log_path          << '/'
+    log_path          << ERB::Util.url_encode(log_alert.arguments)
+    log_api           = Machine.api(machine.protocol,machine.host,machine.port,log_path)
+    # byebug
+    if log_api.class == String && log_api == "error"
+      errors.add(:path, 'is invalid')
+    elsif log_api[:match][:status] == "can't open file"
+      errors.add(:path, 'is invalid')
+    end
+  end
 
   def init
     machine           = Machine.find(self.machine_id)
