@@ -30,10 +30,11 @@ class LogController < ApplicationController
 			return 404
 		else
 			file 	= log.read
+			log.close
 		end
 
 		if match = regex.match(file)
-			match_amount = (file =~ regex)
+			match_amount = file.scan(regex).size
 			render json:
 			{
 				'path':   path, 
@@ -56,6 +57,5 @@ class LogController < ApplicationController
 				}
 			}
 		end
-		close(path)
     end
 end

@@ -5,7 +5,7 @@ class LogAlert < ActiveRecord::Base
   validates     :logger_type, presence: true, inclusion: { in: ['custom', 'systemd'] }
   validates     :path, presence: true # validate the path actually exists
   validates     :arguments, presence: true # [RegEx format]
-  validate
+  #validate
 
   after_create  :init # sets triggered to false
 

@@ -72,6 +72,9 @@ class SonarMailer < ApplicationMailer
         @addressee      = log_alert.addressee
         @machine_id     = machine.id
         @machine_alias  = machine.alias
+        @logger_type    = log_alert.logger_type
+        @path           = log_alert.path
+        @arguments      = log_alert.arguments
         @custom_message = log_alert.custom_message
 
         mail(to: @addressee, subject: 'Sonar log alert')
