@@ -12,12 +12,17 @@
   <%= link_to edit_log_alert_path(@log_alert), class: 'btn btn-default', data: { toggle: 'tooltip', title: 'Edit' } do %><i class="glyphicon glyphicon-edit"></i><% end %>
 </div>
 
+<a class="btn btn-success <% unless @log_alert.triggered %> disabled <% end %>" data-toggle="tooltip" data-title="Acknowledgeand reset the alert" href="/log_alerts/<%= @log_alert.id %>/acknowledge" tabindex="0" role="button"> <i class="glyphicon glyphicon-ok"> </i> </a>
+
 <dl class="dl-horizontal">
   <dt>Machine ID</dt>
   <dd><%= @log_alert.machine_id %></dd>
 
   <dt>E-Mail Address</dt>
   <dd><%= @log_alert.addressee %></dd>
+
+  <dt>Check interval</dt>
+  <dd><%= pluralize(@log_alert.check_interval, "minute") %></dd>
 
   <dt>Logger type</dt>
   <dd><%= @log_alert.logger_type %></dd>

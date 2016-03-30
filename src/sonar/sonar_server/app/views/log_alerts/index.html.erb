@@ -25,6 +25,7 @@
       <th class="text-center">Arguments</th>
       <th class="text-center">Check interval</th>
       <th class="text-center">Custom message</th>
+      <th class="text-center">Acknowledge</th>
       <th class="text-center">Operations</th>
     </tr>
   </thead>
@@ -43,6 +44,7 @@
         <td> <%= log_alert.arguments %> </td>
         <td> <%= pluralize(log_alert.check_interval, "minute") %> </td>
         <td> <a class="btn btn-info btn-xs <% if log_alert.custom_message.empty? %> disabled <% end %>" tabindex="0" role="button" data-html="true" data-toggle="popover" data-placement="bottom" data-trigger="toggle" title="Message content" data-content="<%= h(log_alert.custom_message).gsub(/\n/, '<br/>') %>"> <i class="glyphicon glyphicon-info-sign"> </i> </a> </td>
+        <td> <a class="btn btn-success btn-xs <% unless log_alert.triggered %> disabled <% end %>" data-toggle="tooltip" data-title="Acknowledge and reset the alert" href="/log_alerts/<%= log_alert.id %>/acknowledge" tabindex="0" role="button"> <i class="glyphicon glyphicon-ok"> </i> </a> </td>
         <td> <div class="btn-group" role="group" aria-label="Operations">
           <%= link_to log_alert, class: 'btn btn-default btn-xs', data: { toggle: 'tooltip', title: 'View' } do %> <i class="glyphicon glyphicon-eye-open"> </i> <% end %>
           <%= link_to edit_log_alert_path(log_alert), class: 'btn btn-default btn-xs', data: { toggle: 'tooltip', title: 'Edit' } do %> <i class="glyphicon glyphicon-edit"> </i> <% end %>

@@ -19,10 +19,12 @@ class LogAlert < ActiveRecord::Base
     log_path          << '/'
     log_path          << ERB::Util.url_encode(log_alert.arguments)
     log_api           = Machine.api(machine.protocol,machine.host,machine.port,log_path)
-    if log_api.class == String && log_api == "error"
-      errors.add(:path, 'is invalid')
-    elsif log_api[:match][:status] == "can't open file"
-      errors.add(:path, 'is invalid')
+    unless errors[:arguments] == ["is invalid"]
+      if log_api.class == String && log_api == "error"
+        errors.add(:path, 'is invalid')
+      elsif log_api[:match][:status] == "can't open file"
+        errors.add(:path, 'is invalid')
+      end
     end
   end
 

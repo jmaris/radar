@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :log_alerts
+  resources :log_alerts do
+    member do
+      get 'acknowledge'
+    end
+  end
   resources :ram_alerts
   resources :storage_alerts
   resources :cpu_alerts

@@ -1,5 +1,5 @@
 class LogAlertsController < ApplicationController
-  before_action :set_log_alert, only: [:show, :edit, :update, :destroy]
+  before_action :set_log_alert, only: [:show, :edit, :update, :destroy, :acknowledge]
   before_action :set_machines, only: [:edit, :new, :show, :create, :update]
 
   # GET /log_alerts
@@ -49,6 +49,18 @@ class LogAlertsController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @log_alert.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /log_alerts/1/acknowledge
+  def acknowledge
+    respond_to do |format|
+      if @log_alert.acknowledge
+        flash[:success] = 'Log alert was successfully acknowledged.'
+        format.html { redirect_to log_alerts_url }
+      else
+        format.html { redirect_to @log_alert }
       end
     end
   end
