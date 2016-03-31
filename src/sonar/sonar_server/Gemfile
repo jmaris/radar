@@ -28,6 +28,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # vvv all the gems required for Sonar Server
 gem 'rest-client'
 gem 'highcharts-rails'
+gem 'chartkick'
+gem 'groupdate'
 gem 'delayed_job_active_record'
 gem 'active_record-acts_as'
 gem 'bootstrap-sass'

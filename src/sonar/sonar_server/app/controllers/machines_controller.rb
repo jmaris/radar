@@ -25,9 +25,13 @@ class MachinesController < ApplicationController
       @storage_load         = (api_live[:storage_bytes].to_f/api_sysinfo[:storage][:total_bytes].to_f * 100).round(2) # we should be calling the API for this
       @uptime               = api_live[:uptime_seconds]
     end
+    @chart_names          = ["CPU", "RAM", "Storage"]
     @cpu_load_last10      = CpuMetric.where(machine_id: @machine.id).last(10).map(&:cpu) # short for CpuMetric.where(machine_id: 3).last(10).map {|cpu_metric| cpu_metric.cpu}
+    @cpu_dates_last10     = CpuMetric.where(machine_id: @machine.id).last(10).map(&:created_at)
     @ram_load_last10      = RamMetric.where(machine_id: @machine.id).last(10).map(&:ram)
+    @ram_dates_last10     = RamMetric.where(machine_id: @machine.id).last(10).map(&:created_at)
     @storage_load_last10  = StorageMetric.where(machine_id: @machine.id).last(10).map(&:storage)
+    @storage_dates_last10 = StorageMetric.where(machine_id: @machine.id).last(10).map(&:created_at)
   end
 
   # GET /machines/new
