@@ -14,6 +14,8 @@
   <h1>Log alerts</h1>
 </div>
 
+<% unless LogAlert.all.count == 0 %>
+
 <div class="table-responsive text-center">
   <table class="table">
    <thead>
@@ -55,6 +57,8 @@
     </tbody>
   </table>
 </div>
+
+<% end %>
 
 <br>
 
