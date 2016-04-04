@@ -43,10 +43,11 @@
 
     <dt>Last chart update</dt>
     <dd><%= CpuMetric.last.updated_at %></dd>
+    
   </dl>
   <p>
     <div class="well" id="cpu_chart">
-      <%= area_chart @cpu_load_last10, min: 0, max: 100, label: "CPU usage", xtitle: "Time", ytitle: "CPU usage percentage", colors: ["#75507b"], library: {legend: {position: "left"}} %>
+      <%= area_chart @cpu_load_last10, min: 0, max: 100, label: "CPU usage", xtitle: "Time", ytitle: "CPU usage percentage", colors: ["#75507b"] %>
     </div>
     <div class="well" id="ram_chart">
       <%= area_chart @ram_load_last10, min: 0, max: 100, label: "RAM usage", xtitle: "Time", ytitle: "RAM usage percentage", colors: ["#3465a4"] %>
