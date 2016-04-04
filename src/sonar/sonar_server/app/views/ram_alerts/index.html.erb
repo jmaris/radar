@@ -10,11 +10,15 @@
   });
 </script>
 
+<% if RamAlert.all.count == 0 %>
+
+<h1>No RAM alerts found</h1>
+
+<% else %>
+
 <div class="page-header">
   <h1>RAM alerts</h1>
 </div>
-
-<% unless RamAlert.all.count == 0 %>
 
 <div class="table-responsive text-center">
   <table class="table">

@@ -10,11 +10,15 @@
   });
 </script>
 
+<% if StorageAlert.all.count == 0 %>
+
+<h1>No storage alerts found</h1>
+
+<% else %>
+
 <div class="page-header">
   <h1>Storage alerts</h1>
 </div>
-
-<% unless StorageAlert.all.count == 0 %>
 
 <div class="table-responsive text-center">
   <table class="table">

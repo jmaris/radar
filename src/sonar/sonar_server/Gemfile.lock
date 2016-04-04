@@ -61,6 +61,8 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
+    dateslices (0.0.4)
+      rails (> 4)
     debug_inspector (0.0.2)
     delayed_job (4.1.1)
       activesupport (>= 3.0, < 5.0)
@@ -198,6 +200,7 @@ DEPENDENCIES
   byebug
   chartkick
   coffee-rails (~> 4.1.0)
+  dateslices
   delayed_job_active_record
   groupdate
   highcharts-rails

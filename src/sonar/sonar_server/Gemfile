@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
@@ -25,17 +24,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# vvv all the gems required for Sonar Server
+### vvv all the gems required for Sonar Server
 gem 'rest-client'
-gem 'highcharts-rails'
-gem 'chartkick'
-gem 'groupdate'
 gem 'delayed_job_active_record'
 gem 'active_record-acts_as'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'twitter-bootstrap-rails-confirm'
 gem 'autoprefixer-rails'
+# charts
+gem 'highcharts-rails'
+gem 'chartkick'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -48,6 +47,7 @@ group :development, :test do
   gem 'byebug'
   gem 'letter_opener'
   gem 'rubocop'
+  gem 'dateslices'
 end
 
 group :development do
@@ -58,3 +58,6 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  gem 'groupdate'
+end

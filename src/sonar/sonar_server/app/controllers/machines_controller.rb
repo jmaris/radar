@@ -26,12 +26,17 @@ class MachinesController < ApplicationController
       @uptime               = api_live[:uptime_seconds]
     end
     @chart_names          = ["CPU", "RAM", "Storage"]
-    @cpu_load_last10      = CpuMetric.where(machine_id: @machine.id).last(10).map(&:cpu) # short for CpuMetric.where(machine_id: 3).last(10).map {|cpu_metric| cpu_metric.cpu}
-    @cpu_dates_last10     = CpuMetric.where(machine_id: @machine.id).last(10).map(&:created_at)
-    @ram_load_last10      = RamMetric.where(machine_id: @machine.id).last(10).map(&:ram)
-    @ram_dates_last10     = RamMetric.where(machine_id: @machine.id).last(10).map(&:created_at)
-    @storage_load_last10  = StorageMetric.where(machine_id: @machine.id).last(10).map(&:storage)
-    @storage_dates_last10 = StorageMetric.where(machine_id: @machine.id).last(10).map(&:created_at)
+
+    # @cpu_load_last10 = Hash.new
+    # @cpu_load_last10["2016-04-04 09:38:20"] = 15
+    # @cpu_load_last10["2016-04-04 09:39:20"] = 45
+    # @cpu_load_last10["2016-04-04 09:45:20"] = 58
+
+    @cpu
+
+    @cpu_load_last10      = Hash[CpuMetric.where(machine_id: @machine.id).last(100).map {|m| [m.created_at, m.cpu] }]
+    @ram_load_last10      = Hash[RamMetric.where(machine_id: @machine.id).last(100).map {|m| [m.created_at, m.ram] }]
+    @storage_load_last10  = Hash[StorageMetric.where(machine_id: @machine.id).last(100).map {|m| [m.created_at, m.storage] }]
   end
 
   # GET /machines/new

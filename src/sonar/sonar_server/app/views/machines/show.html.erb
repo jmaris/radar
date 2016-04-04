@@ -30,13 +30,13 @@
 
     <div class="well well-sm" id="current_loads">
       <dt>Current CPU load</dt>
-      <dd><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="<%= @cpu_load %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @cpu_load %>%;"><%= @cpu_load %> %</div></div></dd>
+      <dd><div class="progress"><div class="progress-bar progress-bar-plum" role="progressbar" aria-valuenow="<%= @cpu_load %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @cpu_load %>%;"><%= @cpu_load %> %</div></div></dd>
 
       <dt>Current RAM load</dt>
-      <dd><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="<%= @ram_load %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @ram_load %>%;"><%= @ram_load %> %</div></div></dd>
+      <dd><div class="progress"><div class="progress-bar progress-bar-sky-blue" role="progressbar" aria-valuenow="<%= @ram_load %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @ram_load %>%;"><%= @ram_load %> %</div></div></dd>
 
       <dt>Current storage load</dt>
-      <dd><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="<%= @storage_load %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @storage_load %>%;"><%= @storage_load %> %</div></div></dd>
+      <dd><div class="progress"><div class="progress-bar progress-bar-chocolate" role="progressbar" aria-valuenow="<%= @storage_load %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @storage_load %>%;"><%= @storage_load %> %</div></div></dd>
     </div>
 
     <% end %>
@@ -46,54 +46,13 @@
   </dl>
   <p>
     <div class="well" id="cpu_chart">
-      <script>
-        $(function () {
-          $('#cpu_chart').highcharts({
-            chart :{
-              type: 'areaspline'
-            },
-            title:{
-              text: 'CPU chart'
-            },
-            yAxis: {
-              min: 0,
-              max: 100,
-              title: {
-                text: false
-              },
-              labels: {
-                formatter: function() {
-                  return this.value + ' %';
-                }
-              },
-            },
-            legend: {
-              enabled: false
-            },
-            xAxis: {
-              labels: {
-                enabled: false
-              },
-            },
-            plotOptions: {
-              series: {
-                allowPointSelect: false
-              }
-            },
-            tooltip: {
-              shared: true,
-              valueSuffix: ' %'
-            },
-            credits: {
-              enabled: false
-            },
-            series: [{
-              name: 'CPU load',
-              data: <%= @cpu_load_last10 %>
-            }]
-          });
-        });
-      </script>
+      <%= area_chart @cpu_load_last10, min: 0, max: 100, label: "CPU usage", xtitle: "Time", ytitle: "CPU usage percentage", colors: ["#75507b"], library: {legend: {position: "left"}} %>
+    </div>
+    <div class="well" id="ram_chart">
+      <%= area_chart @ram_load_last10, min: 0, max: 100, label: "RAM usage", xtitle: "Time", ytitle: "RAM usage percentage", colors: ["#3465a4"] %>
+    </div>
+    <div class="well" id="storage_chart">
+      <%= area_chart @storage_load_last10, min: 0, max: 100, label: "Storage usage", xtitle: "Time", ytitle: "Storage usage percentage", colors: ["#c17d11"] %>
     </div>
 
   </p>

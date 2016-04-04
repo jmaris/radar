@@ -12,11 +12,15 @@
 
 <p id="notice"> <%= notice %> </p>
 
+<% if Machine.all.count == 0 %>
+
+<h1>No machines found</h1>
+
+<% else %>
+
 <div class="page-header">
   <h1>Machines</h1>
 </div>
-
-<% unless Machine.all.count == 0 %>
 
 <div class = "table-responsive text-center">
   <table class="table">

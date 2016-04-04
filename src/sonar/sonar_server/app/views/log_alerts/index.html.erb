@@ -10,11 +10,15 @@
   });
 </script>
 
+<% if LogAlert.all.count == 0 %>
+
+<h1>No log alerts found</h1>
+
+<% else %>
+
 <div class="page-header">
   <h1>Log alerts</h1>
 </div>
-
-<% unless LogAlert.all.count == 0 %>
 
 <div class="table-responsive text-center">
   <table class="table">
