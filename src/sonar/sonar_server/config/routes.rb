@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :log_alerts do
     member do
       get 'acknowledge'

@@ -13,6 +13,7 @@ class MachinesController < ApplicationController
     @alias                = @machine.alias
     @storage_bytes        = @machine.storage_total_bytes
     @update_interval      = @machine.update_interval
+    
     @status               = false
     @status               = true unless Machine.api(@machine.protocol, @machine.host, @machine.port, 'live') == 'error'
     if @status
@@ -25,18 +26,13 @@ class MachinesController < ApplicationController
       @storage_load         = (api_live[:storage_bytes].to_f/api_sysinfo[:storage][:total_bytes].to_f * 100).round(2) # we should be calling the API for this
       @uptime               = api_live[:uptime_seconds]
     end
+
     @chart_names          = ["CPU", "RAM", "Storage"]
 
-    # @cpu_load_last10 = Hash.new
-    # @cpu_load_last10["2016-04-04 09:38:20"] = 15
-    # @cpu_load_last10["2016-04-04 09:39:20"] = 45
-    # @cpu_load_last10["2016-04-04 09:45:20"] = 58
+    @cpu_load_last100      = Hash[CpuMetric.where(machine_id: @machine.id).last(100).map {|m| [m.created_at, m.cpu] }]
+    @ram_load_last100      = Hash[RamMetric.where(machine_id: @machine.id).last(100).map {|m| [m.created_at, m.ram] }]
+    @storage_load_last100  = Hash[StorageMetric.where(machine_id: @machine.id).last(100).map {|m| [m.created_at, m.storage] }]
 
-    @cpu
-
-    @cpu_load_last10      = Hash[CpuMetric.where(machine_id: @machine.id).last(100).map {|m| [m.created_at, m.cpu] }]
-    @ram_load_last10      = Hash[RamMetric.where(machine_id: @machine.id).last(100).map {|m| [m.created_at, m.ram] }]
-    @storage_load_last10  = Hash[StorageMetric.where(machine_id: @machine.id).last(100).map {|m| [m.created_at, m.storage] }]
   end
 
   # GET /machines/new

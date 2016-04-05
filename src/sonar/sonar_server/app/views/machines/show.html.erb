@@ -28,7 +28,12 @@
 
     <% if @status %>
 
+    <br>
+
     <div class="well well-sm" id="current_loads">
+
+      <br>
+
       <dt>Current CPU load</dt>
       <dd><div class="progress"><div class="progress-bar progress-bar-plum" role="progressbar" aria-valuenow="<%= @cpu_load %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @cpu_load %>%;"><%= @cpu_load %> %</div></div></dd>
 
@@ -47,13 +52,13 @@
   </dl>
   <p>
     <div class="well" id="cpu_chart">
-      <%= area_chart @cpu_load_last10, min: 0, max: 100, label: "CPU usage", xtitle: "Time", ytitle: "CPU usage percentage", colors: ["#75507b"] %>
+      <%= area_chart @cpu_load_last100, min: 0, max: 100, label: "CPU usage", xtitle: "Time", ytitle: "CPU usage percentage", colors: ["#75507b"] %>
     </div>
     <div class="well" id="ram_chart">
-      <%= area_chart @ram_load_last10, min: 0, max: 100, label: "RAM usage", xtitle: "Time", ytitle: "RAM usage percentage", colors: ["#3465a4"] %>
+      <%= area_chart @ram_load_last100, min: 0, max: 100, label: "RAM usage", xtitle: "Time", ytitle: "RAM usage percentage", colors: ["#3465a4"] %>
     </div>
     <div class="well" id="storage_chart">
-      <%= area_chart @storage_load_last10, min: 0, max: 100, label: "Storage usage", xtitle: "Time", ytitle: "Storage usage percentage", colors: ["#c17d11"] %>
+      <%= area_chart @storage_load_last100, min: 0, max: 100, label: "Storage usage", xtitle: "Time", ytitle: "Storage usage percentage", colors: ["#c17d11"] %>
     </div>
 
   </p>
