@@ -14,10 +14,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root  'machines#index'
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
-  # root  'static#show', static: "home"
+  root  'static#show', static: "home"
   get   'machine_mountpoints(/:machine_id)' => "mountpoints#get"
   get   '/static/:static' => "static#show"
 
