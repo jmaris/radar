@@ -1,21 +1,23 @@
 Rails.application.routes.draw do
+  get 'users/sign_up' => redirect('/403.html')
   devise_for :users
-  resources :log_alerts do
-    member do
-      get 'acknowledge'
-    end
+  authenticate :user do
+    resources :ram_alerts
+    resources :storage_alerts
+    resources :cpu_alerts
+    resources :alerts
+    resources :machines
+    resources :log_alerts
   end
-  resources :ram_alerts
-  resources :storage_alerts
-  resources :cpu_alerts
-  resources :alerts
-  resources :machines
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root  'machines#index'
-  root  'static#show', static: "home"
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+  # root  'static#show', static: "home"
   get   'machine_mountpoints(/:machine_id)' => "mountpoints#get"
   get   '/static/:static' => "static#show"
 
