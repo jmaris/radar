@@ -13,7 +13,8 @@ class MachinesController < ApplicationController
     @alias                = @machine.alias
     @storage_bytes        = @machine.storage_total_bytes
     @update_interval      = @machine.update_interval
-    
+    @os                   = @machine.os
+
     @status               = false
     @status               = true unless Machine.api(@machine.protocol, @machine.host, @machine.port, 'live') == 'error'
     if @status

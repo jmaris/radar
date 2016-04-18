@@ -4,6 +4,8 @@
   });
 </script>
 
+<%= console %>
+
 <div class="btn-group" role="group" aria-label="Actions">
   <%= link_to machines_path, class: 'btn btn-default', data: { toggle: 'tooltip', title: 'Back'} do %>
   <i class="glyphicon glyphicon-arrow-left"></i>
@@ -24,9 +26,12 @@
   <dd> <%= @machine.hostname %> </dd>
 
   <dt> Update interval </dd>
-    <dd> <%= pluralize(@machine.update_interval, 'minute') %> </dd>
+  <dd> <%= pluralize(@machine.update_interval, 'minute') %> </dd>
 
-    <% if @status %>
+  <dt> OS </dt>
+  <dd> <%= @machine.os %> </dd>
+
+  <% if @status %>
 
     <br>
 

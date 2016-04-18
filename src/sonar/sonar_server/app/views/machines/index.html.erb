@@ -28,6 +28,7 @@
     <tr class="active">
       <th class="text-center">ID</th>
       <th class="text-center">Alias</th>
+      <th class="text-center">OS</th>
       <th class="text-center">Operations</th>
     </tr>
   </thead>
@@ -35,8 +36,9 @@
   <tbody>
     <% @machines.each do |machine| %>
     <tr>
-      <td><%= machine.id %> </td>
+      <td> <%= machine.id %> </td>
       <td> <%= machine.alias %> </td>
+      <td> <%= machine.os %> </td>
       <td> <div class="btn-group" role="group" aria-label="Operations">
         <%= link_to machine, class: 'btn btn-default btn-xs', data: { toggle: 'tooltip', title: 'View' } do %> <i class="glyphicon glyphicon-eye-open"> </i> <% end %>
         <%= link_to edit_machine_path(machine), class: 'btn btn-default btn-xs', data: { toggle: 'tooltip', title: 'Edit' } do %> <i class="glyphicon glyphicon-edit"> </i> <% end %>
