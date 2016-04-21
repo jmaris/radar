@@ -7,10 +7,7 @@ class StorageAlert < ActiveRecord::Base
 
   after_create  :init # sets triggered to false
 
-  def init
-    machine_update_interval = Machine.find(self.machine_id).update_interval
-    self.check_interval = machine_update_interval
-    self.triggered = false
+  def init    self.triggered = false
     self.save
     self.check_dj
   end

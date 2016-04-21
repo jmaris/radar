@@ -25,6 +25,9 @@
   <%= f.number_field :threshold, label: 'Storage threshold', placeholder: '50.5', class: 'text_field', step: 0.1, help: 'Positive number, percentage of storage usage.' %>
 </div>
 <div class="field">
+  <%= f.number_field :check_interval, placeholder: '5', help: 'Positive integer between 1 and 1440, minutes, minutes between each refresh.' %>
+</div>
+<div class="field">
   <%= f.text_area :custom_message, placeholder: 'Type your message.' %>
 </div>
 <br>
