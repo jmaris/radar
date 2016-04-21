@@ -7,7 +7,8 @@ class StorageAlert < ActiveRecord::Base
 
   after_create  :init # sets triggered to false
 
-  def init    self.triggered = false
+  def init
+    self.triggered = false
     self.save
     self.check_dj
   end
