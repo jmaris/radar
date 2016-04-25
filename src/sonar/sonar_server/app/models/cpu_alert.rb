@@ -8,13 +8,15 @@ class CpuAlert < ActiveRecord::Base
   after_create  :init # sets triggered to false
 
   def duration_must_be_equal_to_or_higher_than_update_interval
-    update_interval = self.check_interval
-    if self.duration.nil? || self.duration < update_interval
-      errors.add(:duration, "must be equal to or greater than #{update_interval}")
+    machine                 = Machine.find(self.machine_id)
+    if self.duration.nil? || self.duration < machine.update_interval
+      errors.add(:duration, "must be equal to or greater than #{machine.update_interval}")
     end
   end
 
   def init
+    machine_update_interval = Machine.find(self.machine_id).update_interval
+    self.check_interval = machine_update_interval
     self.triggered = false
     self.save
     self.check_dj
