@@ -12,7 +12,7 @@ class Alert < ActiveRecord::Base
   # after_create  :init # sets triggered to false
   
   def machine
-    unless Machine.exists?(self.machine_id)
+    unless Machine.exists?(machine_id)
       errors.add(:machine_id, 'does not exist')
     end
   end
@@ -24,7 +24,6 @@ class Alert < ActiveRecord::Base
     machine = Machine.find(alert.machine_id)
 
     actable_id
-    # actable_type = self.actable_type
 
     if actable_type.constantize.is_higher(actable_id)
       alert_email_trigger(alert_id)
@@ -36,14 +35,6 @@ class Alert < ActiveRecord::Base
     alert.delayed_job_id = delayed_job.id
     alert.save
   end
-
-  # private
-
-  # def init
-  #   self.triggered = false
-  #   self.save
-  #   self.check_dj
-  # end
 
   def alert_email_untrigger(alert_id)
     alert = Alert.find(alert_id)
