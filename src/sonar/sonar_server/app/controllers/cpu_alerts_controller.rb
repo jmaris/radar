@@ -58,7 +58,7 @@ class CpuAlertsController < ApplicationController
   def destroy
     @cpu_alert.destroy
     respond_to do |format|
-      flash[:success] = 'CPU alert was successfully destroyed.'
+      flash[:success] = 'CPU alert was successfully removed.'
       format.html { redirect_to cpu_alerts_url }
       format.json { head :no_content }
     end

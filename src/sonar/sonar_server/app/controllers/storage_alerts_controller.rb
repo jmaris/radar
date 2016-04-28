@@ -59,7 +59,7 @@ class StorageAlertsController < ApplicationController
   def destroy
     @storage_alert.destroy
     respond_to do |format|
-      flash[:success] = 'Storage alert was successfully destroyed.'
+      flash[:success] = 'Storage alert was successfully removed.'
       format.html { redirect_to storage_alerts_url}
       format.json { head :no_content }
     end

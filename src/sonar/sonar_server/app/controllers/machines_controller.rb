@@ -81,7 +81,7 @@ class MachinesController < ApplicationController
   def destroy
     @machine.destroy
     respond_to do |format|
-      flash[:success] = 'Machine was successfully destroyed.'
+      flash[:success] = 'Machine was successfully removed.'
       format.html { redirect_to machines_url }
       format.json { head :no_content }
     end

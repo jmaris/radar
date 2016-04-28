@@ -58,8 +58,8 @@ class RamAlertsController < ApplicationController
   def destroy
     @ram_alert.destroy
     respond_to do |format|
-      flash[:success] = 'RAM alert was successfully destroyed.'
-      format.html { redirect_to ram_alerts_url, notice: 'Ram alert was successfully destroyed.' }
+      flash[:success] = 'RAM alert was successfully removed.'
+      format.html { redirect_to ram_alerts_url}
       format.json { head :no_content }
     end
   end
