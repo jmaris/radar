@@ -53,7 +53,7 @@ class LogAlertsController < ApplicationController
     end
   end
 
-  # POST /log_alerts/1/acknowledge
+  # GET /log_alerts/1/acknowledge
   def acknowledge
     respond_to do |format|
       if @log_alert.acknowledge

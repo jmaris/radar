@@ -57,6 +57,7 @@ class LogAlert < ActiveRecord::Base
     self.match_amount = log_api[:match][:amount]
     self.triggered    = false
     self.save
+    SonarMailer.log_unalert_email(log_alert.id).deliver_later
   end
 
   private
@@ -76,13 +77,15 @@ class LogAlert < ActiveRecord::Base
     if log_alert.match_amount < log_api[:match][:amount]
       true
     elsif log_alert.match_amount > log_api[:match][:amount]
-      logger.debug "showing log_alert"
+      logger.debug 'showing log_alert'
       logger.debug log_alert
-      logger.debug "showing the API"
+      logger.debug 'showing the API'
       logger.debug log_api
       logger.debug "API returned less matches than we have on file.
       This is probably because the log has rotated.
       Rotating logs is not supported yet."
+      log_alert.match_amount = log_api[:match][:amount]
+      save
       false
     end
   end

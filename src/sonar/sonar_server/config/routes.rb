@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :alerts
     resources :machines
     resources :log_alerts
+    get 'log_alerts/:id/acknowledge' => 'log_alerts#acknowledge'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
