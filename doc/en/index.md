@@ -1,7 +1,7 @@
 SONAR
 =====
 
-(Note: This documentation was written during development stage, so some steps might be slightly different).
+(Note: This documentation was written during development stage, so some screenshots, or techniques described might be slightly different in the final release).
 
 Sonar is an easy to use and simple monitoring tool, and it is written in Ruby on Rails.
 
@@ -9,7 +9,7 @@ Sonar is designed to feature a client-server model, so that the server part is a
 
 The clients expose the 4963/TCP port and use the HTTP protocol. HTTPS can be configured but at the time of writing it's completely unsupported. Sonar Web uses the 3000 port by default, like any other standard Rails app.
 
-Sonar Web must be able to reach the clients. So, for example, if the clients are behind a NAT, or a firewall, ports must be opened, but that's beyond the scope of this documentation. Since you can consult your ISP, router, or firewall documentation for more info on how to open ports.
+Sonar Web must be able to reach the clients. So, for example, if the clients are behind a NAT, or a firewall, ports must be opened, but that's beyond the scope of this documentation. You can consult your ISP, router, or firewall documentation for more info on how to open ports.
 
 ## Alerts
 
