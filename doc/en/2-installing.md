@@ -5,6 +5,8 @@ To install Sonar, it's required to have a Ruby on Rails installation. That means
 
 In this document, we'll cover how to install Ruby on Rails through the `rvm` installer on Linux. Mac OS X and Windows are not supported at this moment. There are also other ways to install Ruby on Rails that don't require `rvm`, but I chose it because it's the fastest, easiest and most widely known method of installing Ruby.
 
+## Prerequisites
+
 Only Arch Linux has been tested so far, but Ubuntu and Debian should work just as well.
 
 This guide assumes you already have installed git and have the necessary knowledge to handle a commandline prompt.
