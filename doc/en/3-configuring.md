@@ -17,7 +17,7 @@ So it looks like:
 
 This will allow you to sign up, creating credentials for a user.
 
-Then, go to `YOURIPADDRESSORHOSTNAME:3000/sign_up` if you have configured the port or are using a server like Nginx, then use that port. If you're running it on the same machine you can use `localhost:3000/sign_up`. For the purpose of this guide, I will be creating the `root@sonar.local` username with the same password.
+Then, go to `YOUR.IP.ADDRESS.OR.HOSTNAME:3000/sign_up` if you have configured the port or are using a server like Nginx, then use that port. If you're running it on the same machine you can use `localhost:3000/sign_up`. For the purpose of this guide, I will be creating the `root@sonar.local` username with the same password.
 
 ![Sign Up](img/sign_up.png)
 
