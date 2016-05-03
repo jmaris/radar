@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 20160405114821) do
   end
 
   create_table "cpu_alerts", force: :cascade do |t|
-    t.float   "threshold"
-    t.integer "duration"
+    t.float    "threshold"
+    t.integer  "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cpu_metrics", force: :cascade do |t|
@@ -77,10 +79,10 @@ ActiveRecord::Schema.define(version: 20160405114821) do
     t.string   "cpu_model"
     t.integer  "cpu_cores"
     t.string   "cpu_architecture"
-    t.integer  "ram_total_bytes",     limit: 16
-    t.integer  "storage_total_bytes", limit: 16
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "ram_total_bytes",     limit: 8
+    t.integer  "storage_total_bytes", limit: 8
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "ram_alerts", force: :cascade do |t|

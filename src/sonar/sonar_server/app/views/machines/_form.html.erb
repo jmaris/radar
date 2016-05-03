@@ -19,7 +19,7 @@
   <%= f.select :protocol, options_for_select([["HTTP", "http"], ["HTTPS", "https"]]) %>
 </div>
 <div class="field">
-  <%= f.text_field :host, placeholder: 'example.com', help: 'Address or IP of the machine you want to get data from relative to the Sonar Web server.' %>
+  <%= f.text_field :host, placeholder: 'example.com', help: 'Hostname or IP address of the machine you want to get data from relative to the Sonar Web server.' %>
 </div>
 <div class="field">
   <%= f.number_field :port, placeholder: '4963', help: 'Port of the Sonar API server. 4963 is the default port.' %>

@@ -1,15 +1,15 @@
 2 - Installing Sonar
-================
+====================
 
 To install Sonar, it's required to have a Ruby on Rails installation. That means Sonar requires a Ruby interpreter as well as the Bundler package manager.
 
-In this document, we'll cover how to install Ruby on Rails through the `rvm` installer on Linux. Mac OS X and Windows are not supported at this moment. There are also other ways to install Ruby on Rails that don't require `rvm`, but I chose it because it's the fastest, easiest and most famous method of installing Ruby.
+In this document, we'll cover how to install Ruby on Rails through the `rvm` installer on Linux. Mac OS X and Windows are not supported at this moment. There are also other ways to install Ruby on Rails that don't require `rvm`, but I chose it because it's the fastest, easiest and most widely known method of installing Ruby.
 
 Only Arch Linux has been tested so far, but Ubuntu and Debian should work just as well.
 
 This guide assumes you already have installed git and have the necessary knowledge to handle a commandline prompt.
 
-For information on installing `rvm`, it's recommended to consult the ![official website](https://rvm.io/). As of today (05/03/2016) these are the necessary steps to install it:
+For information on installing `rvm`, it's recommended to consult the [official website](https://rvm.io/). As of today (05/03/2016) these are the necessary steps to install it:
 
 ### Installing RVM
 
@@ -61,6 +61,6 @@ $ cd sonar/src/sonar/sonar_api
 
 It is also recommended to open specific ports so that the server can talk to the client.
 
-If opening ports is not possible or desirable for security reasons, you can set up an SSH tunnel with `auto-ssh` by following a guide like ![this one](http://linuxaria.com/howto/permanent-ssh-tunnels-with-autossh in case it ever becomes unavailable).
+If opening ports is not possible or desirable for security reasons, you can set up an SSH tunnel with `auto-ssh` by following a guide like [this one](http://linuxaria.com/howto/permanent-ssh-tunnels-with-autossh).
 
 Once the ports have been opened or the SSH tunnel has been set up, you can start Sonar API by running `rake server`.
