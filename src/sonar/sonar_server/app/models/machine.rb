@@ -13,6 +13,7 @@ class Machine < ActiveRecord::Base
   # has_one         :delayed_job,       dependent: :destroy
 
   after_save      :sysinfo_update # this updates the machine with static info provided by the sysinfo API
+  after_save      :sync_alerts
   after_create    :launch_metric_save_metrics_dj # schedules a delayed job to check every N minutes and update the performance charts
 
   private
@@ -40,7 +41,28 @@ class Machine < ActiveRecord::Base
     # self.update_column(:swap_total_bytes, api_sysinfo[:swap][:total_bytes])
     self.update_column(:storage_total_bytes, api_sysinfo[:storage][:total_bytes])
   end
-  
+
+  def sync_alerts
+    # machine = self
+    machine_id = self.id
+    update_interval = self.update_interval
+
+    # cpu_alerts = CpuAlert.where(machine_id: machine_id).ids
+    # ram_alerts = RamAlert.where(machine_id: machine_id).ids
+
+    for cpu_alert_id in CpuAlert.where(machine_id: machine_id).ids
+      cpu_alert = CpuAlert.find(cpu_alert_id)
+      cpu_alert.check_interval = update_interval
+      cpu_alert.save
+    end
+
+    for ram_alert_id in RamAlert.where(machine_id: machine_id).ids
+      ram_alert = RamAlert.find(ram_alert_id)
+      ram_alert.check_interval = update_interval
+      ram_alert.save
+    end
+  end
+
   def launch_metric_save_metrics_dj
     Metric.save_metrics_dj(self.id)
   end

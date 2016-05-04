@@ -19,10 +19,10 @@ class LogAlert < ActiveRecord::Base
     log_path          << '/'
     log_path          << ERB::Util.url_encode(log_alert.arguments)
     log_api           = Machine.api(machine.protocol,machine.host,machine.port,log_path)
-    unless errors[:arguments] == ["is invalid"]
-      if log_api.class == String && log_api == "error"
+    unless errors[:arguments] == ['is invalid']
+      if log_api.class == String && log_api == 'error'
         errors.add(:path, 'is invalid')
-      elsif log_api[:match][:status] == "can't open file"
+      elsif log_api[:match][:status] == 'can\'t open file'
         errors.add(:path, 'is invalid')
       end
     end
@@ -63,7 +63,7 @@ class LogAlert < ActiveRecord::Base
   private
 
   def self.is_higher(log_alert_id)
-    machine   = Machine.find(Alert.where(actable_type: "LogAlert", actable_id: log_alert_id).first.machine_id)
+    machine   = Machine.find(Alert.where(actable_type: 'LogAlert', actable_id: log_alert_id).first.machine_id)
     log_alert = LogAlert.find(log_alert_id)
 
     log_path  = 'logs/'
@@ -81,9 +81,9 @@ class LogAlert < ActiveRecord::Base
       logger.debug log_alert
       logger.debug 'showing the API'
       logger.debug log_api
-      logger.debug "API returned less matches than we have on file.
+      logger.debug 'API returned less matches than we have on file.
       This is probably because the log has rotated.
-      Rotating logs is not supported yet."
+      Rotating logs is not supported yet.'
       log_alert.match_amount = log_api[:match][:amount]
       save
       false
