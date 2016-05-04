@@ -7,11 +7,11 @@ In this document, we'll cover how to install Ruby on Rails through the `rvm` ins
 
 ## Prerequisites
 
-Only Arch Linux has been tested so far, but Ubuntu and Debian should work just as well.
+Only Arch Linux has been tested so far, but other distributions such as Ubuntu and Debian should work just as well.
 
 This guide assumes you already have installed git and have the necessary knowledge to handle a commandline prompt.
 
-For information on installing `rvm`, it's recommended to consult the [official website](https://rvm.io/). As of today (05/03/2016) these are the necessary steps to install it:
+For information on installing `rvm`, it's recommended to consult the [official website](https://rvm.io/). As of today (04/05/2016) these are the necessary steps to install it:
 
 ### Installing RVM
 

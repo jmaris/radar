@@ -3,9 +3,9 @@
 
 Since CPU and RAM alerts work in a similar way, these steps are common for both alerts.
 
-## Adding a new alert
+## Adding a new CPU/RAM alert
 
-To create a new alert, you need to specify a few parameters:
+To create a new CPU/RAM alert, you need to specify a few parameters:
 - Machine providing the metrics (Sonar API)
 - E-Mail address to send the alert to
 - CPU/RAM threshold
