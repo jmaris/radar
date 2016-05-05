@@ -1,2 +1,0 @@
-Sonar User Manual
-=================
