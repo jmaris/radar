@@ -53,7 +53,7 @@ en:
       no_alerts: "No log alerts found"
       logger_type: "Logger type"
       path: "Path"
-      arguments: "arguments"
+      arguments: "Arguments"
       acknowledge: "Acknowledge"
   machines:
     edit:

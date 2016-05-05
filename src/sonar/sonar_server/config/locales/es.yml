@@ -19,10 +19,49 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-es:
+en:
   cpu_alerts:
     edit:
       edit: "Editando alerta de CPU"
+    new:
+      new: "Nueva alerta de CPU"
+    index:
+      no_alerts: "No se encontraron alertas de CPU"
+      threshold: "Límite de CPU"
+  ram_alerts:
+    edit:
+      edit: "Editando alerta de RAM"
+    new:
+      new: "Nueva alerta de RAM"
+    index:
+      no_alerts: "No se encontraron alertas de RAM"
+      threshold: "Límite de RAM"
+  storage_alerts:
+    edit:
+      edit: "Editando alertas de almacenamiento"
+    new:
+      new: "Nueva alerta de almacenamiento"
+    index:
+      no_alerts: "No se encontraron alertas de RAM"
+      threshold: "Límite de almacenamiento"
+  log_alerts:
+    edit:
+      edit: "Editando alerta de logs"
+    new:
+      new: "Nueva alerta de logs"
+    index:
+      no_alerts: "No se encontraron alertas de logs"
+      logger_type: "Tipo de logger"
+      path: "Ruta"
+      arguments: "Argumentos"
+      acknowledge: "Rearmar"
+  machines:
+    edit:
+      edit: "Editando máquina"
+    new:
+      new: "Nueva máquina"
+    index:
+      no_machines: "No se encontraron máquinas"
   static:
     home:
       welcome: "Bienvenido a Sonar"
@@ -37,12 +76,67 @@ es:
       edit_profile: "Editar perfil"
       sign_out: "Cerrar sesión"
       sign_in: "Iniciar sesión"
+    common:
+      threshold: "Límite"
+      machines: "Máquinas"
+      alerts: "Alertas"
+      cpu_alerts: "Alertas de CPU"
+      ram_alerts: "Alertas de RAM"
+      storage_alerts: "Alertas de almacenamiento"
+      log_alerts: "Alertas de log"
+      machine_id: "ID de la máquina"
+      email: "Dirección de E-Mail"
+      duration: "Duración"
+      custom_message: "Mensaje personalizado"
+      operations: "Operaciones"
+      back_warning: "¿Descartar cambios y volver?"
+      check_interval: "Intervalo de comprobación"
+      update_interval: "Intervalo de actualización"
+      cycles: "Ciclos"
+      id: "ID"
+      alias: "Alias"
+      os: "SO"
   helpers:
     label:
       cpu_alert:
-        addressee: "Dirección de correo electrónico"
+        machine: "Máquina"
+        addressee: "Dirección de E-Mail"
         threshold: "Límite de CPU"
+        duration: "Duración"
+        custom_message: "Mensaje personalizado"
+      ram_alert:
+        machine: "Máquina"
+        addressee: "Dirección de E-Mail"
+        threshold: "Límite de RAM"
+        duration: "Duración"
+        custom_message: "Mensaje personalizado"
+      storage_alert:
+        machine: "Máquina"
+        addressee: "Dirección de E-Mail"
+        path: "Partición"
+        threshold: "Límite de almacenamiento"
+        check_interval: "Intervalo de comprobación"
+        custom_message: "Mensaje personalizado"
+      log_alert:
+        machine: "Máquina"
+        addressee: "Dirección de E-Mail"
+        logger_type: "Tipo de logger"
+        arguments: "Argumentos"
+        check_interval: "Intervalo de comprobación"
+        custom_message: "Mensaje personalizado"
+      machine:
+        alias: "Alias de la máquina"
+        protocol: "Protocol"
+        host: "Nombre del host"
+        port: "Puerto"
+        update_interval: "Intervalo de actualización"
+
   activerecord:
     help:
       cpu_alert:
-        threshold: "Número positivo, porcentaje de uso de CPU."
+        threshold: "Número positivo. Porcentaje de uso de CPU."
+        custom_message: "Entero positivo entre 1 y 1440, mayor o igual que el intervalo de actualización de la máquina, minutos, duración para la que se tienen que cumplir los parámetros para activar la alerta."
+      machine:
+        host: "Nombre del host o dirección IP para la que se quiere obtener datos relativo a Sonar Web."
+        port: "Puerto del servidor API de Sonar, 4963 por defecto."
+        update_interval: "Entero positivo entre 1 y 1440, minutos para cada actualización de los gráficos."
