@@ -2,7 +2,7 @@
 <% if @cpu_alert.errors.any? %>
 
 <div class="alert alert-danger">
-  <%= pluralize(@cpu_alert.errors.count, "error") %> prohibited this CPU Alert from being saved:
+  <%= pluralize(@cpu_alert.errors.count, "error") %>:
   <ul>
     <% @cpu_alert.errors.full_messages.each do |message| %>
     <li><%= message %></li>
@@ -16,20 +16,20 @@
   <%= f.select :machine_id, @machines_hash %>
 </div>
 <div class="field">
-  <%= f.text_field :addressee, label: 'E-Mail address', placeholder: 'sonar_alert@example.com' %>
+  <%= f.text_field :addressee, placeholder: 'sonar_alert@example.com' %>
 </div>
 <div class="field">
-  <%= f.number_field :threshold, label: 'CPU threshold', placeholder: '50.5', class: 'text_field', step: 0.1, help: 'Positive number, percentage of CPU usage.' %>
+  <%= f.number_field :threshold, placeholder: '50.5', class: 'text_field', step: 0.1 %>
 </div>
 <div class="field">
-  <%= f.number_field :duration, placeholder: '10', help: 'Positive integer between 1 and 1440, greater than or equal to the machine\'s update interval, minutes, duration for which the condition has to be met in order to trigger the alert.' %>
+  <%= f.number_field :duration, placeholder: '10' %>
 </div>
 <div class="field">
-  <%= f.text_area :custom_message, placeholder: 'Type your message.' %>
+  <%= f.text_area :custom_message %>
 </div>
 <br>
 <div class="actions">
-  <%= f.submit 'Save CPU alert', class: 'btn btn-primary' %>
+  <%= f.submit class: 'btn btn-primary submit' %>
 </div>
 <br>
 <% end %>

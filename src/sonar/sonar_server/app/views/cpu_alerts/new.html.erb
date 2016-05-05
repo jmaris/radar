@@ -4,12 +4,12 @@ $(document).ready(function(){
 });
 </script>
 
-<%= link_to cpu_alerts_path, class: 'btn btn-warning', data: { toggle: 'tooltip', title: 'Back', confirm: 'Discard changes and go back?' } do %>
+<%= link_to cpu_alerts_path, class: 'btn btn-warning', data: { toggle: 'tooltip', title: 'Back', confirm: "Discard changes and go back?" } do %>
 <i class="glyphicon glyphicon-arrow-left"></i>
 <% end %>
 
 <div class="page-header">
-  <h1>New CPU alert</h1>
+  <h1><%= t ".new" %></h1>
 </div>
 
 <%= render 'form' %>

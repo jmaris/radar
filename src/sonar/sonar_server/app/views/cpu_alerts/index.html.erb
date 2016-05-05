@@ -12,24 +12,24 @@
 
 <% if CpuAlert.all.count == 0 %>
 
-<h1>No CPU alerts found</h1>
+<h1><%= t ".no_alerts" %></h1>
 
 <% else %>
 
 <div class="page-header">
-  <h1>CPU alerts</h1>
+  <h1><%= t "shared.common.cpu_alerts" %></h1>
 </div>
 
 <div class="table-responsive text-center">
   <table class="table">
    <thead>
     <tr class="active">
-      <th class="text-center">Machine ID</th>
-      <th class="text-center">E-Mail address</th>
-      <th class="text-center">CPU threshold</th>
-      <th class="text-center">Duration</th>
-      <th class="text-center">Custom message</th>
-      <th class="text-center">Operations</th>
+      <th class="text-center"><%= t "shared.common.machine_id" %></th>
+      <th class="text-center"><%= t "shared.common.email" %></th>
+      <th class="text-center"><%= t "shared.common.threshold" %></th>
+      <th class="text-center"><%= t "shared.common.duration" %></th>
+      <th class="text-center"><%= t "shared.common.custom_message" %></th>
+      <th class="text-center"><%= t "shared.common.operations" %></th>
     </tr>
   </thead>
 

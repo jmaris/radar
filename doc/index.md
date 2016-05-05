@@ -1,7 +1,7 @@
 Sonar
 =====
 
-## English
+## User manual (English)
 
 1. [Introduction](en/1-introduction.md)
 2. [Installing](en/2-installing.md)
@@ -10,7 +10,7 @@ Sonar
 5. [Storage alerts](en/5-storage_alerts.md)
 6. [Log alerts](en/6-log_alerts.md)
 
-## Español
+## Manual de usuario (Español)
 
 1. [Introducción](es/1-introduccion.md)
 2. [Instalación](es/2-instalacion.md)

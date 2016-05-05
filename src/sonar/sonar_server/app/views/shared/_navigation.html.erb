@@ -16,25 +16,27 @@
 <div id="navbar" class="navbar-collapse collapse">
   <% if user_signed_in? %>    			
   <ul class="nav navbar-nav">
-    <li class="<%= is_active?('/machines') %>"><%= link_to "Machines", '/machines' %></li>
+    <li class="<%= is_active?('/machines') %>"><%= link_to I18n.t'shared._navigation.machines', '/machines' %></li>
     <li class="dropdown">
-     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alerts <span class="caret"></span></a>
+     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t 'shared._navigation.alerts' %> <span class="caret"></span></a>
      <ul class="dropdown-menu">
-      <li class="<%= is_active?('/cpu_alerts') %>"><%= link_to "CPU Alerts", '/cpu_alerts' %></li>
-      <li class="<%= is_active?('/ram_alerts') %>"><%= link_to "RAM Alerts", '/ram_alerts' %></li>
-      <li class="<%= is_active?('/storage_alerts') %>"><%= link_to "Storage Alerts", '/storage_alerts' %></li>
-      <li class="<%= is_active?('/log_alerts') %>"><%= link_to "Log Alerts", '/log_alerts' %></li>
+      <li class="<%= is_active?('/cpu_alerts') %>"><%= link_to I18n.t'shared._navigation.cpu_alerts', '/cpu_alerts' %></li>
+      <li class="<%= is_active?('/ram_alerts') %>"><%= link_to I18n.t'shared._navigation.ram_alerts', '/ram_alerts' %></li>
+      <li class="<%= is_active?('/storage_alerts') %>"><%= link_to I18n.t'shared._navigation.storage_alerts', '/storage_alerts' %></li>
+      <li class="<%= is_active?('/log_alerts') %>"><%= link_to I18n.t'shared._navigation.log_alerts', '/log_alerts' %></li>
     </ul>
   </li>
   </ul>
   <% end %>
 <ul class="nav navbar-nav navbar-right">
   <% if user_signed_in? %>
-  <li><%= link_to 'Edit profile', edit_user_registration_path %> <span></span></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %> <span></span></li>
+  <li><%= link_to I18n.t'shared._navigation.edit_profile', edit_user_registration_path %> <span></span></li>
+  <li><%= link_to I18n.t'shared._navigation.sign_out', destroy_user_session_path, method: :delete %> <span></span></li>
   <% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %> <span></span></li>
+  <li><%= link_to I18n.t'shared._navigation.sign_in', new_user_session_path %> <span></span></li>
   <% end %>
+  <li><%= link_to_unless_current "EN", locale: "en" %> </li>
+  <li><%= link_to_unless_current "ES", locale: "es" %> </li>
   <li><a href="https://github.com/leoncastillejos/sonar">v 0.3 [developer preview] <span></span></a></li>
 </ul>
 </div>

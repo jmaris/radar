@@ -2,7 +2,7 @@
 <% if @machine.errors.any? %>
 
 <div class="alert alert-danger">
-  <%= pluralize(@machine.errors.count, "error") %> prohibited this Machine from being saved:
+  <%= pluralize(@machine.errors.count, "error") %>:
   <ul>
     <% @machine.errors.full_messages.each do |message| %>
     <li><%= message %></li>
@@ -13,23 +13,23 @@
 <% end %>
 
 <div class="field">
-  <%= f.text_field :alias, placeholder: 'Machine alias' %>
+  <%= f.text_field :alias, placeholder: 'Alias' %>
 </div>
 <div class="field">
   <%= f.select :protocol, options_for_select([["HTTP", "http"], ["HTTPS", "https"]]) %>
 </div>
 <div class="field">
-  <%= f.text_field :host, placeholder: 'example.com', help: 'Hostname or IP address of the machine you want to get data from relative to the Sonar Web server.' %>
+  <%= f.text_field :host, placeholder: 'example.com'%>
 </div>
 <div class="field">
-  <%= f.number_field :port, placeholder: '4963', help: 'Port of the Sonar API server. 4963 is the default port.' %>
+  <%= f.number_field :port, placeholder: '4963' %>
 </div>
 <div class="field">
-  <%= f.number_field :update_interval, placeholder: 1, help: 'Positive integer between 1 and 1440, minutes between each graph update.' %>
+  <%= f.number_field :update_interval, placeholder: 1 %>
 </div>
 <br>
 <div class="actions">
-  <%= f.submit 'Save machine', class: 'btn btn-primary' %>
+  <%= f.submit class: 'btn btn-primary' %>
 </div>
 <br>
 <% end %>

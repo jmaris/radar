@@ -20,4 +20,64 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  cpu_alerts:
+    edit:
+      edit: "Editing CPU alert"
+    new:
+      new: "New CPU alert"
+    index:
+      no_alerts: "No CPU alerts found"
+  static:
+    home:
+      welcome: "Welcome to Sonar"
+  shared:
+    _navigation:
+      machines: "Machines"
+      alerts: "Alerts"
+      cpu_alerts: "CPU Alerts"
+      ram_alerts: "RAM Alerts"
+      storage_alerts: "Storage Alerts"
+      log_alerts: "Log Alerts"
+      edit_profile: "Edit profile"
+      sign_out: "Sign out"
+      sign_in: "Sign in"
+    common:
+      threshold: "Threshold"
+      machines: "Machines"
+      alerts: "Alerts"
+      cpu_alerts: "CPU Alerts"
+      ram_alerts: "RAM Alerts"
+      storage_alerts: "Storage Alerts"
+      log_alerts: "Log Alerts"
+      machine_id: "Machine ID"
+      email: "E-Mail address"
+      duration: "Duration"
+      custom_message: "Custom message"
+      operations: "Operations"
+      back_warning: "Discard changes and go back?"
+      check_interval: "Check interval"
+      update_interval: "Update interval"
+      cycles: "Ciclos"
+  helpers:
+    label:
+      cpu_alert:
+        addressee: "E-Mail address"
+        threshold: "CPU threshold"
+        duration: "Duration"
+        custom_message: "Custom message"
+      machine:
+        alias: "Machine alias"
+        protocol: "Protocol"
+        host: "Hostname"
+        port: "Port"
+        update_interval: "Update interval"
+
+  activerecord:
+    help:
+      cpu_alert:
+        threshold: "Positive number, percentage of CPU usage."
+        custom_message: "Positive integer between 1 and 1440, greater than or equal to the machine's update interval, minutes, duration for which the condition has to be met in order to trigger the alert."
+      machine:
+        host: "Hostname or IP address of the machine you want to get data from relative to the Sonar Web server."
+        port: "Port of the Sonar API server. 4963 is the default port."
+        update_interval: "Positive integer between 1 and 1440, minutes between each graph update."
