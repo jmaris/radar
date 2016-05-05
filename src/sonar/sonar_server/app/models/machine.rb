@@ -43,22 +43,24 @@ class Machine < ActiveRecord::Base
   end
 
   def sync_alerts
-    # machine = self
     machine_id = self.id
     update_interval = self.update_interval
-
-    # cpu_alerts = CpuAlert.where(machine_id: machine_id).ids
-    # ram_alerts = RamAlert.where(machine_id: machine_id).ids
 
     for cpu_alert_id in CpuAlert.where(machine_id: machine_id).ids
       cpu_alert = CpuAlert.find(cpu_alert_id)
       cpu_alert.check_interval = update_interval
+      if cpu_alert.duration < update_interval
+        cpu_alert.duration = update_interval
+      end
       cpu_alert.save
     end
 
     for ram_alert_id in RamAlert.where(machine_id: machine_id).ids
       ram_alert = RamAlert.find(ram_alert_id)
       ram_alert.check_interval = update_interval
+      if ram_alert.duration < update_interval
+        ram_alert.duration = update_interval
+      end
       ram_alert.save
     end
   end
