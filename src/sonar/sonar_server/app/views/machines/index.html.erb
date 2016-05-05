@@ -14,22 +14,22 @@
 
 <% if Machine.all.count == 0 %>
 
-<h1>No machines found</h1>
+<h1><%= t ".no_machines" %></h1>
 
 <% else %>
 
 <div class="page-header">
-  <h1>Machines</h1>
+  <h1><%= t "shared.common.machines" %></h1>
 </div>
 
 <div class = "table-responsive text-center">
   <table class="table">
    <thead>
     <tr class="active">
-      <th class="text-center">ID</th>
-      <th class="text-center">Alias</th>
-      <th class="text-center">OS</th>
-      <th class="text-center">Operations</th>
+      <th class="text-center"><%= t "shared.common.id" %></th>
+      <th class="text-center"><%= t "shared.common.alias" %></th>
+      <th class="text-center"><%= t "shared.common.os" %></th>
+      <th class="text-center"><%= t "shared.common.operations" %></th>
     </tr>
   </thead>
 

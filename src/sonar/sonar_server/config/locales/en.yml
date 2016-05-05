@@ -27,6 +27,41 @@ en:
       new: "New CPU alert"
     index:
       no_alerts: "No CPU alerts found"
+      threshold: "CPU threshold"
+  ram_alerts:
+    edit:
+      edit: "Editing RAM alert"
+    new:
+      new: "New RAM alert"
+    index:
+      no_alerts: "No RAM alerts found"
+      threshold: "RAM threshold"
+  storage_alerts:
+    edit:
+      edit: "Editing storage alert"
+    new:
+      new: "New storage alert"
+    index:
+      no_alerts: "No storage alerts found"
+      threshold: "Storage threshold"
+  log_alerts:
+    edit:
+      edit: "Editing log alert"
+    new:
+      new: "New log alert"
+    index:
+      no_alerts: "No log alerts found"
+      logger_type: "Logger type"
+      path: "Path"
+      arguments: "arguments"
+      acknowledge: "Acknowledge"
+  machines:
+    edit:
+      edit: "Editing machine"
+    new:
+      new: "New machine"
+    index:
+      no_machines: "No machines found"
   static:
     home:
       welcome: "Welcome to Sonar"
@@ -58,12 +93,36 @@ en:
       check_interval: "Check interval"
       update_interval: "Update interval"
       cycles: "Ciclos"
+      id: "ID"
+      alias: "Alias"
+      os: "OS"
   helpers:
     label:
       cpu_alert:
+        machine: "Machine"
         addressee: "E-Mail address"
         threshold: "CPU threshold"
         duration: "Duration"
+        custom_message: "Custom message"
+      ram_alert:
+        machine: "Machine"
+        addressee: "E-Mail address"
+        threshold: "RAM threshold"
+        duration: "Duration"
+        custom_message: "Custom message"
+      storage_alert:
+        machine: "Machine"
+        addressee: "E-Mail address"
+        path: "Partition"
+        threshold: "Storage threshold"
+        check_interval: "Check interval"
+        custom_message: "Custom message"
+      log_alert:
+        machine: "Machine"
+        addressee: "E-Mail address"
+        logger_type: "Logger type"
+        arguments: "Arguments"
+        check_interval: "Check interval"
         custom_message: "Custom message"
       machine:
         alias: "Machine alias"
