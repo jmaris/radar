@@ -63,5 +63,4 @@ group :production do
   gem 'groupdate'
   gem 'unicorn'
   gem 'pg'
-  gem 'daemons'
 end

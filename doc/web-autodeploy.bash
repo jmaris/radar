@@ -34,5 +34,5 @@ service unicorn restart
 service nginx restart
 echo "===== RESTARTED SERVICES ====="
 cd /home/rails/sonar/src/sonar/sonar_server/bin/
-RAILS_ENV=production /home/rails/sonar/src/sonar/sonar_server/bin/delayed_job start
-echo "===== STARTED DELAYED JOB ====="
+echo "Please run the following command:"
+echo "RAILS_ENV=production /home/rails/sonar/src/sonar/sonar_server/bin/delayed_job start"
