@@ -16,10 +16,10 @@
   <%= f.select :machine_id, @machines_hash %>
 </div>
 <div class="field">
-  <%= f.text_field :addressee, label: 'E-Mail address', placeholder: 'sonar_alert@example.com' %>
+  <%= f.text_field :addressee, placeholder: 'sonar_alert@example.com' %>
 </div>
 <div class="field">
-  <%= f.number_field :threshold, label: 'RAM threshold', placeholder: '50.5', class: 'text_field', step: 0.1, help: 'Positive number, percentage of RAM usage.' %>
+  <%= f.number_field :threshold, placeholder: '50.5', class: 'text_field', step: 0.1, help: 'Positive number, percentage of RAM usage.' %>
 </div>
 <div class="field">
   <%= f.number_field :duration, placeholder: '10', help: 'Positive integer between 1 and 1440, greater than or equal to the machine\'s update interval, minutes, duration for which the condition has to be met in order to trigger the alert.' %>

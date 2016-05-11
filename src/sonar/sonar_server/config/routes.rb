@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   get 'users/sign_up' => redirect('/403.html')
-  devise_for :users
-  authenticate :user do
-    resources :ram_alerts
-    resources :storage_alerts
-    resources :cpu_alerts
-    resources :alerts
-    resources :machines
-    resources :log_alerts
-    get 'log_alerts/:id/acknowledge' => 'log_alerts#acknowledge'
+  scope ":locale" do
+    devise_for :users
+    authenticate :user do
+      resources :ram_alerts
+      resources :storage_alerts
+      resources :cpu_alerts
+      resources :alerts
+      resources :machines
+      resources :log_alerts
+      get 'log_alerts/:id/acknowledge' => 'log_alerts#acknowledge'
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
