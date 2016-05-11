@@ -26,3 +26,5 @@ echo "===== CHANGED OWNERSHIP OF RAILS PROJECT FILES ====="
 service unicorn restart
 service nginx restart
 echo "===== RESTARTED SERVICES ====="
+RAILS_ENV=production /home/rails/sonar/src/sonar/sonar_server/bin/delayed_job start
+echo "===== STARTED DELAYED JOB ====="
