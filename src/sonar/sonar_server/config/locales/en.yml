@@ -99,26 +99,26 @@ en:
   helpers:
     label:
       cpu_alert:
-        machine: "Machine"
+        machine_id: "Machine"
         addressee: "E-Mail address"
         threshold: "CPU threshold"
         duration: "Duration"
         custom_message: "Custom message"
       ram_alert:
-        machine: "Machine"
+        machine_id: "Machine"
         addressee: "E-Mail address"
         threshold: "RAM threshold"
         duration: "Duration"
         custom_message: "Custom message"
       storage_alert:
-        machine: "Machine"
+        machine_id: "Machine"
         addressee: "E-Mail address"
         path: "Partition"
         threshold: "Storage threshold"
         check_interval: "Check interval"
         custom_message: "Custom message"
       log_alert:
-        machine: "Machine"
+        machine_id: "Machine"
         addressee: "E-Mail address"
         logger_type: "Logger type"
         arguments: "Arguments"

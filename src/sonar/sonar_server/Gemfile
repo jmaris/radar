@@ -62,5 +62,5 @@ end
 group :production do
   gem 'groupdate'
   gem 'unicorn'
-  gem 'pg'
+  #gem 'pg'
 end

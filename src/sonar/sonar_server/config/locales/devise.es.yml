@@ -1,0 +1,62 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+es:
+  devise:
+    confirmations:
+      confirmed: "Tu dirección de correo electrónico ha sido confirmada."
+      send_instructions: "En los próximos minutos, recibirás un correo electrónico con instrucciones para confirmar tu cuenta."
+      send_paranoid_instructions: "Si la dirección de correo electrónico existe en nuestra base de datos, recibirás un correo para confirmar tu cuenta en los próximos minutos."
+    failure:
+      already_authenticated: "Ya has iniciado sesión."
+      inactive: "Tu cuenta no está activada aún."
+      invalid: "%{authentication_keys} o contraseña inválida."
+      locked: "Tu cuenta está bloqueada."
+      last_attempt: "Último intento antes de que tu cuenta se bloquee."
+      not_found_in_database: "%{authentication_keys} o contraseña inválida."
+      timeout: "Tu sesión ha expirado. Inicia sesión de nuevo para continuar."
+      unauthenticated: "Necesitas iniciar sesión antes de continuar."
+      unconfirmed: "Tienes que confirmar tu correo antes de continuar."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrucciones de confirmación de cuenta"
+      reset_password_instructions:
+        subject: "Instrucciones para cambiar la contraseña"
+      unlock_instructions:
+        subject: "Instrucciones para desbloquear la cuenta"
+      password_change:
+        subject: "Contraseña modificada"
+    omniauth_callbacks:
+      failure: "No se te pudo autentificar desde %{kind} porque \"%{reason}\"."
+      success: "Autentificado con exist desde cuenta %{kind}."
+    passwords:
+      no_token: "No puedes acceder a esta página desde fuera de un correo electrónico de cambio de contraseña. Si vienes desde tal correo, asegúrate de usar la URL completa que te ha sido proveída."
+      send_instructions: "Recibirás instrucciones para cambiar tu contraseña en unos minutos."
+      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibirás un enlace para cambiar tu contraseña en unos minutos."
+      updated: "Tu contraseña ha sido modificada. Has iniciado sesión."
+      updated_not_active: "Tu contraseña ha sido modificada con éxito."
+    registrations:
+      destroyed: "¡Hasta luego! Tu cuenta ha sido cancelada. Esperamos verte pronto de vuelta."
+      signed_up: "¡Bienvenido! Te has dado de alta correctamente."
+      signed_up_but_inactive: "Te has dado de alta correctamente. Sin embargo, no hemos podido iniciar tu sesión porque tu cuenta está inactiva."
+      signed_up_but_locked: "Te has dado de alta correctamente. Sin embargo, no hemos podido iniciar tu sesión porque tu cuenta está bloqueada."
+      signed_up_but_unconfirmed: "Te hemos enviado un correo electrónico con un enlace. Por favor, utiliza el enlace para confirmar tu cuenta."
+      update_needs_confirmation: "Tu cuenta ha sido modificada, pero necesitamos confirmar tu nuevo correo electrónico. Por favor, comprueba tu bandeja de entrda y utiliza el enlace proveído para completar el proceso."
+      updated: "Tu cuenta ha sido modificada."
+    sessions:
+      signed_in: "Sesión iniciada."
+      signed_out: "Sesión cerrada."
+      already_signed_out: "Ya has cerrado sesión."
+    unlocks:
+      send_instructions: "Recibirás un correo electrónico con instrucciones para desbloquear tu cuenta en unos minutos."
+      send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibirás un enlace para desbloquear tu cuenta en unos minutos."
+      unlocked: "Tu cuenta ha sido desbloqueada. Por favor, inicia sesión para continuar."
+  errors:
+    messages:
+      already_confirmed: "ya estaba confirmado, intenta iniciar sesión"
+      confirmation_period_expired: "necesita ser confirmado en %{period}, por favor, pide una nueva"
+      expired: "ha expirado, pide una nueva"
+      not_found: "no encontrado"
+      not_locked: "no estaba bloqueado"
+      not_saved:
+        one: "1 error impide que se guarde este %{resource}:"
+        other: "%{count} error impiden que se guarde este %{resource}:"

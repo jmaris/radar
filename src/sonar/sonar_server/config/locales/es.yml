@@ -99,26 +99,26 @@ es:
   helpers:
     label:
       cpu_alert:
-        machine: "Máquina"
+        machine_id: "Máquina"
         addressee: "Dirección de E-Mail"
         threshold: "Límite de CPU"
         duration: "Duración"
         custom_message: "Mensaje personalizado"
       ram_alert:
-        machine: "Máquina"
+        machine_id: "Máquina"
         addressee: "Dirección de E-Mail"
         threshold: "Límite de RAM"
         duration: "Duración"
         custom_message: "Mensaje personalizado"
       storage_alert:
-        machine: "Máquina"
+        machine_id: "Máquina"
         addressee: "Dirección de E-Mail"
         path: "Partición"
         threshold: "Límite de almacenamiento"
         check_interval: "Intervalo de comprobación"
         custom_message: "Mensaje personalizado"
       log_alert:
-        machine: "Máquina"
+        machine_id: "Máquina"
         addressee: "Dirección de E-Mail"
         logger_type: "Tipo de logger"
         arguments: "Argumentos"
