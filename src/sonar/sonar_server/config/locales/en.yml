@@ -92,7 +92,7 @@ en:
       back_warning: "Discard changes and go back?"
       check_interval: "Check interval"
       update_interval: "Update interval"
-      cycles: "Ciclos"
+      cycles: "Cycles"
       id: "ID"
       alias: "Alias"
       os: "OS"
