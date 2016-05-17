@@ -13,21 +13,21 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt>Machine ID</dt>
+  <dt><%= t "shared.common.machine_id" %></dt>
   <dd><%= @ram_alert.machine_id %></dd>
 
-  <dt>E-Mail Address</dt>
+  <dt><%= t "shared.common.email" %></dt>
   <dd><%= @ram_alert.addressee %></dd>
 
-  <dt>RAM threshold</dt>
+  <dt><%= t "shared.common.threshold" %></dt>
   <dd><% if @ram_alert.triggered %> <span class="label label-danger"> <% end %> <%= @ram_alert.threshold %> <% if @ram_alert.triggered %> % </span> <% else %> % <% end %> </dd>
 
-  <dt>Check interval</dt>
+  <dt><%= t "shared.common.check_interval" %></dt>
   <dd><%= pluralize(@machine.update_interval, "minute") %></dd>
 
-  <dt>Duration</dt>
+  <dt><%= t "shared.common.duration" %></dt>
   <dd><%= pluralize(@ram_alert.duration, "minute") %></dd>
 
-  <dt>Cycles</dt>
+  <dt><%= t "shared.common.cylcles" %></dt>
   <dd><%= @ram_alert.duration / @machine.update_interval %></dd>
 </dl>

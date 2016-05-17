@@ -16,25 +16,25 @@
     <%= f.select :machine_id, @machines_hash %>
   </div>
 <div class="field">
-  <%= f.text_field :addressee, label: 'E-Mail address', placeholder: 'sonar_alert@example.com' %>
+  <%= f.text_field :addressee, placeholder: 'sonar_alert@example.com' %>
 </div>
   <div class="field">
     <%= f.select :logger_type, {'Custom' => 'custom', 'Systemd' => 'systemd'} %>
   </div>
   <div class="field">
-    <%= f.text_field :path, placeholder: '/var/log/mylog.log', help: 'Absolute path for the logfile.' %>
+    <%= f.text_field :path, placeholder: '/var/log/mylog.log' %>
   </div>
   <div class="field">
-    <%= f.text_field :arguments, placeholder: '/ERROR/', help: 'Regular expression to match to the logfile.' %>
+    <%= f.text_field :arguments, placeholder: '/ERROR/' %>
   </div>
   <div class="field">
-    <%= f.number_field :check_interval, placeholder: '10', help: 'Positive integer between 1 and 1440, minutes between each check.' %>
+    <%= f.number_field :check_interval, placeholder: '10' %>
   </div>
   <div class="field">
-    <%= f.text_area :custom_message, placeholder: 'Type your message.' %>
+    <%= f.text_area :custom_message %>
   </div>
   <div class="actions">
-    <%= f.submit 'Save log alert', class: 'btn btn-primary' %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
   <br>
 <% end %>

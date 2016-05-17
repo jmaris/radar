@@ -20,6 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  devise:
+    sessions:
+      user:
+        signed_out: "You have signed out successfully."
+        signed_in: "You have signed in successfully."
   cpu_alerts:
     edit:
       edit: "Editing CPU alert"
@@ -92,33 +97,33 @@ en:
       back_warning: "Discard changes and go back?"
       check_interval: "Check interval"
       update_interval: "Update interval"
-      cycles: "Ciclos"
+      cycles: "Cycles"
       id: "ID"
       alias: "Alias"
       os: "OS"
   helpers:
     label:
       cpu_alert:
-        machine: "Machine"
+        machine_id: "Machine"
         addressee: "E-Mail address"
         threshold: "CPU threshold"
         duration: "Duration"
         custom_message: "Custom message"
       ram_alert:
-        machine: "Machine"
+        machine_id: "Machine"
         addressee: "E-Mail address"
         threshold: "RAM threshold"
         duration: "Duration"
         custom_message: "Custom message"
       storage_alert:
-        machine: "Machine"
+        machine_id: "Machine"
         addressee: "E-Mail address"
         path: "Partition"
         threshold: "Storage threshold"
         check_interval: "Check interval"
         custom_message: "Custom message"
       log_alert:
-        machine: "Machine"
+        machine_id: "Machine"
         addressee: "E-Mail address"
         logger_type: "Logger type"
         arguments: "Arguments"
@@ -135,7 +140,17 @@ en:
     help:
       cpu_alert:
         threshold: "Positive number, percentage of CPU usage."
-        custom_message: "Positive integer between 1 and 1440, greater than or equal to the machine's update interval, minutes, duration for which the condition has to be met in order to trigger the alert."
+        duration: "Positive integer between 1 and 1440, greater than or equal to the machine's update interval, minutes, duration for which the condition has to be met in order to trigger the alert."
+      ram_alert:
+        threshold: "Positive number, percentage of RAM usage."
+        duration: "Positive integer between 1 and 1440, greater than or equal to the machine's update interval, minutes, duration for which the condition has to be met in order to trigger the alert."
+      storage_alert:
+        threshold: "Positive number, percentage of storage usage."
+        check_interval: "Positive integer between 1 and 1440, minutes, minutes between each refresh."
+      log_alert:
+        path: "Absolute path for the logfile."
+        arguments: "Regular expression to match to the logfile."
+        check_interval: "Positive integer between 1 and 1440, minutes between each check."
       machine:
         host: "Hostname or IP address of the machine you want to get data from relative to the Sonar Web server."
         port: "Port of the Sonar API server. 4963 is the default port."

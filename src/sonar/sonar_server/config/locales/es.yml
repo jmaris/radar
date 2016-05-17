@@ -20,6 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  devise:
+    sessions:
+      user:
+        signed_out: "Has cerrado la sesión correctamente."
+        signed_in: "Has iniciado la sesión correctamente."
   cpu_alerts:
     edit:
       edit: "Editando alerta de CPU"
@@ -42,7 +47,7 @@ es:
     new:
       new: "Nueva alerta de almacenamiento"
     index:
-      no_alerts: "No se encontraron alertas de RAM"
+      no_alerts: "No se encontraron alertas de almacenamiento"
       threshold: "Límite de almacenamiento"
   log_alerts:
     edit:
@@ -99,26 +104,26 @@ es:
   helpers:
     label:
       cpu_alert:
-        machine: "Máquina"
+        machine_id: "Máquina"
         addressee: "Dirección de E-Mail"
         threshold: "Límite de CPU"
         duration: "Duración"
         custom_message: "Mensaje personalizado"
       ram_alert:
-        machine: "Máquina"
+        machine_id: "Máquina"
         addressee: "Dirección de E-Mail"
         threshold: "Límite de RAM"
         duration: "Duración"
         custom_message: "Mensaje personalizado"
       storage_alert:
-        machine: "Máquina"
+        machine_id: "Máquina"
         addressee: "Dirección de E-Mail"
         path: "Partición"
         threshold: "Límite de almacenamiento"
         check_interval: "Intervalo de comprobación"
         custom_message: "Mensaje personalizado"
       log_alert:
-        machine: "Máquina"
+        machine_id: "Máquina"
         addressee: "Dirección de E-Mail"
         logger_type: "Tipo de logger"
         arguments: "Argumentos"
@@ -135,7 +140,15 @@ es:
     help:
       cpu_alert:
         threshold: "Número positivo. Porcentaje de uso de CPU."
-        custom_message: "Entero positivo entre 1 y 1440, mayor o igual que el intervalo de actualización de la máquina, minutos, duración para la que se tienen que cumplir los parámetros para activar la alerta."
+        duration: "Entero positivo entre 1 y 1440, mayor o igual que el intervalo de actualización de la máquina, minutos, duración para la que se tienen que cumplir los parámetros para activar la alerta."
+      ram_alert:
+        threshold: "Número positivo. Porcentaje de uso de RAM."
+        duration: "Entero positivo entre 1 y 1440, mayor o igual que el intervalo de actualización de la máquina, minutos, duración para la que se tienen que cumplir los parámetros para activar la alerta."
+      storage_alert:
+        threshold: "Número positivo. Porcentaje de uso de almacenamiento."
+        check_interval: "Positive integer between 1 and 1440, minutes, minutes between each refresh."
+      log_alert:
+        
       machine:
         host: "Nombre del host o dirección IP para la que se quiere obtener datos relativo a Sonar Web."
         port: "Puerto del servidor API de Sonar, 4963 por defecto."
