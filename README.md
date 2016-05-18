@@ -1,11 +1,9 @@
-Sonar
+Radar
 =========
 
-<!-- [![Build Status](https://travis-ci.org/leoncastillejos/Sonar.svg?branch=master)](https://travis-ci.org/leoncastillejos/Sonar)
- -->
-Repository hosting the Sonar project.
+Repository hosting the Radar project.
 
-(For a less technical overview of the project, please visit [the project's webpage](https://leoncastillejos.github.io/sonar)).
+<!-- For a less technical overview of the project, please visit [the project's webpage](https://leoncastillejos.github.io/sonar)). -->
 
 To install, copy the sonar-api folder to the server you want to monitor, and the sonar_server folder to the server from which you will be monitoring. Define your hosts and go.
 
@@ -17,6 +15,6 @@ To install, copy the sonar-api folder to the server you want to monitor, and the
 
 Most of the project will be written in Ruby, with Rails in order to dramatically speed up development, and since it's a web based implementation, it makes sense to use Rails.
 
-# Installing Sonar
+# Installing Radar
 
-You can check out [the documentation](https://github.com/leoncastillejos/sonar/tree/master/doc/en) for instructions on installing, using and configuring Sonar.
+You can check out [the documentation](https://github.com0xDA221E/radar/tree/master/doc/en) for instructions on installing, using and configuring Radar.
