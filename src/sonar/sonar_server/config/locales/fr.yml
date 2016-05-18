@@ -1,0 +1,157 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  devise:
+    sessions:
+      user:
+        signed_out: "Vous vous êtes déconnecté"
+        signed_in: "Vous vous êtes connecté"
+  cpu_alerts:
+    edit:
+      edit: "Modification d'alerte CPU.."
+    new:
+      new: "Nouvelle alerte CPU"
+    index:
+      no_alerts: "Aucune alerte CPU trouvé"
+      threshold: "Seuil CPU"
+  ram_alerts:
+    edit:
+      edit: "Modification d'alerte mémoire vive"
+    new:
+      new: "Nouvelle alerte mémoire vive"
+    index:
+      no_alerts: "Aucune alerte mémoire vive trouvé"
+      threshold: "Seuil mémoire vive"
+  storage_alerts:
+    edit:
+      edit: "Editing storage alert"
+    new:
+      new: "Nouvelle alerte stockage"
+    index:
+      no_alerts: "Aucune alerte stockage trouvé"
+      threshold: "Seuil Stockage"
+  log_alerts:
+    edit:
+      edit: "Moodification de la nouvelle alerte"
+    new:
+      new: "Nouvelle alerte log"
+    index:
+      no_alerts: "Aucun alerte log trouvé"
+      logger_type: "Type de Log"
+      path: "Chemin"
+      arguments: "Arguments"
+      acknowledge: "Prendre en Compte"
+  machines:
+    edit:
+      edit: "Modification d'appareil"
+    new:
+      new: "Nouveau appareil"
+    index:
+      no_machines: "Aucune appareil trouvé"
+  static:
+    home:
+      welcome: "Bienvenue à Sonar"
+  shared:
+    _navigation:
+      machines: "Appareils"
+      alerts: "Alertes"
+      cpu_alerts: "Alertes CPU"
+      ram_alerts: "Alertes mémoire vive"
+      storage_alerts: "Alertes Stockage"
+      log_alerts: "Alertes Log"
+      edit_profile: "Modifier Profile"
+      sign_out: "Se déconnecter"
+      sign_in: "Se connecter"
+    common:
+      threshold: "Seuil"
+      machines: "Appareils"
+      alerts: "Alertes"
+      cpu_alerts: "Alertes CPU"
+      ram_alerts: "Alertes mémoire vive"
+      storage_alerts: "Alertes Stockage"
+      log_alerts: "Alertes Log"
+      machine_id: "Identifiant appareil"
+      email: "Adresse mail"
+      duration: "Durée"
+      custom_message: "Message personalisé"
+      operations: "Operations"
+      back_warning: "Abandonner les changements et revenir en arrière ?"
+      check_interval: "Intervalle de vérification"
+      update_interval: "Intervalle de mise à jour"
+      cycles: "Cycles"
+      id: "Identifiant"
+      alias: "Alias"
+      os: "OS"
+  helpers:
+    label:
+      cpu_alert:
+        machine_id: "Appareil"
+        addressee: "Adresse mail"
+        threshold: "Seuil CPU"
+        duration: "Durée"
+        custom_message: "Message personalisé"
+      ram_alert:
+        machine_id: "Appareil"
+        addressee: "Adresse mail"
+        threshold: "Seuil mémoire vive"
+        duration: "Durée"
+        custom_message: "Message personalisé"
+      storage_alert:
+        machine_id: "Appareil"
+        addressee: "Adresse mail"
+        path: "Partition"
+        threshold: "Seuil Stockage"
+        check_interval: "Intervalle de vérification"
+        custom_message: "Message personalisé"
+      log_alert:
+        machine_id: "Appareil"
+        addressee: "Adresse mail"
+        logger_type: "Type de Log"
+        arguments: "Arguments"
+        check_interval: "Intervalle de vérification"
+        custom_message: "Message personalisé"
+      machine:
+        alias: "Alias de l'apapreil"
+        protocol: "Protocol"
+        host: "Nom d'hôte"
+        port: "Port"
+        update_interval: "Intervale de mise à jour"
+
+  activerecord:
+    help:
+      cpu_alert:
+        threshold: "Nombre positif, pourcentage de l'utilisation CPU"
+        duration: "Nombre positif entre 1 et 1440, plus grande ou égale à l'intervalle de mise à jour de l'appareil. En minutes, la durée pour lequel la critère est rempli avant de déclencher l'alerte."
+      ram_alert:
+        threshold: "Nombre positif, pourcentage de l'utilisation mémoire vive"
+        duration: "Nombre positif entre 1 et 1440, plus grande ou égale à l'intervalle de mise à jour de l'appareil. En minutes, la durée pour lequel la critère est rempli avant de déclencher l'alerte."
+      storage_alert:
+        threshold: "Nombre positif, pourcentage de l'utilisation du stockage."
+        check_interval: "Nombre positif entre 1 et 1440, plus grande ou égale à l'intervalle de mise à jour de l'appareil. En minutes entre chaque vérification."
+      log_alert:
+        path: "Chemin absolu du fichier journal (.log)"
+        arguments: "Expression régulière à utiliser"
+        check_interval: "Nombre positif entre 1 et 1440, minutes entre les vérifications"
+      machine:
+        host: "Nom d'hôte ou adresse IP de l'appareil dont vous désirez chercher les données (rélative au serveur web de Sonar."
+        port: "Port de l'API du serveur Sonar. par défaut 4963."
+        update_interval: "Nombre positif entre 1 et 1440, Durée en minutes entre les mises à jour des graphiques"
