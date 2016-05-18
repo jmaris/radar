@@ -17,4 +17,4 @@ Most of the project will be written in Ruby, with Rails in order to dramatically
 
 # Installing Radar
 
-You can check out [the documentation](https://github.com0xDA221E/radar/tree/master/doc/en) for instructions on installing, using and configuring Radar.
+You can check out [the documentation](https://github.com/0xDA221E/radar/tree/master/doc) for instructions on installing, using and configuring Radar.
