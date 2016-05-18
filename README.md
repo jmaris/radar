@@ -5,7 +5,7 @@ Repository hosting the Radar project.
 
 <!-- For a less technical overview of the project, please visit [the project's webpage](https://leoncastillejos.github.io/sonar)). -->
 
-To install, copy the sonar-api folder to the server you want to monitor, and the sonar_server folder to the server from which you will be monitoring. Define your hosts and go.
+To install, copy the radar\_api folder to the server you want to monitor, and the radar\_server folder to the server from which you will be monitoring. Define your hosts and go.
 
 <!-- vvv Must be moved to the gh-pages branch vvv -->
 
