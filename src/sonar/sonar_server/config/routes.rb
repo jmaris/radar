@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/sign_up' => redirect('/403.html')
   scope ":locale" do
-    devise_for :users
+    devise_for :users, path_names: {sign_up: ''}
     authenticate :user do
       resources :ram_alerts
       resources :storage_alerts
